@@ -1,4 +1,4 @@
-make.exe --dry-run --keep-going --print-directory
+make.exe --dry-run --always-make --keep-going --print-directory
 '\\wsl$\Ubuntu-20.04\home\slorion\42_Project\Push_Swap'
 CMD.EXE a �t� d�marr� avec le chemin d'acc�s comme r�pertoire en
 cours. Les chemins d'acc�s UNC ne sont pas prise en charge. Utilisation
