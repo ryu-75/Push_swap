@@ -1,58 +1,50 @@
 #include "push_swap.h"
 
-int ft_strlen(int *nb)
+a_list *add_node_front(a_list *stack_a, char *str)
 {
-    int i;
+    a_list    *new;
 
-    i = 0;
-    while (nb[i] != '\0' && *nb)
-        i++;
-    return (i);
+    new = malloc(sizeof(a_list));
+    if (!new)
+        return (NULL);
+    stack_a = new;
+    if (!new->num)
+        return (NULL);
+    new->next = NULL;
+    return (new);
 }
 
-int found_space(int *nb, int c)
+a_list  *add_node_back(a_list *stack_a, char *str)
 {
-    while (*nb != '\0' && *nb)
+    a_list  *new;
+
+    new = malloc(sizeof(a_list));
+    if (!new)
+        return (NULL);
+    if (!new)
     {
-        if (c == *nb++)
-            return (1);
+        stack_a = new;
+        return (NULL);
     }
-    return (0);
+    while (new->next)
+        new = stack_a->next;
+    new->next = NULL;
+    return (new);
 }
 
-int is_num(int *nb)
+a_list  *print_list(a_list *stack_a, char *str)
 {
-    int len;
-
-    len = ft_strlen(nb);
-    if (len < INT_MIN || len > INT_MAX)
-        return (0);
-    while (*nb++)
-    {
-        if (!(*nb >= 0 && *nb <= 9))
-            return (0);
-    }
-    return (1);
+    
 }
-
-void    create_new_element(t_list **nb)
-{
-    t_list  *tmp_1;
-    t_list  *tmp_2;
-
-    tmp_1->nb = nb;
-    tmp_2->next = NULL;
-    if (tmp_1 == NULL)
-        exit_fail();
-
-}
-
-
 
 int main(void)
 {
-    int nb[] = {3, 5, 8, 9, 6, 7, 2};
-
-    printf("%d", is_int(nb));
+    a_list  *node;
+    char    *s = "3468";
+    
+    node = NULL;
+    
+    //print_node(node);
+    
     return (0);
 }

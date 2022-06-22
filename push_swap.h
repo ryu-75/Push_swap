@@ -8,10 +8,13 @@
 
 typedef struct a_list
 {
-    int         *stack_a;
-    struct  s_list  *next;
+    int     num;
+    struct  a_list  *previous;
+    struct  a_list   *next;
+    
 }           a_list;
 
-/* parsing */
 
+int ft_strcmp(const char *s1, const char *s2);
+char    exit_fail();
 #endif
