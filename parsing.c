@@ -27,23 +27,24 @@ a_list  *add_node_back(a_list *stack_a, char *str)
         return (NULL);
     }
     while (new->next)
-        new = stack_a->next;
+        new->next = stack_a->next;
     new->next = NULL;
     return (new);
 }
 
-a_list  *print_list(a_list *stack_a, char *str)
-{
+// a_list  *print_list(a_list *stack_a, char *str)
+// {
     
-}
+// }
 
 int main(void)
 {
     a_list  *node;
     char    *s = "3468";
     
+
     node = NULL;
-    
+    node = add_node_back(node, s);
     //print_node(node);
     
     return (0);
