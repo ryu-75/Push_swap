@@ -17,4 +17,5 @@ typedef struct a_list
 
 int ft_strcmp(const char *s1, const char *s2);
 char    exit_fail();
+int get_my_nb(char *str);
 #endif

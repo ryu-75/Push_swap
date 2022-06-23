@@ -13,7 +13,7 @@ int ft_isnum(char *str)
     return (0);
 }
 
-int ft_strcmp(const char *s1, const char *s2)\
+int ft_strcmp(const char *s1, const char *s2)
 {
     int i;
     int j;
@@ -33,12 +33,37 @@ int ft_strcmp(const char *s1, const char *s2)\
     return (0);
 }
 
-int ft_strlen(char *nb)
+int found_space(int *nb, int c)
+{
+    while (*nb != '\0' && *nb)
+    {
+        if (c == *nb++)
+            return (1);
+    }
+    return (0);
+}
+
+int get_my_nb(char *str)
 {
     int i;
+    int neg;
+    int value;
 
+    value = 0;
     i = 0;
-    while (nb[i] != '\0' && nb)
+    neg = 1;
+    while (str[i] == '\n' || str[i] == '\r' || str[i] == '\t' || str[i] == 32)
         i++;
-    return (i);
+    while (str[i] == '-' || str[i] == '+')
+    {
+        if (str[i] == '-')
+            neg = -1;
+        i++;
+    }
+    while (str[i] >= '0' && str[i] <= '9')
+    {
+        value = value * 10 + str[i] - '0';
+        i++;
+    }
+    return (value * neg);
 }
