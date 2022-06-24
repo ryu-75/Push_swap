@@ -1,5 +1,5 @@
 #include "push_swap.h"
-
+/*
 void    ft_rotate(a_list **stack_a, char *num)
 {
     a_list  *tmp;
@@ -14,11 +14,4 @@ void    ft_rotate(a_list **stack_a, char *num)
     tmp->previous->previous = NULL;
     ft_putendl_fd(num, STDOUT_FILENO);
 }
-
-int main()
-{
-    char    *num = "3 6 4 5";
-    a_list  *stack_a = malloc(sizeof(char *) + 1);
-    printf("%zu", ft_rotate(&stack_a, num));
-    return (0);
-}
+*/

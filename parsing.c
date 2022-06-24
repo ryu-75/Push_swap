@@ -1,53 +1,47 @@
 #include "push_swap.h"
 
-a_list *add_node_front(a_list *stack_a, char *str)
+a_list *add_node_front(a_list *stack_a, int *num)
 {
     a_list    *new;
 
     new = malloc(sizeof(a_list));
     if (!new)
         return (NULL);
-    new->num = get_my_nb(str);
+    new->num = *num;
+    new->next = stack_a;
     if (!new->num)
         return (NULL);
-    new->next = stack_a;
     stack_a = new;
+    printf("%d\n", stack_a->num);
     return (stack_a);
 }
 
-a_list  *add_node_back(a_list *stack_a, char *str)
+a_list  *add_node_back(a_list *stack_a, int *num)
 {
     a_list  *new;
 
     new = malloc(sizeof(a_list));
     if (!new)
         return (NULL);
-    new->num = get_my_nb(str);
     new->next = NULL;
     while (new->next != NULL)
         new = new->next;
+    new->num = *num;
     new->next = new;
     stack_a = new;
+    printf("%d\n", stack_a->num);
     return (stack_a);
 }
 
-a_list  *add_new_node(char *str)
+a_list  *add_new_node(a_list *new)
 {
-    a_list  *new;
-
     new = malloc(sizeof(a_list));
     if (!new)
         return (NULL);
-    new->num = get_my_nb(str);
     new->next = NULL;
     return (new);
 }
-/*
-int count_parameter(int ac, char **av)
-{
 
-}
-*/
 char    **get_parameters(int ac, char **av)
 {
     int index;
@@ -76,17 +70,12 @@ char    **get_parameters(int ac, char **av)
 
 int main(int argc, char *argv[])
 {
-    int i;
-    char    **s = get_parameters(argc, argv);
-    i = 0;
+    a_list  *tst;
+    a_list  *ft;
 
-    if (argc > 1)
-    {
-        while (argv[i] != 0)
-        {
-            printf("%s\n", s[i]);
-            i++;
-        }
-    }    
+    int nb[] = {3};
+    tst = NULL;
+    tst = add_node_front(tst, nb);
+    
     return (0);
 }

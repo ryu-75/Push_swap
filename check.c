@@ -1,5 +1,8 @@
 #include "push_swap.h"
 
+// A revoir :
+// Erreur de lecture
+// Le parsing n est pas fait dans son integralite
 int check_double(char **args)
 {
     int i;
@@ -23,18 +26,39 @@ int check_double(char **args)
     return (0);
 }
 
-int main(int argc, char **argv)
+int check_int(int nb)
+{
+    if (nb < INT_MIN || nb > INT_MAX)
+        return (0);
+    return (1);
+}
+
+// Ajouter les valeurs dans des pointeurs temporaire pour coupler chaque arguments entre eux
+// Ajouter des espaces entres chaques valeurs;
+// Penser a gerer les cas d erreurs puis a free derriere
+// Split le tableau **nb quand on rencontre un espace
+// Retourner la nb
+int convert_av(int ac, char **av, char **nb)
 {
     int i;
+    char    *tmp;
+    char    *tmp_1;
 
+    tmp_1 = NULL;
     i = 1;
-    if (argc == 2)
+    while (i < ac)
     {
-        while (i < argc)
+        tmp = nb;
+        if (tmp = 0)
         {
-            printf("%d\n", check_double(&argv[i]));
-            i++;
+            exit_fail();
+            free(tmp);
         }
+        tmp_1 = ft_strjoin(tmp_1, tmp);
+        free(tmp);
+        tmp = ft_strjoin(tmp_1, " ");
+        tmp_1(free);
+        i++;
     }
-    return (0);
+    return (tmp);
 }

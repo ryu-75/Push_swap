@@ -18,4 +18,5 @@ typedef struct a_list
 int ft_strcmp(const char *s1, const char *s2);
 char    exit_fail();
 int get_my_nb(char *str);
+char	*ft_sjoin(char const *s1, char const *s2);
 #endif
