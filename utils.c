@@ -6,11 +6,27 @@ char    exit_fail()
     return (1);
 }
 
+int ft_have_num(char *str)
+{
+    while (*str)
+    {
+        if (ft_isdigit(*str++))
+            return (1);
+    }
+    return (0);
+}
+
 int ft_isnum(char *str)
 {
-    if (*str >= 0 && *str <= 9)
-        return (1);
-    return (0);
+    if ((*str == '+' || *str == '-') && ft_strlen(str) > 1)
+        str++;
+    while (*str)
+    {
+        if (*str < '0' || *str > '9')
+            return (0);
+        str++;
+    }
+    return (1);
 }
 
 int ft_strcmp(const char *s1, const char *s2)
@@ -31,44 +47,6 @@ int ft_strcmp(const char *s1, const char *s2)
         i++;
     }
     return (0);
-}
-/*
-int found_space(int ac, char **av, int c)
-{
-    int i;
-
-    i = 1;
-    while (av[ac][i] != '\0' && ac > 0)
-    {
-        i = 0;
-        while (av[ac][i])
-        {
-            if (av[ac][i] == c)
-                return (1);
-            i++;
-        }
-        ac--;
-    }
-    return (0);
-}
-*/
-
-char *check_argument(int ac, char **av)
-{
-    int i;
-    char    *tmp;
-
-    i = 0;
-    if (!tmp)
-        return (NULL);
-    if (ac > 0)
-    {
-        tmp = ft_strjoin(&av[ac][i], &av[ac][i + 1]);
-        while (tmp[i + 1])
-            i++;
-        ac--;
-    }
-    return (tmp);
 }
 
 int get_my_nb(char *str)
@@ -96,51 +74,12 @@ int get_my_nb(char *str)
     return (value * neg);
 }
 
-int	ft_len(char *s)
+/*
+int main()
 {
-	int	i;
+    char    *str = "4 5 5 ";
 
-	i = 0;
-	if (!s)
-		return (0);
-	while (*s && s[i] != '\0')
-		i++;
-	return (i);
-}
-
-char	*ft_sjoin(char const *s1, char const *s2)
-{
-	char	*newstr;
-	char	*tab;
-
-	newstr = NULL;
-	newstr = malloc(ft_len(s1) + ft_len(s2) + sizeof(char));
-	if (!newstr)
-		return (NULL);
-	tab = newstr;
-	while (*s1 != '\0')
-		*newstr++ = *s1++;
-	while (*s2 != '\0')
-		*newstr++ = *s2++;
-	*newstr = '\0';
-	free(newstr);
-	return (tab);
-}
-
-int main(int argc, char *argv[])
-{
-    int i;
-    char    *str;
-
-    str = check_argument(argc, argv);
-    i = 0;
-    if (argc == 2)
-    {
-        while (i < argc)
-        {
-            printf("%c\n", str[i]);
-            i++;
-        }
-    }
+    printf("%d\n", ft_have_num(str));
     return (0);
 }
+*/

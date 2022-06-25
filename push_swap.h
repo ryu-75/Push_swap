@@ -15,8 +15,15 @@ typedef struct a_list
 }           a_list;
 
 
-int ft_strcmp(const char *s1, const char *s2);
+
 char    exit_fail();
+char    **convert_av(int ac, char **av);
+
 int get_my_nb(char *str);
-char	*ft_sjoin(char const *s1, char const *s2);
+int ft_strcmp(const char *s1, const char *s2);
+int ft_have_num(char *str);
+int ft_isnum(char *str);
+
+void    free_tab(char **str);
+void    ft_free(void*str);
 #endif

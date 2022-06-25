@@ -67,7 +67,7 @@ char    **get_parameters(int ac, char **av)
     }
     return (parameters);
 }
-
+/*
 int main(int argc, char *argv[])
 {
     a_list  *tst;
@@ -79,3 +79,4 @@ int main(int argc, char *argv[])
     
     return (0);
 }
+*/
