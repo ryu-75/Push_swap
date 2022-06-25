@@ -43,22 +43,20 @@ char **convert_av(int ac, char **av)
         ft_free(tmp);
     }
     tab = ft_split(str, ' ');
-    return (tab);
+    return (ft_free(str), tab);
 }
 
 int main(int argc, char **argv)
 {
     int     i;
-    
-    // str = malloc(sizeof(char) * argc + 1);
-    // if (!str)
-    //     return (0);
-    i = 0;
+    // char    **str;
+
+    i = 1;
     if (argc >= 2)
     {
-        while (i <= argc)
+        while (i < argc)
         {
-            printf("%s\n", *convert_av(argc, &argv[i]));
+            printf("%s\n", *convert_av(argc, argv));
             i++;
         }
     }
