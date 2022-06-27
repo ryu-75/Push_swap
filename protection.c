@@ -9,9 +9,9 @@ void    ft_free(void *str)
     }
 }
 
-void free_tab(char **str)
+void free_tab(void **str)
 {
-    char    **ptr;
+    void    **ptr;
 
     ptr = str;
     while (*str++)

@@ -18,7 +18,7 @@ int ft_tablen(char **tab)
     return (i);
 }
 
-char **convert_av(int ac, char **av)
+char **split_av(int ac, char **av)
 {
     int i;
     char    *str;
@@ -46,19 +46,52 @@ char **convert_av(int ac, char **av)
     return (ft_free(str), tab);
 }
 
+// Tant que count est inferieur a ac, on ajoute les donnees dans le nouveau tableau de int
+// On alloue de la place dans le tableau de int de la structure stack_a->num
+// On recupere la taille du tableau genere par split_av avec ft_tablen
+
+void    add_list(t_data *data, int ac, char **av)
+{
+    int i = 0;
+    char    **tab;
+    char    **tab_ptr;
+    long int    num;
+
+    tab = split_av(ac, av);
+    if (!tab)
+        return (write(1, "Error\n", 6), exit(1));
+    tab_ptr = tab;
+    data->data_size = ft_tablen(tab);
+    data->num = malloc(sizeof(int) * (size_t)data->data_size + 1);
+    if (data->num == NULL)
+        return (write(1, "Error\n", 6), ft_free(tab), exit(1));
+    while (i < (int)data->data_size)
+    {
+        if (!data->data_size)
+            return (write(1, "Error\n", 6), exit(1));
+        num = get_my_nb(*tab_ptr);
+        if (!ft_isnum(*tab))
+            return (write(1, "Error\n", 6), free_tab(tab_ptr), exit(1));
+        if (num < INT_MIN || num > INT_MAX)
+            return (write(1, "Error\n", 6), free_tab(tab), exit(1));
+        data->num[i++] = (int)num;
+        tab++;
+    }
+    free_tab((void **)tab_ptr);
+}
+
 int main(int argc, char **argv)
 {
-    int     i;
-    // char    **str;
+    int i;
+    t_data  *value;
+    t_data  *num;
 
-    i = 1;
+    value = value->num;
+    i = 0;
     if (argc >= 2)
     {
-        while (i < argc)
-        {
-            printf("%s\n", *convert_av(argc, argv));
-            i++;
-        }
+        while (++i < argc)
+            add_list(num, argc, argv);
     }
     return (0);
 }

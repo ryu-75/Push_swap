@@ -1,8 +1,8 @@
 #include "push_swap.h"
 /*
-void    ft_rotate(a_list **stack_a, char *num)
+void    ft_rotate(t_list **stack_a, char *num)
 {
-    a_list  *tmp;
+    t_list  *tmp;
 
     tmp->next = NULL;
     if (!(*stack_a) || !stack_a || !(*stack_a)->next)

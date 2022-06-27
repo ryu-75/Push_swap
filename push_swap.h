@@ -6,24 +6,21 @@
 #include <limits.h>
 #include "Libft/libft.h"
 
-typedef struct a_list
+typedef struct s_data
 {
-    int     num;
-    struct  a_list  *previous;
-    struct  a_list   *next;
-    
-}           a_list;
-
-
+    int                 *num;
+    size_t              data_size;
+    struct  a_list  *stack_a;
+    struct  a_list  *next;
+}           t_data;
 
 char    exit_fail();
-char    **convert_av(int ac, char **av);
-
+char **split_av(int ac, char **av);
 int get_my_nb(char *str);
 int ft_strcmp(const char *s1, const char *s2);
 int ft_have_num(char *str);
 int ft_isnum(char *str);
 
-void    free_tab(char **str);
-void    ft_free(void*str);
+void    free_tab(void **str);
+void    ft_free(void *str);
 #endif
