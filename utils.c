@@ -6,6 +6,20 @@ char    exit_fail()
     return (1);
 }
 
+int ft_check_db(int *data, int index, long int num)
+{
+    int i;
+
+    i = 0;
+    while (i < index)
+    {
+        if (data[i] == num)
+            return (1);
+        i++;
+    }
+    return (0);
+}
+
 int ft_have_num(char *str)
 {
     while (*str)
@@ -53,13 +67,3 @@ int get_my_nb(char *str)
     }
     return (value * neg);
 }
-
-/*
-int main()
-{
-    char    *str = "4 5 5 ";
-
-    printf("%d\n", ft_have_num(str));
-    return (0);
-}
-*/

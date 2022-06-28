@@ -78,9 +78,9 @@ void    add_list(t_data *data, int ac, char **av)
         if (!data->data_size)
             return (write(1, "Error\n", 6), exit(1));
         num = get_my_nb(tab_ptr[i]);
-        // if (!ft_isnum(*tab))
-        //     return (write(1, "Error\n", 6), free_tab(tab_ptr), exit(1));
-        if (num < INT_MIN || num > INT_MAX)
+        if (!ft_isnum(*tab))
+            return (write(1, "Error\n", 6), ft_free(tab_ptr), exit(1));
+        if (num < INT_MIN || num > INT_MAX || ft_check_db(data->num, i, num))
             return (write(1, "Error\n", 6), exit(1));
         data->num[i++] = (int)num;
         tab++;
@@ -108,8 +108,6 @@ int main(int argc, char **argv)
     if (argc >= 2)
     {
         add_list(data, argc, argv);
-        if (data->num[0] == data->num[1])
-            printf("ERROR");
         print_data(data);
     }
     return (0);
