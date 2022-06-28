@@ -6,7 +6,7 @@
 // Split le tableau **nb quand on rencontre un espace
 // Retourner la nb
 
-int ft_tablen(char **tab)
+size_t ft_tablen(char **tab)
 {
     int i;
 
@@ -52,16 +52,24 @@ char **split_av(int ac, char **av)
 
 void    add_list(t_data *data, int ac, char **av)
 {
-    int i = 0;
+    int     i;
     char    **tab;
     char    **tab_ptr;
     long int    num;
+    size_t     tablen;
 
+    i = 0;
     tab = split_av(ac, av);
+    if (!data)
+    {
+        data = malloc(sizeof(t_data));
+        //return (write(1, "Error\n", 6), exit(1));
+    }
     if (!tab)
         return (write(1, "Error\n", 6), exit(1));
     tab_ptr = tab;
-    data->data_size = ft_tablen(tab);
+    tablen = ft_tablen(tab);
+    data->data_size = tablen;
     data->num = malloc(sizeof(int) * (size_t)data->data_size + 1);
     if (data->num == NULL)
         return (write(1, "Error\n", 6), ft_free(tab), exit(1));
@@ -69,29 +77,40 @@ void    add_list(t_data *data, int ac, char **av)
     {
         if (!data->data_size)
             return (write(1, "Error\n", 6), exit(1));
-        num = get_my_nb(*tab_ptr);
-        if (!ft_isnum(*tab))
-            return (write(1, "Error\n", 6), free_tab(tab_ptr), exit(1));
+        num = get_my_nb(tab_ptr[i]);
+        // if (!ft_isnum(*tab))
+        //     return (write(1, "Error\n", 6), free_tab(tab_ptr), exit(1));
         if (num < INT_MIN || num > INT_MAX)
-            return (write(1, "Error\n", 6), free_tab(tab), exit(1));
+            return (write(1, "Error\n", 6), exit(1));
         data->num[i++] = (int)num;
         tab++;
     }
     free_tab((void **)tab_ptr);
 }
 
+void  print_data(t_data *data)
+{
+    size_t i;
+
+    i = 0;
+    while (i < data->data_size)
+    {
+        printf("%d\n", data->num[i]);
+        i++;
+    }
+}
+
 int main(int argc, char **argv)
 {
-    int i;
-    t_data  *value;
-    t_data  *num;
+    t_data *data;
+    data = malloc(sizeof(t_data));
 
-    value = value->num;
-    i = 0;
     if (argc >= 2)
     {
-        while (++i < argc)
-            add_list(num, argc, argv);
+        add_list(data, argc, argv);
+        if (data->num[0] == data->num[1])
+            printf("ERROR");
+        print_data(data);
     }
     return (0);
 }
