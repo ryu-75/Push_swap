@@ -21,32 +21,34 @@ void    ft_swap(t_data *data)
     int  tmp;
 
     tmp = data->num[0];
+    if (!data)
+        return ;
     data->num[0] = data->num[1];
     data->num[1] = tmp;
 }
 
-void  print_data(t_data *data)
-{
-    size_t i;
+// void  print_data(t_data *data)
+// {
+//     size_t i;
 
-    i = 0;
-    while (i < data->data_size)
-    {
-        printf("%d\n", data->num[i]);
-        i++;
-    }
-}
+//     i = 0;
+//     while (i < data->data_size)
+//     {
+//         printf("%d\n", data->num[i]);
+//         i++;
+//     }
+// }
 
-int main(int argc, char **argv)
-{
-    t_data *data;
-    data = malloc(sizeof(t_data));
+// int main(int argc, char **argv)
+// {
+//     t_data *data;
+//     data = malloc(sizeof(t_data));
 
-    if (argc >= 2)
-    {
-        add_list(data, argc, argv);
-        ft_swap(data);
-        print_data(data);
-    }
-    return (0);
-}
+//     if (argc >= 2)
+//     {
+//         add_list(data, argc, argv);
+//         ft_swap(data);
+//         print_data(data);
+//     }
+//     return (0);
+// }

@@ -75,29 +75,27 @@ void    add_list(t_data *data, int ac, char **av)
     free_tab((void **)tab_ptr);
 }
 
-/*
-void  print_data(t_data *data)
-{
-    size_t i;
+// void  print_data(t_data *data)
+// {
+//     size_t i;
 
-    i = 0;
-    while (i < data->data_size)
-    {
-        printf("%d\n", data->num[i]);
-        i++;
-    }
-}
+//     i = 0;
+//     while (i < data->data_size)
+//     {
+//         printf("%d\n", data->num[i]);
+//         i++;
+//     }
+// }
 
-int main(int argc, char **argv)
-{
-    t_data *data;
-    data = malloc(sizeof(t_data));
+// int main(int argc, char **argv)
+// {
+//     t_data *data;
+//     data = malloc(sizeof(t_data));
 
-    if (argc >= 2)
-    {
-        add_list(data, argc, argv);
-        print_data(data);
-    }
-    return (0);
-}
-*/
+//     if (argc >= 2)
+//     {
+//         add_list(data, argc, argv);
+//         print_data(data);
+//     }
+//     return (0);
+// }

@@ -1,10 +1,10 @@
 #include "push_swap.h"
 
-a_list *add_node_front(a_list *stack_a, int *num)
+t_stack *add_node_front(t_stack *stack_a, int *num)
 {
-    a_list    *new;
+    t_stack    *new;
 
-    new = malloc(sizeof(a_list));
+    new = malloc(sizeof(t_stack));
     if (!new)
         return (NULL);
     new->num = *num;
@@ -16,11 +16,11 @@ a_list *add_node_front(a_list *stack_a, int *num)
     return (stack_a);
 }
 
-a_list  *add_node_back(a_list *stack_a, int *num)
+t_stack  *add_node_back(t_stack *stack_a, int *num)
 {
-    a_list  *new;
+    t_stack  *new;
 
-    new = malloc(sizeof(a_list));
+    new = malloc(sizeof(t_stack));
     if (!new)
         return (NULL);
     new->next = NULL;
@@ -33,9 +33,9 @@ a_list  *add_node_back(a_list *stack_a, int *num)
     return (stack_a);
 }
 
-a_list  *add_new_node(a_list *new)
+t_stack  *add_new_node(t_stack *new)
 {
-    new = malloc(sizeof(a_list));
+    new = malloc(sizeof(t_stack));
     if (!new)
         return (NULL);
     new->next = NULL;
