@@ -1,11 +1,5 @@
 #include "push_swap.h"
 
-// Ajouter les valeurs dans des pointeurs temporaire pour coupler chaque arguments entre eux
-// Ajouter des espaces entres chaques valeurs;
-// Penser a gerer les cas d erreurs puis a free derriere
-// Split le tableau **nb quand on rencontre un espace
-// Retourner la nb
-
 size_t ft_tablen(char **tab)
 {
     int i;
@@ -46,10 +40,6 @@ char **split_av(int ac, char **av)
     return (ft_free(str), tab);
 }
 
-// Tant que count est inferieur a ac, on ajoute les donnees dans le nouveau tableau de int
-// On alloue de la place dans le tableau de int de la structure stack_a->num
-// On recupere la taille du tableau genere par split_av avec ft_tablen
-
 void    add_list(t_data *data, int ac, char **av)
 {
     int     i;
@@ -61,10 +51,7 @@ void    add_list(t_data *data, int ac, char **av)
     i = 0;
     tab = split_av(ac, av);
     if (!data)
-    {
         data = malloc(sizeof(t_data));
-        //return (write(1, "Error\n", 6), exit(1));
-    }
     if (!tab)
         return (write(1, "Error\n", 6), exit(1));
     tab_ptr = tab;
@@ -88,6 +75,7 @@ void    add_list(t_data *data, int ac, char **av)
     free_tab((void **)tab_ptr);
 }
 
+/*
 void  print_data(t_data *data)
 {
     size_t i;
@@ -112,3 +100,4 @@ int main(int argc, char **argv)
     }
     return (0);
 }
+*/
