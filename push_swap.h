@@ -12,10 +12,17 @@ typedef struct s_mov
     char            *value;
 }           t_mov;
 
+typedef struct s_op
+{
+    struct s_op     *next;
+    int             content;
+}           t_op;
+
 typedef struct s_data
 {
-    int                 *num;
-    size_t              data_size;
+    int             *num;
+    size_t          data_size;
+    t_mov           *mov_list;
 }           t_data;
 
 char    exit_fail();
@@ -30,4 +37,8 @@ int ft_check_db(int *data, int index, long int num);
 void    add_list(t_data *data, int ac, char **av);
 void    free_tab(void **str);
 void    ft_free(void *str);
+void    ft_lst_clear(t_mov *data, int status);
+void    ft_add_value(t_data *data, char *str);
+void    ft_swap(t_data *data, t_op *stack, char *str);
+
 #endif
