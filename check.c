@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-size_t ft_tablen(char **tab)
+static size_t ft_tablen(char **tab)
 {
     int i;
 
@@ -12,7 +12,7 @@ size_t ft_tablen(char **tab)
     return (i);
 }
 
-char **split_av(int ac, char **av)
+static char **split_av(int ac, char **av)
 {
     int i;
     char    *str;

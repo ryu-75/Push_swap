@@ -16,15 +16,22 @@ void    ft_rotate(t_data **stack_a, char *num)
 }
 */
 
-void    ft_swap(t_data *data)
+void    ft_add_value(t_data *data, char *str)
 {
-    int  tmp;
+    t_mov   *tmp;
+    t_mov   *new;
 
-    tmp = data->num[0];
-    if (!data)
+    new = malloc(sizeof(t_mov));
+    if (!new)
         return ;
-    data->num[0] = data->num[1];
-    data->num[1] = tmp;
+    tmp = new;
+    while (new)
+    {
+        new->value = str;
+        if (!new->value)
+            return ;
+        new->next = NULL;
+    }
 }
 
 // void  print_data(t_data *data)
@@ -39,16 +46,17 @@ void    ft_swap(t_data *data)
 //     }
 // }
 
-// int main(int argc, char **argv)
-// {
-//     t_data *data;
-//     data = malloc(sizeof(t_data));
+int main(int argc, char **argv)
+{
+    t_data  *data;
+    char    **str;
 
-//     if (argc >= 2)
-//     {
-//         add_list(data, argc, argv);
-//         ft_swap(data);
-//         print_data(data);
-//     }
-//     return (0);
-// }
+    str = split_av(argc, argv);
+    data = malloc(sizeof(t_data));
+    if (argc >= 2)
+    {
+        ft_add_value(data, str);
+        print_data(data);
+    }
+    return (0);
+}

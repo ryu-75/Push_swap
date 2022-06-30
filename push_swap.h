@@ -6,26 +6,21 @@
 #include <limits.h>
 #include "Libft/libft.h"
 
-typedef struct s_stack
+typedef struct s_mov
 {
-    int             num;
-    struct s_stack  *previous;  // stack_a
-    struct s_stack  *next;      // stack_b
-}           t_stack;
+    struct s_mov    *next;
+    char            *value;
+}           t_mov;
 
 typedef struct s_data
 {
     int                 *num;
     size_t              data_size;
-    // struct s_data   *stack_a;
-    // struct s_data   *stack_b;  
-    // struct  s_data  *next;
 }           t_data;
-
-t_stack  *add_new_node(t_stack *new);
 
 char    exit_fail();
 char    **split_av(int ac, char **av);
+
 int get_my_nb(char *str);
 int ft_strcmp(const char *s1, const char *s2);
 int ft_have_num(char *str);
