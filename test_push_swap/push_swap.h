@@ -17,7 +17,7 @@ typedef struct s_data
 // ----------------------------- PARSING ------------------------------------ //
 
 int check_arg(char **av);
-int convert_av(int ac, char **av);
+t_data    *convert_av(int ac, char **av);
 
 // ------------------------------ UTILS ------------------------------------ //
 
@@ -31,4 +31,7 @@ int have_num(char *nb);
 
 t_data  *add_newlst(t_data *new, int el);
 void	ft_lstadd_back_value(t_data **lst, t_data *new);
+
+void	ft_lstadd_back_test(t_data **lst, int el);
+
 #endif

@@ -10,26 +10,6 @@ t_data  *add_newlst(t_data *new, int el)
     return (new);
 }
 
-// void    add_backlst(t_data **value, int el)
-// {
-//     t_data  *last;
-//     t_data  *tmp;
-
-//     last = malloc(sizeof(t_data));
-//     if (!value)
-//         return (NULL);
-//     last->content = el;
-//     last->next = NULL;
-//     if (!last)
-//     {
-//         *value = new;
-//         return (NULL);
-//     }
-//     while (value->next)
-//         last = last->next;
-//     last->next = new;
-// }
-
 void	ft_lstadd_back_value(t_data **lst, t_data *new)
 {
 	t_data	*last;
@@ -42,19 +22,12 @@ void	ft_lstadd_back_value(t_data **lst, t_data *new)
 		*lst = new;
 		return ;
 	}
-	while (last->next)
-		last = last->next;
+	else
+	{	
+		while (last->next)
+			last = last->next;
+	}
 	last->next = new;
-}
-
-void    ft_printlst(t_data *stack_a)
-{
-    int i;
-
-    i = 0;
-    if (!stack_a)
-        stack_a = malloc(sizeof(t_data));
-    printf("%d\n", stack_a->content);
 }
 
 // int main(void)
