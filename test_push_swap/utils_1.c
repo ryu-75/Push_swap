@@ -45,9 +45,8 @@ int have_num(char *nb)
     i = 0;
     while (nb[i] != '\0')
     {
-        if (!ft_isnumber(nb[i]))
-            return (0);
-        i++;
+        if (ft_isnumber(nb[i++]))
+            return (1);
     }
-    return (1);
+    return (0);
 }
