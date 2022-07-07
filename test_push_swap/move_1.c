@@ -6,46 +6,48 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 19:23:36 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/07 12:52:30 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/07 18:15:37 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_data    *ft_swap_a(t_data **stack)
+void    ft_swap_a(t_data **stack_a)
 {
-    t_data  **tmp;
+    t_data  *tmp;
 
     tmp = NULL;
-    if (!stack)
-        return (NULL);
-    (*tmp)->next = (*stack);
-    (*stack) = (*stack)->next;
-    (*stack)->next = (*tmp)->next;
-    return ((*stack));
+    if (!(*stack_a) || !stack_a)
+        return ;
+    tmp = (*stack_a)->next;
+    (*stack_a)->next = tmp->next;
+    tmp->next = (*stack_a);
+    *stack_a = tmp;
 }
 
-void    ft_printlst(t_data **stack_a)
+void    ft_push_a(t_data **stack_b, t_data **stack_a)
 {
-    if (!(*stack_a))
-        stack_a = malloc(sizeof(t_data**));
-    while (stack_a)
-    {
-        printf("%d\n", (*stack_a)->content);
-        (*stack_a) = (*stack_a)->next;
-    }
+    t_data  *tmp;
+    tmp = NULL;
+    if (!(*stack_a) || !stack_a || !(*stack_b) || !stack_b)
+        return ;
+    tmp = (*stack_a);
+    (*stack_b)->content = tmp->content;
 }
 
-// int main(int ac, char **av)
-// {
-//     t_data *lst;
-//     t_data *tmp;
-
-//     if (ac > 1)
-//     {
-//         convert_av(&lst, av);
-//         tmp = ft_swap_a(&lst);
-//         ft_printlst(&tmp);
-//     }
-//     return (0);
-// }
+int main(int ac, char **av)
+{
+    t_data  *stack_a;
+    t_data  *stack_b;
+    (void) ac;
+    
+    stack_b = malloc(sizeof(t_data));
+    stack_a = convert_av(&stack_a, av);
+    ft_push_a(&stack_b, &stack_a);
+    while (stack_b)
+    {
+        printf("stack_b = %d\n", stack_b->content);
+        stack_b = stack_b->next;
+    }
+    return (0);
+}

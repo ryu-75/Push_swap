@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 22:59:46 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/07 13:25:09 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/07 17:22:38 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int check_arg(char **av)
         o.j = o.i + 1;
         while (av[o.j])
         {
-            if (!ft_strcmp(av[o.i], av[o.j]))
+            if (ft_strcmp(av[o.i], av[o.j]) == 0)
                 return (0);
             o.j++;
         }
@@ -38,6 +38,8 @@ int check_arg(char **av)
     }
     return (1);
 }
+
+// Cas d erreur -> Si 55 ; 5 (return "error") -> a reparer
 
 // Convert each av to integer and stack it into an int array
 t_data  *convert_av(t_data **stack, char **av)
@@ -51,24 +53,12 @@ t_data  *convert_av(t_data **stack, char **av)
     if (check_arg(av) == 1)
     {
         while (av[o.i])
+        {
             ft_lstadd_back_value(tmp, add_newlst(*tmp, ft_atoi(av[o.i++])));
+            //(*tmp) = (*tmp)->next;
+        }
     }
     else
         ft_error();
     return (*stack);
-}
-
-int main(int ac, char **av)
-{
-    t_data  *lst;
-    (void) ac;
-    // t_obj o = {.i = 1};
-    lst = convert_av(&lst, av);
-    // printf("%d\n", lst->content);
-    while (lst)
-    {
-        printf("%d\n", lst->content);
-        lst = lst->next;
-    }
-    return (0);
 }

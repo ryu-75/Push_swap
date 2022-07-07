@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:30:52 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/07 13:16:16 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/07 18:15:13 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,15 @@ int    ft_error();
 
 t_data  *add_newlst(t_data *new, int el);
 void    ft_lstadd_back_value(t_data **lst, t_data *new);
+
+// ----------------------------- A MOVEMENT -------------------------------- //
+
+void    ft_swap_a(t_data **stack_a);
+void    ft_push_a(t_data **stack_b, t_data **stack_a);
+
+// ----------------------------- B MOVEMENT -------------------------------- //
+
+void    ft_push_b(t_data **stack_a, t_data **stack_b);
+void    ft_swap_a(t_data **stack_b);
 
 #endif
