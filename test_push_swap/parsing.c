@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 22:59:46 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/06 19:51:01 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/07 13:25:09 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 // Return an error if none condition is complete
 int check_arg(char **av)
 {
-    t_obj o = {0};
+    t_obj o = {.i = 1, .j = 1};
 
     while (av[o.i])
     {
@@ -24,7 +24,7 @@ int check_arg(char **av)
             return (0);
         o.i++;
     }
-    o.i = 0;
+    o.i = 1;
     while (av[o.i])
     {
         o.j = o.i + 1;
@@ -40,42 +40,35 @@ int check_arg(char **av)
 }
 
 // Convert each av to integer and stack it into an int array
-t_data  *convert_av(int ac, char **av)
+t_data  *convert_av(t_data **stack, char **av)
 {
-    t_obj o = {0};
-    t_data  **stack;
-
+    t_obj o = {.i = 1};
+    t_data  **tmp;
+    
     stack = malloc(sizeof(t_data**));
-    while (av[o.i])
+    tmp = NULL;
+    tmp = stack;
+    if (check_arg(av) == 1)
     {
-        if (check_arg(av) == 0)
-            ft_error();
-        ft_lstadd_back_value(stack, add_newlst(*stack, ft_atoi(av[o.i++])));
-        printf("%d\n", (*stack)->content);
-        *stack = (*stack)->next;
+        while (av[o.i])
+            ft_lstadd_back_value(tmp, add_newlst(*tmp, ft_atoi(av[o.i++])));
     }
+    else
+        ft_error();
     return (*stack);
 }
 
-// void    ft_printlst(t_data *stack_a)
-// {
-//     int i;
-
-//     i = 0;
-//     if (!stack_a)
-//         stack_a = malloc(sizeof(t_data));
-//     printf("%d\n", stack_a->content);
-// }
-
-// int main(int ac, char **av)
-// {
-//     t_data *lst;
-//     t_obj o = {1};
-  
-//     lst = NULL;
-//     if (ac > 1)
-//     {
-//         convert_av(ac, &av[o.i++]);
-//     }
-//     return (0);
-// }
+int main(int ac, char **av)
+{
+    t_data  *lst;
+    (void) ac;
+    // t_obj o = {.i = 1};
+    lst = convert_av(&lst, av);
+    // printf("%d\n", lst->content);
+    while (lst)
+    {
+        printf("%d\n", lst->content);
+        lst = lst->next;
+    }
+    return (0);
+}

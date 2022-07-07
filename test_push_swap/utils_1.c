@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:30:56 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/06 16:53:27 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/07 11:20:25 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int ft_nblen(int value)
     return (o.i);
 }
 
-void    ft_error()
+int    ft_error()
 {
-    (write(1, "Error\n", 6), exit(1), 0);
+    return((write(1, "Error\n", 6), exit(1), 0));
 }
