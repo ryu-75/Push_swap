@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 22:37:31 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/08 22:39:08 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/08 22:47:06 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,19 @@ void    ft_push_b(t_data **stack_a, t_data **stack_b)
     (*stack_a)->content = tmp->content;
 }
 
-int main(int ac, char **av)
-{
-    t_data  *stack_a;
-    t_data  *stack_b;
-    (void) ac;
+// int main(int ac, char **av)
+// {
+//     t_data  *stack_a;
+//     t_data  *stack_b;
+//     (void) ac;
     
-    stack_b = malloc(sizeof(t_data));
-    stack_a = convert_av(&stack_a, av);
-    ft_push_a(&stack_b, &stack_a);
-    while (stack_b)
-    {
-        printf("stack_b = %d\n", stack_b->content);
-        stack_b = stack_b->next;
-    }
-    return (0);
-}
+//     stack_b = malloc(sizeof(t_data));
+//     stack_a = convert_av(&stack_a, av);
+//     ft_push_a(&stack_b, &stack_a);
+//     while (stack_b)
+//     {
+//         printf("stack_b = %d\n", stack_b->content);
+//         stack_b = stack_b->next;
+//     }
+//     return (0);
+// }

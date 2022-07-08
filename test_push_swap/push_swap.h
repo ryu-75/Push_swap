@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:30:52 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/07 18:15:13 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/08 23:13:46 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int    ft_error();
 
 t_data  *add_newlst(t_data *new, int el);
 void    ft_lstadd_back_value(t_data **lst, t_data *new);
+void	ft_lstdel(t_data *stack, void (*del)(int));
+void	ft_clear_stack(t_data **stack, void (*del)(int));
 
 // ----------------------------- A MOVEMENT -------------------------------- //
 
