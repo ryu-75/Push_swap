@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:30:52 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/08 23:13:46 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/09 14:19:43 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,17 @@ t_data  *add_newlst(t_data *new, int el);
 void    ft_lstadd_back_value(t_data **lst, t_data *new);
 void	ft_lstdel(t_data *stack, void (*del)(int));
 void	ft_clear_stack(t_data **stack, void (*del)(int));
+void	ft_lst_el(t_data **stack);
 
 // ----------------------------- A MOVEMENT -------------------------------- //
 
 void    ft_swap_a(t_data **stack_a);
 void    ft_push_a(t_data **stack_b, t_data **stack_a);
+void    ft_rotate_a(t_data **stack_a);
 
 // ----------------------------- B MOVEMENT -------------------------------- //
 
 void    ft_push_b(t_data **stack_a, t_data **stack_b);
-void    ft_swap_a(t_data **stack_b);
-
+void    ft_swap_b(t_data **stack_b);
+void    ft_rotate_b(t_data **stack_b);
 #endif

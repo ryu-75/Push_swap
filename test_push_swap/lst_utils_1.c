@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_utils_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 22:37:37 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/08 23:28:27 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/09 14:16:37 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,6 @@ void	ft_lstadd_back_value(t_data **lst, t_data *new)
 	last->next = new;
 }
 
-// void	ft_delete_el(t_data **stack)
-// {
-// 	t_data	*tmp;
-// 	if (!stack)
-// 		return ;
-// 	tmp = (*stack);
-// 	tmp = tmp->next;
-// 	tmp->next = NULL;
-// }
-
 void	ft_lstdel(t_data *stack, void (*del)(int))
 {
 	if (!del)
@@ -77,35 +67,38 @@ void	ft_clear_stack(t_data **stack, void (*del)(int))
 }
 
 // Faire une fonction qui permet de supprimer seulement le première élément de la liste
-void	ft_lst_el(t_data **stack, void (*del)(int))
+void	ft_lst_el(t_data **stack)
 {
-	t_data	*tmp_1;
-	t_data	*tmp_2;
-	
-	tmp_1 = (*stack);
-	tmp_1 = tmp_1->next;
-	//ft_clear_stack(stack, del);
+	t_data	*tmp;
+
+	tmp = NULL;
+	if (!stack || !(*stack))
+		return ;
+	tmp = (*stack);
+	tmp = tmp->next;
+	ft_lstdel(*stack, 0);
+	(*stack) = tmp;
 }
 
-int main(int ac, char **av)
-{
-    t_data  *stack;
-	(void)	ac;
+// int main(int ac, char **av)
+// {
+//     t_data  *stack;
+// 	(void)	ac;
 	
-	stack = convert_av(&stack, av);
-	ft_lst_el(&stack, 0);
-	if (ac > 1)
-	{
-		while (stack)
-		{
-			printf("%d\n", stack->content);
-			stack = stack->next;	
-		}
-		// while (stack)
-		// {
-		// 	printf("%d\n", stack->content);
-		// 	stack = stack->next;	
-		// }
-	}
-    return (0);
-}
+// 	stack = convert_av(&stack, av);
+// 	ft_lst_el(&stack);
+// 	if (ac > 1)
+// 	{
+// 		while (stack)
+// 		{
+// 			printf("%d\n", stack->content);
+// 			stack = stack->next;	
+// 		}
+// 		// while (stack)
+// 		// {
+// 		// 	printf("%d\n", stack->content);
+// 		// 	stack = stack->next;	
+// 		// }
+// 	}
+//     return (0);
+// }
