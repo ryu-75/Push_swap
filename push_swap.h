@@ -1,44 +1,78 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/03 16:30:52 by nlorion           #+#    #+#             */
+/*   Updated: 2022/07/09 17:40:35 by nlorion          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include <stdio.h>
-#include <unistd.h>
-#include <limits.h>
 #include "Libft/libft.h"
 
-typedef struct s_mov
-{
-    struct s_mov    *next;
-    char            *value;
-}           t_mov;
-
-typedef struct s_op
-{
-    struct s_op     *next;
-    int             content;
-}           t_op;
+// ---------------------------- STRUCTURE ----------------------------------- //
 
 typedef struct s_data
 {
-    int             *num;
-    size_t          data_size;
-    t_mov           *mov_list;
-}           t_data;
+    int             content;
+    struct s_data   *prev;
+    struct s_data   *next;
+}               t_data;
 
-char    exit_fail();
-char    **split_av(int ac, char **av);
+typedef struct s_stack
+{
+    struct s_stack  *head;
+    struct s_stack  *tail;
+}               t_stack;
 
-int get_my_nb(char *str);
+typedef struct s_obj
+{
+    int i;
+    int j;
+    int num;
+    int len;
+}               t_obj;
+
+// ----------------------------- PARSING ------------------------------------ //
+
+int check_arg(char **av);
+t_data  *convert_av(t_data **stack, char **av);
+
+// ------------------------------ UTILS ------------------------------------ //
+
+int ft_nblen(int nb);
 int ft_strcmp(const char *s1, const char *s2);
-int ft_have_num(char *str);
-int ft_isnum(char *str);
-int ft_check_db(int *data, int index, long int num);
+int ft_isnumber(int nb);
+int have_num(char *nb);
+void    ft_error();
+long long	ft_convert_value(const char *nptr);
 
-void    add_list(t_data *data, int ac, char **av);
-void    free_tab(void **str);
-void    ft_free(void *str);
-void    ft_lst_clear(t_mov *data, int status);
-void    ft_add_value(t_data *data, char *str);
-void    ft_swap(t_data *data, t_op *stack, char *str);
+// ----------------------------- LIST UTILS -------------------------------- //
 
+t_data  *add_newlst(t_data *new, int el);
+void    ft_lstadd_back_value(t_data **lst, t_data *new);
+void	ft_lstdel(t_data *stack, void (*del)(int));
+void	ft_clear_stack(t_data **stack, void (*del)(int));
+void	ft_del_firstel(t_data **stack);
+void	ft_addfront(t_data **stack, t_data *new);
+void	ft_del_lastel(t_data **stack);
+
+// ----------------------------- A MOVEMENT -------------------------------- //
+
+void    ft_swap_a(t_data **stack_a);
+void    ft_push_a(t_data **stack_b, t_data **stack_a);
+void    ft_rotate_a(t_data **stack_a);
+void    ft_rrotate_a(t_data **stack_a);
+
+// ----------------------------- B MOVEMENT -------------------------------- //
+
+void    ft_push_b(t_data **stack_a, t_data **stack_b);
+void    ft_swap_b(t_data **stack_b);
+void    ft_rotate_b(t_data **stack_b);
+void    ft_rrotate_b(t_data **stack_b);
 #endif

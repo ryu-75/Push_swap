@@ -1,82 +1,59 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/03 22:59:46 by nlorion           #+#    #+#             */
+/*   Updated: 2022/07/09 17:43:53 by nlorion          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-a_list *add_node_front(a_list *stack_a, int *num)
+// Check if av contain no double and have only digit
+// Return an error if none condition is complete
+int check_arg(char **av)
 {
-    a_list    *new;
+    t_obj o = {.i = 1, .j = 1};
 
-    new = malloc(sizeof(a_list));
-    if (!new)
-        return (NULL);
-    new->num = *num;
-    new->next = stack_a;
-    if (!new->num)
-        return (NULL);
-    stack_a = new;
-    printf("%d\n", stack_a->num);
-    return (stack_a);
-}
-
-a_list  *add_node_back(a_list *stack_a, int *num)
-{
-    a_list  *new;
-
-    new = malloc(sizeof(a_list));
-    if (!new)
-        return (NULL);
-    new->next = NULL;
-    while (new->next != NULL)
-        new = new->next;
-    new->num = *num;
-    new->next = new;
-    stack_a = new;
-    printf("%d\n", stack_a->num);
-    return (stack_a);
-}
-
-a_list  *add_new_node(a_list *new)
-{
-    new = malloc(sizeof(a_list));
-    if (!new)
-        return (NULL);
-    new->next = NULL;
-    return (new);
-}
-
-char    **get_parameters(int ac, char **av)
-{
-    int index;
-    char  **parameters;
-
-    index = 1;
-    if (ac > 0)
+    while (av[o.i])
     {
-        parameters = ft_split(av[index], ' ');
-        while (parameters[index])
-            index++;
+        if (have_num(av[o.i]) == 0)
+            return (0);
+        o.i++;
+    }
+    o.i = 1;
+    while (av[o.i])
+    {
+        o.j = o.i + 1;
+        while (av[o.j])
+        {
+            if (ft_strcmp(av[o.i], av[o.j]) == 0)
+                return (0);
+            o.j++;
+        }
+        o.i++;
+    }
+    return (1);
+}
+
+// Convert each av to integer and stack it into an int array
+t_data  *convert_av(t_data **stack, char **av)
+{
+    t_obj o = {.i = 1};
+    t_data  **tmp;
+
+    stack = malloc(sizeof(t_data**));
+    tmp = NULL;
+    tmp = stack;
+    if (check_arg(av) == 1)
+    {
+        while (av[o.i])
+            ft_lstadd_back_value(tmp, add_newlst(*tmp, ft_convert_value(av[o.i++])));
     }
     else
-    {
-        parameters = malloc(ac * sizeof(char));
-        if (!parameters)
-            return (NULL);
-        while (parameters[index + 1])
-        {
-            parameters[index] = ft_strdup(av[index + 1]);
-            index++;
-        }
-    }
-    return (parameters);
+        ft_error();
+    return (*stack);
 }
-/*
-int main(int argc, char *argv[])
-{
-    a_list  *tst;
-    a_list  *ft;
-
-    int nb[] = {3};
-    tst = NULL;
-    tst = add_node_front(tst, nb);
-    
-    return (0);
-}
-*/

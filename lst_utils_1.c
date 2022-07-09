@@ -6,12 +6,13 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 22:37:37 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/09 14:16:37 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/09 17:44:45 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// Add new node
 t_data  *add_newlst(t_data *new, int el)
 {
     new = malloc(sizeof(t_data));
@@ -22,6 +23,7 @@ t_data  *add_newlst(t_data *new, int el)
     return (new);
 }
 
+// Add a new node at the end of list
 void	ft_lstadd_back_value(t_data **lst, t_data *new)
 {
 	t_data	*last;
@@ -42,6 +44,7 @@ void	ft_lstadd_back_value(t_data **lst, t_data *new)
 	last->next = new;
 }
 
+// Delete one element only
 void	ft_lstdel(t_data *stack, void (*del)(int))
 {
 	if (!del)
@@ -53,6 +56,7 @@ void	ft_lstdel(t_data *stack, void (*del)(int))
 	}
 }
 
+// Clear list completely
 void	ft_clear_stack(t_data **stack, void (*del)(int))
 {
 	t_data	*tmp;
@@ -66,8 +70,8 @@ void	ft_clear_stack(t_data **stack, void (*del)(int))
 	*stack = NULL;
 }
 
-// Faire une fonction qui permet de supprimer seulement le première élément de la liste
-void	ft_lst_el(t_data **stack)
+// Delete the first element of list
+void	ft_del_firstel(t_data **stack)
 {
 	t_data	*tmp;
 
@@ -80,25 +84,23 @@ void	ft_lst_el(t_data **stack)
 	(*stack) = tmp;
 }
 
-// int main(int ac, char **av)
-// {
-//     t_data  *stack;
-// 	(void)	ac;
-	
-// 	stack = convert_av(&stack, av);
-// 	ft_lst_el(&stack);
-// 	if (ac > 1)
-// 	{
-// 		while (stack)
-// 		{
-// 			printf("%d\n", stack->content);
-// 			stack = stack->next;	
-// 		}
-// 		// while (stack)
-// 		// {
-// 		// 	printf("%d\n", stack->content);
-// 		// 	stack = stack->next;	
-// 		// }
-// 	}
-//     return (0);
-// }
+// Delete the last element of list
+void	ft_del_lastel(t_data **stack)
+{
+	t_data	*tmp;
+
+	if (!stack || !(*stack))
+		return ;
+	tmp = (*stack);
+	while (tmp->next->next)
+		tmp = tmp->next;
+	ft_lstdel(tmp->next, 0);
+	tmp->next = NULL;
+}
+
+// Add a new element at first of list 
+void	ft_addfront(t_data **stack, t_data *new)
+{
+	new->next = *stack;
+	*stack = new;
+}

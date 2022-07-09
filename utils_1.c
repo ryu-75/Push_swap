@@ -1,69 +1,102 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_1.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/03 16:30:56 by nlorion           #+#    #+#             */
+/*   Updated: 2022/07/09 16:42:15 by nlorion          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-char    exit_fail()
+// Compare each value
+int ft_strcmp(const char *nb1, const char *nb2)
 {
-    ft_putstr_fd("Error\n", 1);
-    return (1);
-}
+    size_t len;
 
-int ft_check_db(int *data, int index, long int num)
-{
-    int i;
-
-    i = 0;
-    while (i < index)
+    len = ft_strlen(nb2);
+    while (len-- > 0)
     {
-        if (data[i] == num)
+        if (*nb1 != *nb2)
             return (1);
-        i++;
-    }
-    return (0);
-}
-
-int ft_have_num(char *str)
-{
-    while (*str)
-    {
-        if (ft_isdigit(*str++))
-            return (1);
-    }
-    return (0);
-}
-
-int ft_isnum(char *str)
-{
-    if ((*str == '+' || *str == '-') && ft_strlen(str) > 1)
-        str++;
-    while (*str)
-    {
-        if (*str < '0' || *str > '9')
+        if (*nb1 == '\0')
             return (0);
-        str++;
+        nb1++;
+        nb2++;
     }
-    return (1);
+    return (0);
 }
 
-int get_my_nb(char *str)
+// Return len tab 
+size_t ft_tablen(int *tab)
 {
     int i;
-    int neg;
-    int value;
 
-    value = 0;
     i = 0;
-    neg = 1;
-    while (str[i] == '\n' || str[i] == '\r' || str[i] == '\t' || str[i] == 32)
+    if (!(tab))
+        return (0);
+    while (tab++)
         i++;
-    while (str[i] == '-' || str[i] == '+')
+    return (i);
+}
+
+int have_num(char *s)
+{
+    while (*s != 0)
     {
-        if (str[i] == '-')
-            neg = -1;
-        i++;
+        if (ft_isdigit(*s))
+            return (1);
+        s++;
     }
-    while (str[i] >= '0' && str[i] <= '9')
+    return (0);
+}
+
+// Count each number
+int ft_nblen(int value)
+{
+    t_obj o = {0};
+    
+    while (value != 0)
     {
-        value = value * 10 + str[i] - '0';
-        i++;
+        value /= 10;
+        o.i++;   
     }
-    return (value * neg);
+    return (o.i);
+}
+
+// Convert char like atoi but long long
+long long	ft_convert_value(const char *nptr)
+{
+	long long	result;
+	int	sign;
+
+	sign = 1;
+	result = 0;
+	while (*nptr == 32 || (*nptr >= 7 && *nptr <= 13))
+		nptr++;
+	if (*nptr == '-')
+	{
+		sign = -1;
+		nptr++;
+	}
+	else if (*nptr == '+')
+		nptr++;
+	while (*nptr >= '0' && *nptr <= '9')
+	{
+		result = result * 10 + *nptr - '0';
+		nptr++;
+	}
+	result *= sign;
+	if (result < INT_MIN || result > INT_MAX)
+        return (write(1, "Error\n", 6), exit(1), 0);
+	return (result);
+}
+
+void    ft_error()
+{
+    write(1, "Error\n", 6);
+    EXIT_FAILURE;
 }
