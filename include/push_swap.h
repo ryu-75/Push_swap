@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:30:52 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/09 17:53:27 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/09 18:04:30 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,10 @@ void    ft_push_b(t_data **stack_a, t_data **stack_b);
 void    ft_swap_b(t_data **stack_b);
 void    ft_rotate_b(t_data **stack_b);
 void    ft_rrotate_b(t_data **stack_b);
+
+// ------------------------- A and B MOVEMENT ------------------------------ //
+
+void    rrr_movement(t_data **stack_a, t_data **stack_b);
+void    ss_movement(t_data **stack_a, t_data **stack_b);
+
 #endif
