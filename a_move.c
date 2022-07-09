@@ -6,11 +6,11 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 22:36:59 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/09 17:44:27 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/09 17:51:34 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "include/push_swap.h"
 
 // Swap the first element with the second one
 void    ft_swap_a(t_data **stack_a)

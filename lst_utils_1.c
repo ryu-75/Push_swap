@@ -6,11 +6,11 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 22:37:37 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/09 17:44:45 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/09 17:51:31 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "include/push_swap.h"
 
 // Add new node
 t_data  *add_newlst(t_data *new, int el)

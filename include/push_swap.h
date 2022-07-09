@@ -6,14 +6,14 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:30:52 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/09 17:40:35 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/09 17:53:27 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include "Libft/libft.h"
+#include "../Libft/libft.h"
 
 // ---------------------------- STRUCTURE ----------------------------------- //
 

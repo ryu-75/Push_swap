@@ -6,11 +6,11 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 22:59:46 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/09 17:43:53 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/09 17:51:26 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "include/push_swap.h"
 
 // Check if av contain no double and have only digit
 // Return an error if none condition is complete

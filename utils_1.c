@@ -6,11 +6,11 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:30:56 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/09 16:42:15 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/09 17:51:28 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "include/push_swap.h"
 
 // Compare each value
 int ft_strcmp(const char *nb1, const char *nb2)
