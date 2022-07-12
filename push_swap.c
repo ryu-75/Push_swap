@@ -3,11 +3,11 @@
 int main(int ac, char **av)
 {
     t_data  *a;
-    t_data  *b;
+    // t_data  *b;
 
     a = convert_av(&a, av);
-    b = convert_av(&b, av);
-    rrr_movement(&a, &b);
+    // b = convert_av(&b, av);
+    ft_sorted_three(&a);
     if (ac > 1)
     {
         printf("----- STACK A -----\n\n");
@@ -16,14 +16,12 @@ int main(int ac, char **av)
             printf("\t%d\n\n", a->content);
             a = a->next;
         }
-        printf("----- STACK B -----\t\n\n");
-        while (b)
-        {
-            printf("\t%d\n\n", b->content);
-            b = b->next;
-        }
+        // printf("----- STACK B -----\t\n\n");
+        // while (b)
+        // {
+        //     printf("\t%d\n\n", b->content);
+        //     b = b->next;
+        // }
     }
-    printf("%ld\n", a->size);
-    a = a->next;
     return (0);
 }

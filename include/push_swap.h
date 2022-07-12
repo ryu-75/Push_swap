@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:30:52 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/12 11:52:37 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/12 12:12:24 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,9 @@ void    ft_rrotate_b(t_data **stack_b);
 
 void    rrr_movement(t_data **stack_a, t_data **stack_b);
 void    ss_movement(t_data **stack_a, t_data **stack_b);
+
+// ----------------------------- SORTING ----------------------------------- //
+
+void    ft_sorted_three(t_data **stack);
 
 #endif
