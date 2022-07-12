@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 22:59:46 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/12 11:55:38 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/12 15:28:21 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ t_data  *convert_av(t_data **stack, char **av)
     t_data  **tmp;
 
     stack = malloc(sizeof(t_data**));
-    tmp = NULL;
     tmp = stack;
     if (check_arg(av) == 1)
     {
@@ -67,7 +66,7 @@ t_data  *convert_av(t_data **stack, char **av)
             ft_lstadd_back_value(tmp, add_newlst(*tmp, ft_convert_value(av[o.i++])));
             o.len = ft_tablen(av, o.i);
         }
-        (*stack)->size = o.len; 
+        (*stack)->size = o.len;
     }
     else
         ft_error();
