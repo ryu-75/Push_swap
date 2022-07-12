@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 22:37:31 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/09 17:51:53 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/12 10:21:58 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,17 +69,17 @@ void    ft_rrotate_b(t_data **stack_b)
     ft_del_lastel(stack_b);
 }
 
-int main(int ac, char **av)
-{
-    t_data  *stack_a;
-    (void) ac;
+// int main(int ac, char **av)
+// {
+//     t_data  *stack_a;
+//     (void) ac;
 
-    stack_a = convert_av(&stack_a, av);
-    ft_rotate_b(&stack_a);
-    while (stack_a)
-    {
-        printf("%d\n", stack_a->content);
-        stack_a = stack_a->next;
-    }
-    return (0);
-}
+//     stack_a = convert_av(&stack_a, av);
+//     ft_rotate_b(&stack_a);
+//     while (stack_a)
+//     {
+//         printf("%d\n", stack_a->content);
+//         stack_a = stack_a->next;
+//     }
+//     return (0);
+// }

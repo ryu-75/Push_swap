@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 22:36:59 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/09 17:51:34 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/12 10:31:16 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void    ft_rotate_a(t_data **stack_a)
     while (tmp->content < 1)
         tmp = tmp->next;
     ft_lstadd_back_value(stack_a, add_newlst((*stack_a), tmp->content));
-    ft_lst_el(stack_a);
+    ft_del_firstel(stack_a);
 }
 
 // Shift up all element at the top by 1 of stack_b
@@ -75,7 +75,7 @@ void    ft_rrotate_a(t_data **stack_a)
 //     (void) ac;
 
 //     stack_a = convert_av(&stack_a, av);
-//     ft_rotate_a(&stack_a);
+//     ft_swap_a(&stack_a);
 //     while (stack_a)
 //     {
 //         printf("%d\n", stack_a->content);
