@@ -4,6 +4,7 @@
         "stdio.h": "c",
         "libft.h": "c",
         "stdlib.h": "c",
-        "push_swap.h": "c"
+        "push_swap.h": "c",
+        "cstdlib": "c"
     }
 }

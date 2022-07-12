@@ -23,5 +23,7 @@ int main(int ac, char **av)
             b = b->next;
         }
     }
+    printf("%ld\n", a->size);
+    a = a->next;
     return (0);
 }

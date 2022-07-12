@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:30:56 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/12 10:55:26 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/12 11:04:25 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,6 @@ int ft_strcmp(const char *nb1, const char *nb2)
         nb2++;
     }
     return (0);
-}
-
-// Return len tab 
-size_t ft_tablen(int *tab)
-{
-    int i;
-
-    i = 0;
-    if (!(tab))
-        return (0);
-    while (tab++)
-        i++;
-    return (i);
 }
 
 int have_num(char *s)

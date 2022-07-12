@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:30:52 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/12 10:55:14 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/12 11:52:37 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 typedef struct s_data
 {
     int             content;
+    size_t             size;
     struct s_data   *prev;
     struct s_data   *next;
 }               t_data;
@@ -40,8 +41,9 @@ typedef struct s_obj
 
 // ----------------------------- PARSING ------------------------------------ //
 
-int check_arg(char **av);
+// static int check_arg(char **av);
 t_data  *convert_av(t_data **stack, char **av);
+// static size_t ft_tablen(int *tab);
 
 // ------------------------------ UTILS ------------------------------------ //
 
