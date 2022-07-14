@@ -48,13 +48,13 @@ void	ft_lstmin(t_data **stack)
 }
 
 // Found max value and stack it
-void	ft_lstmax(t_data **stack)
+int	ft_lstmax(t_data **stack)
 {
 	t_data	*tmp;
 	int	max;
 
 	if (!stack || !(*stack))
-		return ;
+		return (0);
 	tmp = (*stack);
 	max = tmp->content;
 	while (tmp)
@@ -64,4 +64,24 @@ void	ft_lstmax(t_data **stack)
 		tmp = tmp->next;
 	}
 	(*stack)->max = max;
+	return (max);
+}
+
+// Retrieve index of each value in stack 
+int ft_position(t_data **stack)
+{
+    t_data  *pos;
+    t_obj o = {0};
+
+    pos = malloc(sizeof(t_data));
+    if (!stack || !(*stack) || !pos)
+        return (0);
+    pos = (*stack);
+    while (pos && pos->next)
+    {
+        pos->idx = o.i++;
+        pos = pos->next;
+    }
+    pos->idx = o.i;
+    return (o.i + 1);
 }

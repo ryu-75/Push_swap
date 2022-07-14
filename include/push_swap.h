@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:30:52 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/14 15:05:48 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/14 17:24:43 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,9 @@
 typedef struct s_data
 {
     int             content;
-    size_t             size;
     int                 min;
     int                 max;
-    int                 pos;
+    int                 idx;
     struct s_data   *next;
 }               t_data;
 
@@ -43,9 +42,7 @@ typedef struct s_obj
 
 // ----------------------------- PARSING ------------------------------------ //
 
-// static int check_arg(char **av);
 t_data  *convert_av(t_data **stack, char **av);
-// static size_t ft_tablen(int *tab);
 
 // ------------------------------ UTILS ------------------------------------ //
 
@@ -66,7 +63,7 @@ void	ft_del_firstel(t_data **stack);
 void	ft_addfront(t_data **stack, t_data *new);
 void	ft_del_lastel(t_data **stack);
 void    ft_lstmin(t_data **stack);
-void    ft_lstmax(t_data **stack);
+int ft_lstmax(t_data **stack);
 
 // ----------------------------- A MOVEMENT -------------------------------- //
 
@@ -90,6 +87,6 @@ void    ss_movement(t_data **stack_a, t_data **stack_b);
 // ----------------------------- SORTING ----------------------------------- //
 
 // t_data  *ft_sorted_three(t_data **stack, int count);
-t_data  *ft_pos(t_data **stack);
+int ft_position(t_data **stack);
 
 #endif

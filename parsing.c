@@ -6,23 +6,11 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 22:59:46 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/14 15:27:17 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/14 16:43:35 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/push_swap.h"
-
-// Return len tab 
-static size_t ft_tablen(char **av, int count)
-{   
-    count = 0;
-    if (!av)
-        return (0);
-    while (av[count])
-        count++;
-    count--;
-    return (count);
-}
 
 // Check if av contain no double and have only digit
 // Return an error if none condition is complete
@@ -62,11 +50,7 @@ t_data  *convert_av(t_data **stack, char **av)
     if (check_arg(av) == 1)
     {
         while (av[o.i])
-        {
             ft_lstadd_back_value(tmp, add_newlst(*tmp, ft_convert_value(av[o.i++])));
-            o.len = ft_tablen(av, o.i);
-        }
-        (*stack)->size = o.len;
     }
     else
         ft_error();
