@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:30:52 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/14 17:24:43 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/14 22:57:18 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct s_data
     int             content;
     int                 min;
     int                 max;
-    int                 idx;
+    int                 id;
     struct s_data   *next;
 }               t_data;
 
@@ -62,7 +62,7 @@ void	ft_clear_stack(t_data **stack, void (*del)(int));
 void	ft_del_firstel(t_data **stack);
 void	ft_addfront(t_data **stack, t_data *new);
 void	ft_del_lastel(t_data **stack);
-void    ft_lstmin(t_data **stack);
+int ft_lstmin(t_data **stack);
 int ft_lstmax(t_data **stack);
 
 // ----------------------------- A MOVEMENT -------------------------------- //
@@ -88,5 +88,7 @@ void    ss_movement(t_data **stack_a, t_data **stack_b);
 
 // t_data  *ft_sorted_three(t_data **stack, int count);
 int ft_position(t_data **stack);
+int ft_smallest_value(t_data **stack);
+void    ft_min_sorting(t_data **stack);
 
 #endif

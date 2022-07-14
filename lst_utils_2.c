@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lst_utils_2.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/14 21:37:02 by nlorion           #+#    #+#             */
+/*   Updated: 2022/07/14 22:09:16 by nlorion          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "include/push_swap.h"
 
 // Delete the first element of list
@@ -29,13 +41,13 @@ void	ft_del_lastel(t_data **stack)
 }
 
 // Found min value and stack it
-void	ft_lstmin(t_data **stack)
+int	ft_lstmin(t_data **stack)
 {
     t_data  *tmp;
     int min;
 
     if (!stack || !(*stack))
-        return ;
+        return (0);
     tmp = (*stack);
     min = tmp->content;
     while (tmp)
@@ -45,6 +57,7 @@ void	ft_lstmin(t_data **stack)
         tmp = tmp->next;
     }
 	(*stack)->min = min;
+	return (min);
 }
 
 // Found max value and stack it
@@ -79,9 +92,9 @@ int ft_position(t_data **stack)
     pos = (*stack);
     while (pos && pos->next)
     {
-        pos->idx = o.i++;
+        pos->id = o.i++;
         pos = pos->next;
     }
-    pos->idx = o.i;
+    pos->id = o.i;
     return (o.i + 1);
 }

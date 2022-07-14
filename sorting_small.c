@@ -1,9 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sorting_small.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/14 21:36:54 by nlorion           #+#    #+#             */
+/*   Updated: 2022/07/14 23:30:10 by nlorion          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "include/push_swap.h"
 
 // Recuperer la plus petite valeur.
 // Commencer un premier trie de 3 en se basant des index recuperer avec la fonction "ft_position"
 // Puis un second de 5
 // Verifier d autre posibilite 
+
+// 
 int ft_smallest_value(t_data **stack)
 {
     t_data  *tmp;
@@ -11,11 +25,41 @@ int ft_smallest_value(t_data **stack)
     if (!stack || !(*stack))
         return (0);
     tmp = (*stack);
-    while (tmp)
+    while (ft_lstmin(stack) != tmp->content)
+        tmp = tmp->next;
+    (*stack)->id = tmp->content;
+    return ((*stack)->id);
+}
+
+void    ft_min_sorting(t_data **stack)
+{
+    int id;
+    t_data *tmp;
+    
+    ft_position(stack);
+    id = ft_smallest_value(stack);
+    if (!stack || !(*stack))
+        return ;
+    tmp = (*stack);
+    if (id == 2)
     {
-        if (ft_lstmin(&tmp))
+        if (tmp->content > tmp->next->content)
         {
+            ft_swap_a(stack);
+            ft_rrotate_a(stack);
         }
+    }
+    else if (id == 0)
+    {
+        ft_rotate_a(stack);
+        ft_swap_a(stack);
+    }
+    else if (id == 1)
+    {
+        if (tmp->content > tmp->next->next->content)
+                ft_rotate_a(stack);
+        else
+            ft_swap_a(stack);
     }
 }
 

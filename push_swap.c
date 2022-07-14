@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/14 21:36:46 by nlorion           #+#    #+#             */
+/*   Updated: 2022/07/14 22:58:48 by nlorion          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "include/push_swap.h"
 
 void    print_lst(t_data **stack)
@@ -14,13 +26,13 @@ void    print_lst(t_data **stack)
 int main(int ac, char **av)
 {
     t_data  *a;
-    int max;
+    int smallest;
     a = convert_av(&a, av);
     // print_lst(&a);
-    max = ft_lstmax(&a);
+    ft_min_sorting(&a);
     // print_lst(&a);
     if (ac > 1)
-        printf("%d\n", max);
+        print_lst(&a);
 
         // printf("----- STACK A -----\n\n");
         // while (a)
