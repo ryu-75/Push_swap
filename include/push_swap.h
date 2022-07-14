@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:30:52 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/12 15:38:45 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/14 12:22:27 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ typedef struct s_data
 {
     int             content;
     size_t             size;
+    int                 min;
+    int                 max;
     struct s_data   *prev;
     struct s_data   *next;
 }               t_data;
@@ -63,6 +65,7 @@ void	ft_clear_stack(t_data **stack, void (*del)(int));
 void	ft_del_firstel(t_data **stack);
 void	ft_addfront(t_data **stack, t_data *new);
 void	ft_del_lastel(t_data **stack);
+int     ft_lstmin(t_data **stack);
 
 // ----------------------------- A MOVEMENT -------------------------------- //
 

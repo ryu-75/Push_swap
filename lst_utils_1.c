@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 22:37:37 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/12 10:55:20 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/14 11:26:03 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,34 +68,6 @@ void	ft_clear_stack(t_data **stack, void (*del)(int))
 		*stack = tmp;
 	}
 	*stack = NULL;
-}
-
-// Delete the first element of list
-void	ft_del_firstel(t_data **stack)
-{
-	t_data	*tmp;
-
-	tmp = NULL;
-	if (!stack || !(*stack))
-		return ;
-	tmp = (*stack);
-	tmp = tmp->next;
-	ft_lstdel(*stack, 0);
-	(*stack) = tmp;
-}
-
-// Delete the last element of list
-void	ft_del_lastel(t_data **stack)
-{
-	t_data	*tmp;
-
-	if (!stack || !(*stack))
-		return ;
-	tmp = (*stack);
-	while (tmp->next->next)
-		tmp = tmp->next;
-	ft_lstdel(tmp->next, 0);
-	tmp->next = NULL;
 }
 
 // Add a new element at first of list 
