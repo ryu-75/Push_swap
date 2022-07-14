@@ -28,13 +28,14 @@ void	ft_del_lastel(t_data **stack)
 	tmp->next = NULL;
 }
 
-int ft_lstmin(t_data **stack)
+// Found min value and stack it
+void	ft_lstmin(t_data **stack)
 {
     t_data  *tmp;
     int min;
 
     if (!stack || !(*stack))
-        return (0);
+        return ;
     tmp = (*stack);
     min = tmp->content;
     while (tmp)
@@ -43,5 +44,24 @@ int ft_lstmin(t_data **stack)
             min = tmp->content;
         tmp = tmp->next;
     }
-    return (min);
+	(*stack)->min = min;
+}
+
+// Found max value and stack it
+void	ft_lstmax(t_data **stack)
+{
+	t_data	*tmp;
+	int	max;
+
+	if (!stack || !(*stack))
+		return ;
+	tmp = (*stack);
+	max = tmp->content;
+	while (tmp)
+	{
+		if (max < tmp->content)
+			max = tmp->content;
+		tmp = tmp->next;
+	}
+	(*stack)->max = max;
 }

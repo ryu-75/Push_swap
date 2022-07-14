@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 22:59:46 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/14 12:20:22 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/14 15:27:17 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,15 +72,3 @@ t_data  *convert_av(t_data **stack, char **av)
         ft_error();
     return (*stack);
 }
-
-// int main(int ac, char **av)
-// {
-//     t_data  *stack;
-
-//     stack = convert_av(&stack, av);
-//     if (ac > 1)
-//     {
-//         printf("%ld\n", stack->size);
-//     }
-//     return (0);
-// }

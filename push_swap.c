@@ -14,14 +14,14 @@ void    print_lst(t_data **stack)
 int main(int ac, char **av)
 {
     t_data  *a;
-    int min;
+    t_data  *sort;
+    
     a = convert_av(&a, av);
     // print_lst(&a);
-    min = ft_lstmin(&a);
+    sort = ft_pos(&a);
     // print_lst(&a);
     if (ac > 1)
-        // print_lst(&min);
-        printf("%d\n", min);
+        print_lst(&sort);
         // printf("----- STACK A -----\n\n");
         // while (a)
         // {
