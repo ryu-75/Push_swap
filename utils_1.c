@@ -30,6 +30,19 @@ int ft_strcmp(const char *nb1, const char *nb2)
     return (0);
 }
 
+int is_num(char *str)
+{
+    if ((*str == '-' || *str == '+') && ft_strlen(str) > 1)
+        str++;
+    while (*str)
+    {
+        if (*str < '0' && *str > '9')
+            return (0);
+        str++;
+    }
+    return (1);
+}
+
 int have_num(char *s)
 {
     while (*s != 0)

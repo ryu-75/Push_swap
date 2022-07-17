@@ -60,6 +60,8 @@ int have_num(char *nb);
 void    ft_error();
 long long	ft_convert_value(const char *nptr);
 int ft_tablen(int *tab);
+// int ft_check_double(t_data **stack, int num);
+int is_num(char *str);
 
 // ----------------------------- LIST UTILS -------------------------------- //
 

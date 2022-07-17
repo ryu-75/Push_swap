@@ -35,3 +35,6 @@ int main(int ac, char **av)
     }
     return (0);
 }
+
+// Corriger l'erreur de sortie ERROR
+// Savoir d'ou elle provient
