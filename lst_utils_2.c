@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 21:37:02 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/14 22:09:16 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/16 14:03:34 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,52 +41,45 @@ void	ft_del_lastel(t_data **stack)
 }
 
 // Found min value and stack it
-int	ft_lstmin(t_data **stack)
+t_data	*ft_lstmin(t_data **stack)
 {
     t_data  *tmp;
-    int min;
+    t_data	*min;
 
-    if (!stack || !(*stack))
-        return (0);
     tmp = (*stack);
-    min = tmp->content;
+    min = tmp;
     while (tmp)
     {
-        if (min > tmp->content)
-            min = tmp->content;
+        if (tmp->content < min->content)
+            min = tmp;
         tmp = tmp->next;
     }
-	(*stack)->min = min;
 	return (min);
 }
 
 // Found max value and stack it
-int	ft_lstmax(t_data **stack)
+t_data	*ft_lstmax(t_data **stack)
 {
 	t_data	*tmp;
-	int	max;
+	t_data	*max;
 
-	if (!stack || !(*stack))
-		return (0);
 	tmp = (*stack);
-	max = tmp->content;
+	max = tmp;
 	while (tmp)
 	{
-		if (max < tmp->content)
-			max = tmp->content;
+		if (tmp->content > max->content)
+			max = tmp;
 		tmp = tmp->next;
 	}
-	(*stack)->max = max;
 	return (max);
 }
 
 // Retrieve index of each value in stack 
-int ft_position(t_data **stack)
+int ft_set_id(t_data **stack)
 {
     t_data  *pos;
     t_obj o = {0};
 
-    pos = malloc(sizeof(t_data));
     if (!stack || !(*stack) || !pos)
         return (0);
     pos = (*stack);

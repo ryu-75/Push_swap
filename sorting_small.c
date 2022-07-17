@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 21:36:54 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/14 23:30:10 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/16 14:05:54 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,100 +17,61 @@
 // Puis un second de 5
 // Verifier d autre posibilite 
 
-// 
+
 int ft_smallest_value(t_data **stack)
 {
     t_data  *tmp;
 
-    if (!stack || !(*stack))
-        return (0);
     tmp = (*stack);
-    while (ft_lstmin(stack) != tmp->content)
+    while (ft_lstmin(stack)->content != tmp->content)
         tmp = tmp->next;
-    (*stack)->id = tmp->content;
-    return ((*stack)->id);
+    return (tmp->id);
 }
 
-void    ft_min_sorting(t_data **stack)
+void    ft_sorted_three(t_lst **stack)
 {
     int id;
-    t_data *tmp;
     
-    ft_position(stack);
-    id = ft_smallest_value(stack);
-    if (!stack || !(*stack))
-        return ;
-    tmp = (*stack);
+    ft_set_id(&(*stack)->a);
+    id = ft_smallest_value(&(*stack)->a);
     if (id == 2)
-    {
-        if (tmp->content > tmp->next->content)
-        {
-            ft_swap_a(stack);
-            ft_rrotate_a(stack);
-        }
+    {   
+        if ((*stack)->a->content > (*stack)->a->next->content)
+            ft_swap_a(&(*stack)->a, "sa", (*stack));
+        ft_rrotate_a(&(*stack)->a, "rra", (*stack));
     }
     else if (id == 0)
     {
-        ft_rotate_a(stack);
-        ft_swap_a(stack);
+        ft_swap_a(&(*stack)->a, "sa", (*stack));
+        ft_rotate_a(&(*stack)->a, "ra", (*stack));
     }
     else if (id == 1)
     {
-        if (tmp->content > tmp->next->next->content)
-                ft_rotate_a(stack);
+        if (&(*stack)->a->content > &(*stack)->a->next->next->content)
+            ft_rotate_a(&(*stack)->a, "ra", (*stack));
         else
-            ft_swap_a(stack);
+            ft_swap_a(&(*stack)->a, "sa", (*stack));
     }
 }
 
-// Faire en sorte de trier une liste a 3 nombre
-// t_data  *ft_sorted_three(t_data **stack, int count)
-// {
-//     t_data  *tmp1;
-//     t_data  *tmp2;
-//     t_obj o = {0};
-//     int swap;
-// 
-//     if (!stack || !(*stack))
-//         return (NULL);
-//     while (o.i++ <= count)
-//     {
-//         swap = 0;
-//         tmp1 = (*stack);
-//         tmp2 = tmp1;
-//         while (o.j++ < count - o.i - 1)
-//         {
-//             if (tmp2->content > tmp1->next->content)
-//             {
-//                 ft_swap_a(&tmp1);
-//                 swap = 1;
-//                 printf("%d\n", tmp1->content);
-//             }
-//             tmp1 = tmp1->next;
-//         }
-//     }
-//     if (swap == 0)
-//         return (NULL);
-//     return (*stack);
-// }
+void    ft_small_move(t_lst **stack)
+{
+    int small_content;
+    int smallest_id;
+    int stack_len;
 
-// t_data  *ft_sorted_three(t_data **stack, int count)
-// {
-//     t_data  *tmp;
-//     t_obj o = {0};
-    
-//     if (!stack || !(*stack))
-//         return (NULL);
-//     tmp = (*stack);
-//     ft_lstmin(&tmp);
-//     ft_lstmax(&tmp);
-//     while (o.i++ <= count && tmp->next)
-//     {
-//         if (tmp->content > tmp->next->content->content)
-//         {
-//             ft_rrotate_a(&tmp);
-//         }
-//         tmp = tmp->next;
-//     }
-//     return (*stack);
-// }
+    stack_len = ft_set_id(&(*stack)->a);
+    smallest_id = ft_smallest_value(&(*stack)->a);
+    small_content = ft_lstmin(&(*stack)->a)->content;
+    if (smallest_id > stack_len / 2)
+    {
+        while ((*stack)->a->content != small_content)
+            ft_rrotate_a(&(*stack)->a, "rra", (*stack));
+    }
+    else if (smallest_id <= stack_len / 2)
+    {
+        while ((*stack)->a->content != small_content)
+            ft_rotate_a(&(*stack)->a, "ra", (*stack));
+    }
+    ft_push_a(&(*stack)->b, &(*stack)->a, "pb", (*stack));
+}

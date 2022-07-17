@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:30:52 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/14 22:57:18 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/16 14:03:45 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,27 @@
 
 // ---------------------------- STRUCTURE ----------------------------------- //
 
+typedef struct s_op
+{
+    struct s_op     *next;
+    char    *operation;
+}               t_op;
+
 typedef struct s_data
 {
     int             content;
-    int                 min;
-    int                 max;
     int                 id;
     struct s_data   *next;
 }               t_data;
 
-typedef struct s_stack
+typedef struct s_lst
 {
-    struct s_stack  *head;
-    struct s_stack  *tail;
-}               t_stack;
+    t_data          *a;
+    t_data          *b;
+    t_op            *oplst;
+    int             size_a;
+    int             size_b;
+}               t_lst;
 
 typedef struct s_obj
 {
@@ -62,33 +69,37 @@ void	ft_clear_stack(t_data **stack, void (*del)(int));
 void	ft_del_firstel(t_data **stack);
 void	ft_addfront(t_data **stack, t_data *new);
 void	ft_del_lastel(t_data **stack);
-int ft_lstmin(t_data **stack);
-int ft_lstmax(t_data **stack);
+t_data  *ft_lstmin(t_data **stack);
+t_data  *ft_lstmax(t_data **stack);
 
 // ----------------------------- A MOVEMENT -------------------------------- //
 
-void    ft_swap_a(t_data **stack_a);
-void    ft_push_a(t_data **stack_b, t_data **stack_a);
-void    ft_rotate_a(t_data **stack_a);
-void    ft_rrotate_a(t_data **stack_a);
+void    ft_swap_a(t_data **stack_a, char *s, t_lst *data);
+void    ft_push_a(t_data **stack_b, t_data **stack_a, char *s, t_lst *data);
+void    ft_rotate_a(t_data **stack_a, char *s, t_lst *data);
+void    ft_rrotate_a(t_data **stack_a, char *s, t_lst *data);
 
 // ----------------------------- B MOVEMENT -------------------------------- //
 
-void    ft_swap_b(t_data **stack_b);
-void    ft_push_b(t_data **stack_a, t_data **stack_b);
-void    ft_rotate_b(t_data **stack_b);
-void    ft_rrotate_b(t_data **stack_b);
+void    ft_swap_b(t_data **stack_b, char *s, t_lst *data);
+void    ft_push_b(t_data **stack_a, t_data **stack_b, char *s, t_lst *data);
+void    ft_rotate_b(t_data **stack_b, char *s, t_lst *data);
+void    ft_rrotate_b(t_data **stack_b, char *s, t_lst *data);
 
 // ------------------------- A and B MOVEMENT ------------------------------ //
 
-void    rrr_movement(t_data **stack_a, t_data **stack_b);
-void    ss_movement(t_data **stack_a, t_data **stack_b);
+void    rrr_movement(t_data **stack_a, t_data **stack_b, t_lst *data);
+void    ss_movement(t_data **stack_a, t_data **stack_b, t_lst *data);
 
 // ----------------------------- SORTING ----------------------------------- //
 
-// t_data  *ft_sorted_three(t_data **stack, int count);
-int ft_position(t_data **stack);
+int ft_set_id(t_data **stack);
 int ft_smallest_value(t_data **stack);
-void    ft_min_sorting(t_data **stack);
+void    ft_sorted_three(t_lst **stack);
+
+// --------------------------- OPERATION ----------------------------------- //
+
+void    ft_ops(char *str, t_lst *op);
+void    ft_print_op(t_lst **stack);
 
 #endif

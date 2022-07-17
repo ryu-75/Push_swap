@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 21:36:46 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/14 22:58:48 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/16 14:46:17 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,22 @@ void    print_lst(t_data **stack)
 int main(int ac, char **av)
 {
     t_data  *a;
-    int smallest;
+    t_lst   *data;
+
+    data = malloc(sizeof(t_lst));    
     a = convert_av(&a, av);
+    ft_rrotate_a(&a, "rra", data);
+    // ft_min_sorting(&a);
     // print_lst(&a);
-    ft_min_sorting(&a);
+    // ft_min_sorting(&a);
     // print_lst(&a);
     if (ac > 1)
+    {
         print_lst(&a);
-
+        ft_print_op(&data);
+    }
+        // printf("%d\n", smallest);
+        
         // printf("----- STACK A -----\n\n");
         // while (a)
         // {
