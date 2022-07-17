@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:30:56 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/17 16:30:50 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/17 17:31:48 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,17 @@ int ft_nblen(int value)
         o.i++;   
     }
     return (o.i);
+}
+
+int ft_tablen(int *tab)
+{
+    t_obj o = {0};
+
+    if (!tab)
+        return (0);
+    while (tab[o.i])
+        o.i++;
+    return(o.i);
 }
 
 // Convert char like atoi but long long

@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:30:52 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/17 13:46:39 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/17 17:34:56 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int ft_isnumber(int nb);
 int have_num(char *nb);
 void    ft_error();
 long long	ft_convert_value(const char *nptr);
+int ft_tablen(int *tab);
 
 // ----------------------------- LIST UTILS -------------------------------- //
 
