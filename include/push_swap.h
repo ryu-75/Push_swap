@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:30:52 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/16 14:03:45 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/17 12:23:10 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,10 @@ void    ss_movement(t_data **stack_a, t_data **stack_b, t_lst *data);
 
 int ft_set_id(t_data **stack);
 int ft_smallest_value(t_data **stack);
+int ft_highest_value(t_data **stack);
 void    ft_sorted_three(t_lst **stack);
+void    ft_small_move(t_lst **stack);
+void    ft_high_move(t_lst **stack);
 
 // --------------------------- OPERATION ----------------------------------- //
 

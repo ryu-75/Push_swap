@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_utils_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 21:37:02 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/17 09:47:51 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/17 11:10:16 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,6 @@ int ft_set_id(t_data **stack)
     t_data  *pos;
     t_obj o = {0};
 
-    if (!stack || !(*stack) || !pos)
-        return (0);
     pos = (*stack);
     while (pos && pos->next)
     {

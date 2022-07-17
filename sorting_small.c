@@ -3,21 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   sorting_small.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 21:36:54 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/17 09:47:58 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/17 12:36:38 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/push_swap.h"
 
-// Recuperer la plus petite valeur.
-// Commencer un premier trie de 3 en se basant des index recuperer avec la fonction "ft_position"
-// Puis un second de 5
-// Verifier d autre posibilite 
-
-
+// Stack the smallest value
 int ft_smallest_value(t_data **stack)
 {
     t_data  *tmp;
@@ -28,6 +23,17 @@ int ft_smallest_value(t_data **stack)
     return (tmp->id);
 }
 
+int ft_highest_value(t_data **stack)
+{
+    t_data  *tmp;
+
+    tmp = (*stack);
+    while (ft_lstmax(stack)->content != tmp->content)
+        tmp = tmp->next;
+    return (tmp->id);
+}
+
+// This function allow to sort three number 
 void    ft_sorted_three(t_lst **stack)
 {
     int id;
@@ -54,6 +60,7 @@ void    ft_sorted_three(t_lst **stack)
     }
 }
 
+// Move to the top the most minimal value 
 void    ft_small_move(t_lst **stack)
 {
     int small_content;
@@ -75,3 +82,25 @@ void    ft_small_move(t_lst **stack)
     }
     ft_push_a(&(*stack)->b, &(*stack)->a, "pb", (*stack));
 }
+
+void    ft_high_move(t_lst **stack)
+{
+    int high_content;
+    int highest_id;
+    int stack_len;
+
+    stack_len = ft_set_id(&(*stack)->a);
+    highest_id = ft_highest_value(&(*stack)->a);
+    high_content = ft_lstmax(&(*stack)->a)->content;
+    if (highest_id >= stack_len / 2)
+    {
+        while ((*stack)->a->content != high_content)
+            ft_rotate_a(&(*stack)->a, "rra", (*stack));
+    }
+    ft_rotate_a(&(*stack)->a, "rra", (*stack));
+}
+
+// void    ft_sorting_five(t_lst **stack)
+// {
+        
+// }
