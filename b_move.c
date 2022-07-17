@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   b_move.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 22:37:31 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/17 09:47:46 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/17 16:08:04 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,15 @@ void    ft_swap_b(t_data **stack_b, char *s, t_lst *data)
 void    ft_push_b(t_data **stack_a, t_data **stack_b, char *s, t_lst *data)
 {
     t_data  *tmp;
+
     tmp = NULL;
-    if (!(*stack_a) || !stack_a || !(*stack_b) || !stack_b)
-        return ;
-    tmp = (*stack_b);
-    (*stack_a)->content = tmp->content;
+    if (stack_a)
+    {
+        tmp = (*stack_a);
+        (*stack_a) = tmp->next;
+        tmp->next = (*stack_b);
+        (*stack_b) = tmp;
+    }
     if (s)
         ft_ops(s, data);
 }

@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 21:36:54 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/17 12:36:38 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/17 16:26:23 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void    ft_small_move(t_lst **stack)
         while ((*stack)->a->content != small_content)
             ft_rotate_a(&(*stack)->a, "ra", (*stack));
     }
-    ft_push_a(&(*stack)->b, &(*stack)->a, "pb", (*stack));
+    ft_push_b(&(*stack)->a, &(*stack)->b, "pb", (*stack));
 }
 
 void    ft_high_move(t_lst **stack)
@@ -92,15 +92,39 @@ void    ft_high_move(t_lst **stack)
     stack_len = ft_set_id(&(*stack)->a);
     highest_id = ft_highest_value(&(*stack)->a);
     high_content = ft_lstmax(&(*stack)->a)->content;
-    if (highest_id >= stack_len / 2)
+    if (highest_id < stack_len / 2)
     {
         while ((*stack)->a->content != high_content)
-            ft_rotate_a(&(*stack)->a, "rra", (*stack));
+            ft_rrotate_a(&(*stack)->a, "rra", (*stack));
     }
-    ft_rotate_a(&(*stack)->a, "rra", (*stack));
+    else if (highest_id >= stack_len / 2)
+    {
+        while ((*stack)->a->content != high_content)
+            ft_rotate_a(&(*stack)->a, "ra", (*stack));
+    }
+    ft_push_b(&(*stack)->a, &(*stack)->b, "pb", (*stack));
 }
 
-// void    ft_sorting_five(t_lst **stack)
-// {
-        
-// }
+// Envoyer le nombre le plus petit et le plus grand dans la stack b
+// Trier les 3 nombres restant 
+// Push dans A les plus petits nombres, trier, puis le plus grand et trier
+void    ft_sorting_five(t_lst **stack)
+{
+    int id;
+
+    id = ft_set_id(&(*stack)->a);
+    if (id == 4)
+    {
+        ft_small_move(stack);
+        ft_sorted_three(stack);
+        ft_push_a(&(*stack)->b, &(*stack)->a, "pa", (*stack));
+    }
+    else if (id == 5)
+    {
+        ft_small_move(stack);
+        ft_small_move(stack);
+        ft_sorted_three(stack);
+        ft_push_a(&(*stack)->b, &(*stack)->a, "pa", (*stack));
+        ft_push_a(&(*stack)->b, &(*stack)->a, "pa", (*stack));
+    }
+}

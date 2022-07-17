@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 22:59:46 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/17 09:48:02 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/17 16:31:48 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ static int check_arg(char **av)
     }
     return (1);
 }
+
+// Faire une fonction qui chaque si il y a des doublons dans les arguments
 
 // Convert each av to integer and stack it into an int array
 t_data  *convert_av(t_data **stack, char **av)

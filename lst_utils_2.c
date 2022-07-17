@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 21:37:02 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/17 11:10:16 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/17 16:18:01 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,10 @@ int ft_set_id(t_data **stack)
     t_obj o = {0};
 
     pos = (*stack);
-    while (pos && pos->next)
+	while (pos && pos->next)
     {
         pos->id = o.i++;
         pos = pos->next;
-    }
-    pos->id = o.i;
+	}
     return (o.i + 1);
 }

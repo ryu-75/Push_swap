@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:30:52 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/17 12:23:10 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/17 13:46:39 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ int ft_highest_value(t_data **stack);
 void    ft_sorted_three(t_lst **stack);
 void    ft_small_move(t_lst **stack);
 void    ft_high_move(t_lst **stack);
+void    ft_sorting_five(t_lst **stack);
 
 // --------------------------- OPERATION ----------------------------------- //
 
