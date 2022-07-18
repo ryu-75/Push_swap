@@ -29,7 +29,7 @@ static int check_arg(char **av)
     o.i = 1;
     while (av[o.i])
     {
-        if (ft_strcmp(av[o.i], " ") == 1)
+        if (ft_strcmp(av[o.i], ""))
             return (0);
         o.i++;
     }
@@ -63,7 +63,7 @@ t_data  *convert_av(t_data **stack, char **av)
     {
         while (av[o.i])
         {
-            if (av[o.i] == " ")
+            if (av[o.i] == "")
                 return (NULL);
             num = ft_convert_value(av[o.i]);
             ft_lstadd_back_value(tmp, add_newlst(*tmp, ft_convert_value(av[o.i++])));

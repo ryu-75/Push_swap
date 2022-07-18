@@ -38,6 +38,8 @@ void    ft_sorted_three(t_lst **stack)
 {
     int id;
     
+    if (ft_lst_is_sort(&(*stack)->a))
+        return ;
     ft_set_id(&(*stack)->a);
     id = ft_smallest_value(&(*stack)->a);
     if (id == 2)
@@ -51,10 +53,10 @@ void    ft_sorted_three(t_lst **stack)
         ft_swap_a(&(*stack)->a, "sa", (*stack));
         ft_rotate_a(&(*stack)->a, "ra", (*stack));
     }
-    else if (id == 1)
+    else
     {
-        if (&(*stack)->a->content > &(*stack)->a->next->next->content)
-            ft_rotate_a(&(*stack)->a, "ra", (*stack));
+        if ((*stack)->a->content > (*stack)->a->next->next->content)
+            ft_rotate_a(&(*stack)->a, "rra", (*stack));
         else
             ft_swap_a(&(*stack)->a, "sa", (*stack));
     }
@@ -102,7 +104,7 @@ void    ft_high_move(t_lst **stack)
         while ((*stack)->a->content != high_content)
             ft_rotate_a(&(*stack)->a, "ra", (*stack));
     }
-    ft_push_b(&(*stack)->a, &(*stack)->b, "pb", (*stack));
+    ft_rotate_a(&(*stack)->a, "ra", (*stack));
 }
 
 // Envoyer le nombre le plus petit et le plus grand dans la stack b
@@ -112,6 +114,8 @@ void    ft_sorting_five(t_lst **stack)
 {
     int id;
 
+    if (ft_lst_is_sort(&(*stack)->a))
+        return ;
     id = ft_set_id(&(*stack)->a);
     if (id == 4)
     {

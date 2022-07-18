@@ -74,6 +74,7 @@ void	ft_addfront(t_data **stack, t_data *new);
 void	ft_del_lastel(t_data **stack);
 t_data  *ft_lstmin(t_data **stack);
 t_data  *ft_lstmax(t_data **stack);
+int	ft_lst_is_sort(t_data **stack);
 
 // ----------------------------- A MOVEMENT -------------------------------- //
 

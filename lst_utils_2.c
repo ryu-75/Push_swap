@@ -86,5 +86,26 @@ int ft_set_id(t_data **stack)
         pos->id = o.i++;
         pos = pos->next;
 	}
+	pos->id = o.i;
     return (o.i + 1);
+}
+
+int	ft_lst_is_sort(t_data **stack)
+{
+	t_data	*tmp_1;
+	t_data	*tmp_2;
+
+	tmp_1 = (*stack);
+	while (tmp_1)
+	{
+		tmp_2 = tmp_1->next;
+		while (tmp_2)
+		{
+			if (tmp_1->content > tmp_2->content)
+				return (0);
+			tmp_2 = tmp_2->next;
+		}
+		tmp_1 = tmp_1->next;
+	}
+	return (1);
 }
