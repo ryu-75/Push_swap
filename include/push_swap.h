@@ -27,6 +27,7 @@ typedef struct s_data
 {
     int             content;
     int                 id;
+    int                 data_size;
     struct s_data   *next;
 }               t_data;
 

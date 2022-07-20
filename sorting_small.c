@@ -23,16 +23,6 @@ int ft_smallest_value(t_data **stack)
     return (tmp->id);
 }
 
-int ft_highest_value(t_data **stack)
-{
-    t_data  *tmp;
-
-    tmp = (*stack);
-    while (ft_lstmax(stack)->content != tmp->content)
-        tmp = tmp->next;
-    return (tmp->id);
-}
-
 // This function allow to sort three number 
 void    ft_sorted_three(t_lst **stack)
 {
@@ -85,35 +75,10 @@ void    ft_small_move(t_lst **stack)
     ft_push_b(&(*stack)->a, &(*stack)->b, "pb", (*stack));
 }
 
-void    ft_high_move(t_lst **stack)
-{
-    int high_content;
-    int highest_id;
-    int stack_len;
-
-    stack_len = ft_set_id(&(*stack)->a);
-    highest_id = ft_highest_value(&(*stack)->a);
-    high_content = ft_lstmax(&(*stack)->a)->content;
-    if (highest_id < stack_len / 2)
-    {
-        while ((*stack)->a->content != high_content)
-            ft_rrotate_a(&(*stack)->a, "rra", (*stack));
-    }
-    else if (highest_id >= stack_len / 2)
-    {
-        while ((*stack)->a->content != high_content)
-            ft_rotate_a(&(*stack)->a, "ra", (*stack));
-    }
-    ft_rotate_a(&(*stack)->a, "ra", (*stack));
-}
-
-// Envoyer le nombre le plus petit et le plus grand dans la stack b
-// Trier les 3 nombres restant 
-// Push dans A les plus petits nombres, trier, puis le plus grand et trier
 void    ft_sorting_five(t_lst **stack)
 {
     int id;
-
+    
     if (ft_lst_is_sort(&(*stack)->a))
         return ;
     id = ft_set_id(&(*stack)->a);

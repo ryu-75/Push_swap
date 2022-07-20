@@ -38,11 +38,10 @@ int main(int ac, char **av)
     return (0);
 }
 
-// Corriger l'erreur de sortie ERROR
-// Savoir d'ou elle provient
+/* 
+    effectuer un pre-tri :
+        - Trouver la median 
+        - Tri basiquement la liste en faisant un tri à bulle
+        - 
 
-// 3 2 1 OK
-// 3 1 2 OK
-// 2 1 3 OK
-// 2 3 1 OK
-// 1 3 2 OK
+*/

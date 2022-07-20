@@ -21,7 +21,7 @@ static int check_arg(char **av)
 
     while (av[o.i])
     {
-        if (have_num(av[o.i]) == 0 && 
+        if (have_num(av[o.i]) == 0 || 
             is_num(av[o.i]) == 0)
             return (0);
         o.i++;
@@ -29,7 +29,7 @@ static int check_arg(char **av)
     o.i = 1;
     while (av[o.i])
     {
-        if (ft_strcmp(av[o.i], ""))
+        if (ft_strcmp(av[o.i], "") || ft_isalpha(*av[o.i]))
             return (0);
         o.i++;
     }

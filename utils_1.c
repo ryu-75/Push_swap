@@ -54,30 +54,6 @@ int have_num(char *s)
     return (0);
 }
 
-// Count each number
-int ft_nblen(int value)
-{
-    t_obj o = {0};
-    
-    while (value != 0)
-    {
-        value /= 10;
-        o.i++;   
-    }
-    return (o.i);
-}
-
-int ft_tablen(int *tab)
-{
-    t_obj o = {0};
-
-    if (!tab)
-        return (0);
-    while (tab[o.i])
-        o.i++;
-    return(o.i);
-}
-
 // Convert char like atoi but long long
 long long	ft_convert_value(const char *nptr)
 {
