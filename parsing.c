@@ -63,15 +63,13 @@ t_data  *convert_av(t_data **stack, char **av)
     {
         while (av[o.i])
         {
-            if (av[o.i] == "")
-                return (NULL);
             num = ft_convert_value(av[o.i]);
             ft_lstadd_back_value(tmp, add_newlst(*tmp, ft_convert_value(av[o.i++])));
             if (ft_check_double(stack, num) == 0)
-                return (write(1, "error\n", 6), exit(1), NULL);
+                return (write(1, NULL, 6), exit(1), NULL);
         }
     }
     else
-        ft_error();
+        ft_error(stack, EXIT_FAILURE);
     return (*stack);
 }

@@ -29,11 +29,10 @@ int main(int ac, char **av)
     
     stack_a = malloc(sizeof(t_lst));
     stack_a->a = convert_av(&(stack_a)->a, av);
-    ft_sorting_five(&stack_a);
+    ft_select_sort(&(stack_a));
     if (ac > 1)
     {
-        print_lst(&(stack_a)->a);
-        // ft_print_op(&stack_a);
+            print_lst(&(stack_a)->a);
     }
     return (0);
 }

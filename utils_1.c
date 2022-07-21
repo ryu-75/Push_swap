@@ -82,8 +82,12 @@ long long	ft_convert_value(const char *nptr)
 	return (result);
 }
 
-void    ft_error()
+int    ft_error(t_data **stack, int arg)
 {
-    write(1, "Error\n", 6);
-    EXIT_FAILURE;
+    arg = EXIT_FAILURE;
+
+    ft_clear_stack(stack, NULL);
+    if (arg)
+        write(1, "Error\n", 6);
+    return (exit(1), EXIT_FAILURE);
 }

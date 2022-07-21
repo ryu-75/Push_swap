@@ -54,15 +54,16 @@ t_data  *convert_av(t_data **stack, char **av);
 
 // ------------------------------ UTILS ------------------------------------ //
 
-int ft_nblen(int nb);
+int ft_nblen(int nb);   // NOT USE YET
 int ft_strcmp(const char *s1, const char *s2);
 int ft_isnumber(int nb);
 int have_num(char *nb);
-void    ft_error();
+int ft_error(t_data **stack, int arg);
 long long	ft_convert_value(const char *nptr);
-int ft_tablen(int *tab);
+int ft_tablen(int *tab); // NOT USE YET
 // int ft_check_double(t_data **stack, int num);
 int is_num(char *str);
+int ft_lstlen(t_data **stack);
 
 // ----------------------------- LIST UTILS -------------------------------- //
 
@@ -106,6 +107,7 @@ void    ft_small_move(t_lst **stack);
 void    ft_high_move(t_lst **stack);
 void    ft_sorting_five(t_lst **stack);
 
+void    ft_select_sort(t_lst **stack); // TEST
 // --------------------------- OPERATION ----------------------------------- //
 
 void    ft_ops(char *str, t_lst *op);

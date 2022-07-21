@@ -74,18 +74,22 @@ t_data	*ft_lstmax(t_data **stack)
 	return (max);
 }
 
-// Retrieve index of each value in stack 
-int ft_set_id(t_data **stack)
+int	ft_lst_is_sort(t_data **stack)
 {
-    t_data  *pos;
-    t_obj o = {0};
+	t_data	*tmp_1;
+	t_data	*tmp_2;
 
-    pos = (*stack);
-	while (pos && pos->next)
-    {
-        pos->id = o.i++;
-        pos = pos->next;
+	tmp_1 = (*stack);
+	while (tmp_1)
+	{
+		tmp_2 = tmp_1->next;
+		while (tmp_2)
+		{
+			if (tmp_1->content > tmp_2->content)
+				return (0);
+			tmp_2 = tmp_2->next;
+		}
+		tmp_1 = tmp_1->next;
 	}
-	pos->id = o.i;
-    return (o.i + 1);
+	return (1);
 }

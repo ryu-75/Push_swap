@@ -12,7 +12,7 @@
 
 #include "include/push_swap.h"
 
-// Count each number
+// Count each number (NOT USE YET)
 int ft_nblen(int value)
 {
     t_obj o = {0};
@@ -25,7 +25,7 @@ int ft_nblen(int value)
     return (o.i);
 }
 
-// Return tab length 
+// Return tab length (NOT USE YET)
 int ft_tablen(int *tab)
 {
     t_obj o = {0};
@@ -34,5 +34,17 @@ int ft_tablen(int *tab)
         return (0);
     while (tab[o.i])
         o.i++;
+    return (o.i);
+}
+
+int ft_lstlen(t_data **stack)
+{
+    t_data  *tmp;
+    t_obj o = {0};
+
+    tmp = (*stack);
+    while (o.i < tmp->content)
+        (*stack)->data_size = o.i++;
+    o.i--;
     return (o.i);
 }
