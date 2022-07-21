@@ -54,6 +54,7 @@ void    ft_print_op(t_lst **stack)
                 tmp = (printf("ss\n"), tmp->next->next);
         else
             printf("%s\n", tmp->operation);
+        tmp = tmp->next;
     }
     if (tmp)
         printf("%s\n", tmp->operation);

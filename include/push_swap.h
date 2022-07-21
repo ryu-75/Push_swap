@@ -26,8 +26,9 @@ typedef struct s_op
 typedef struct s_data
 {
     int             content;
-    int                 id;
-    int                 data_size;
+    int             id;
+    int             hold_first;
+    int             hold_second;
     struct s_data   *next;
 }               t_data;
 
@@ -54,28 +55,28 @@ t_data  *convert_av(t_data **stack, char **av);
 
 // ------------------------------ UTILS ------------------------------------ //
 
+long long	ft_convert_value(const char *nptr);
 int ft_nblen(int nb);   // NOT USE YET
 int ft_strcmp(const char *s1, const char *s2);
 int ft_isnumber(int nb);
 int have_num(char *nb);
 int ft_error(t_data **stack, int arg);
-long long	ft_convert_value(const char *nptr);
 int ft_tablen(int *tab); // NOT USE YET
 // int ft_check_double(t_data **stack, int num);
 int is_num(char *str);
-int ft_lstlen(t_data **stack);
+int ft_lstlen(t_lst **stack);
 
 // ----------------------------- LIST UTILS -------------------------------- //
 
 t_data  *add_newlst(t_data *new, int el);
+t_data  *ft_lstmin(t_data **stack);
+t_data  *ft_lstmax(t_data **stack);
 void    ft_lstadd_back_value(t_data **lst, t_data *new);
 void	ft_lstdel(t_data *stack, void (*del)(int));
 void	ft_clear_stack(t_data **stack, void (*del)(int));
 void	ft_del_firstel(t_data **stack);
 void	ft_addfront(t_data **stack, t_data *new);
 void	ft_del_lastel(t_data **stack);
-t_data  *ft_lstmin(t_data **stack);
-t_data  *ft_lstmax(t_data **stack);
 int	ft_lst_is_sort(t_data **stack);
 
 // ----------------------------- A MOVEMENT -------------------------------- //
@@ -106,11 +107,11 @@ void    ft_sorted_three(t_lst **stack);
 void    ft_small_move(t_lst **stack);
 void    ft_high_move(t_lst **stack);
 void    ft_sorting_five(t_lst **stack);
-
-void    ft_select_sort(t_lst **stack); // TEST
+void    ft_select_sort(t_lst **stack);
 // --------------------------- OPERATION ----------------------------------- //
 
 void    ft_ops(char *str, t_lst *op);
 void    ft_print_op(t_lst **stack);
 
+t_lst   *ft_chunk_move(t_lst **stack); // TEST
 #endif

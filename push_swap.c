@@ -25,22 +25,14 @@ void    print_lst(t_data **stack)
 
 int main(int ac, char **av)
 {
-    t_lst  *stack_a;
-    
+    t_lst   *stack_a;
+    t_lst   *f_chunk;
+
     stack_a = malloc(sizeof(t_lst));
     stack_a->a = convert_av(&(stack_a)->a, av);
-    ft_select_sort(&(stack_a));
+    f_chunk = ft_chunk_move(&stack_a);
     if (ac > 1)
-    {
-            print_lst(&(stack_a)->a);
-    }
+            print_lst(&(f_chunk)->a);
+    // ft_print_op(&stack_a);
     return (0);
 }
-
-/* 
-    effectuer un pre-tri :
-        - Trouver la median 
-        - Tri basiquement la liste en faisant un tri à bulle
-        - 
-
-*/

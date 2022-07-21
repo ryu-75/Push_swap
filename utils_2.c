@@ -37,14 +37,14 @@ int ft_tablen(int *tab)
     return (o.i);
 }
 
-int ft_lstlen(t_data **stack)
+int ft_lstlen(t_lst **stack)
 {
-    t_data  *tmp;
+    t_lst  *tmp;
     t_obj o = {0};
 
     tmp = (*stack);
-    while (o.i < tmp->content)
-        (*stack)->data_size = o.i++;
+    while (o.i < tmp->a->content)
+        (*stack)->size_a = o.i++;
     o.i--;
     return (o.i);
 }
