@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 00:35:22 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/22 10:59:15 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/22 15:03:31 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,14 @@
 void    ft_read_test(t_lst **stack)
 {
     t_lst   *tmp;
-    t_obj o = {0};
-
+    
     tmp = (*stack);
-    while (tmp->a->next)
+    tmp->a->hold_first = ft_lstmin(&(*stack)->a)->content;
+    while (tmp->a)
     {
-        tmp->a = tmp->a->next;
-        o.i++;
+        tmp->a->hold_second = ft_lstmin(&(*stack)->a)->content;
+        tmp->a = tmp->a->hold_second;
     }
-    printf("begin = %d\n", tmp->a->content);
-    while (o.i > tmp->size_a)
-    {
-        tmp->a = tmp->a->next;
-    }
-    printf("end = %d\n", tmp->a->content);
+    printf("first = %d\n", tmp->a->hold_first);
+    printf("second = %d\n", tmp->a->hold_second);
 }

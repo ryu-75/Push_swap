@@ -32,7 +32,7 @@ int main(int ac, char **av)
     ft_read_test(&stack_a);
     if (ac > 1)
             print_lst(&stack_a->a);
-    // ft_print_op(&stack_a);
+    ft_print_op(&stack_a);
     return (0);
 }
 /*
