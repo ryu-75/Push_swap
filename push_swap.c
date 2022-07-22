@@ -32,12 +32,13 @@ int main(int ac, char **av)
 
     stack_a = malloc(sizeof(t_lst));
     stack_a->a = convert_av(&(stack_a)->a, av);
-    size = ft_lstlen(&stack_a);
     id = ft_set_id(&stack_a->a);
+    size = ft_lstlen(&stack_a);
     dist = find_dist(size, id);
     if (ac > 1)
             print_lst(&stack_a->a);
     printf("dist = %d\n", dist);
+    printf("id = %d\nsize = %d\n", id, size);
     // ft_print_op(&stack_a);
     return (0);
 }
