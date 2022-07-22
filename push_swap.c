@@ -26,13 +26,19 @@ void    print_lst(t_data **stack)
 int main(int ac, char **av)
 {
     t_lst   *stack_a;
+    int dist;
+    int id;
+    int size;
 
     stack_a = malloc(sizeof(t_lst));
     stack_a->a = convert_av(&(stack_a)->a, av);
-    ft_read_test(&stack_a);
+    size = ft_lstlen(&stack_a);
+    id = ft_set_id(&stack_a->a);
+    dist = find_dist(size, id);
     if (ac > 1)
             print_lst(&stack_a->a);
-    ft_print_op(&stack_a);
+    printf("dist = %d\n", dist);
+    // ft_print_op(&stack_a);
     return (0);
 }
 /*

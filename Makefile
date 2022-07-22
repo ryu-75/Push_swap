@@ -15,20 +15,21 @@ OBJ				= $(SRC:.c=.o)
 $(EXEC)			: $(OBJ)
 			$(CC) $(CFLAGS) -o $@ $^ $(LBFLAGS)
 
-# -------------------- [ All files to compile ] ----------------------- #
+
+# --------- [ All files to compile ] ---------------- #
 
 %.o				: %.c $(DEPENDS)
 			$(CC) $(CFLAGS) -o $@ -c $<
 
 
-# ------------ [ Misc ] -------------- #
+# ------------ [ Compiler flags ] ------------------- #
 
 CC				= gcc 
 CFLAGS			= -Wall -Werror -Wextra 
 
 all				: $(EXEC)
 
-# ------------ [ Delete .o ] ------------- #
+# ---------------- [ Delete ] ---------------------- #
 
 clean			: 
 	rm -rf *.o
@@ -36,4 +37,4 @@ clean			:
 fclean			: clean
 	rm -rf $(EXEC)
 
-.PHONY			: all clean fclean
+.PHONY			: all clean fclean debug

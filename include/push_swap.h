@@ -27,8 +27,6 @@ typedef struct s_data
 {
     int             content;
     int             id;
-    int             hold_first;
-    int             hold_second;
     struct s_data   *next;
 }               t_data;
 
@@ -56,12 +54,10 @@ t_data  *convert_av(t_data **stack, char **av);
 // ------------------------------ UTILS ------------------------------------ //
 
 long long	ft_convert_value(const char *nptr);
-int ft_nblen(int nb);   // NOT USE YET
 int ft_strcmp(const char *s1, const char *s2);
 int ft_isnumber(int nb);
 int have_num(char *nb);
 int ft_error(t_data **stack, int arg);
-int ft_tablen(int *tab); // NOT USE YET
 // int ft_check_double(t_data **stack, int num);
 int is_num(char *str);
 int ft_lstlen(t_lst **stack);
@@ -108,11 +104,10 @@ void    ft_small_move(t_lst **stack);
 void    ft_high_move(t_lst **stack);
 void    ft_sorting_five(t_lst **stack);
 void    ft_select_sort(t_lst **stack);
+
 // --------------------------- OPERATION ----------------------------------- //
 
 void    ft_ops(char *str, t_lst *op);
 void    ft_print_op(t_lst **stack);
-
-
-void    ft_read_test(t_lst **stack);
+int find_dist(int size, int id);
 #endif
