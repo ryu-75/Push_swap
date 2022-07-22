@@ -1,59 +1,50 @@
-# ------------- [ PROJECT FILES ] ------------- #
+# ------------- [ COMPILER FLAGS ] ------------------ #
 
-# set name
-PREFIX		= push_swap
-NAME		= $(PREFIX)
+PREFIXE			= push_swap
+EXEC			= $(PREFIXE)
+# INCLUDES		= -I
 
-# set libriaires
-LIB_DIR		= libft
-LIB			:= $(LIB_DIR)
+# ------------- [ IMPORT LIBRARY ] ------------------ #
 
-INC_DIR			= include
-INC 			= $(INC_DIR) \
-				  $(LIB:%=%/$(INC_DIR)) $(LIB)
+LBFLAGS			= -L/Libft/
 
-# set sources
-SRCS		= push_swap.c				\
-					operation.c			\
-					parsing.c			\
-					pre_sort.c			\
-					sorting_small.c		\
-					utils_1.c			\
-					utils_2.c			\
+SRC				= push_swap.c			\
+					a_b_move.c			\
+					a_move.c 			\
+					b_move.c 			\
+					id.c 				\
 					lst_utils_1.c 		\
 					lst_utils_2.c 		\
-					id.c 				\
-					b_move.c 			\
-					a_b_move.c 			\
-					a_move.c 			\
+					utils_1.c 			\
+					utils_2.c 			\
+					sorting_small.c 	\
+					pre_sort.c 			\
+					parsing.c 			\
+					operation.c 		\
 
-OBJS		= $(SRCS:.c=.o)
+OBJ				= $(SRC:.c=.o)
 
-# ------------ [ COMPILER FLAGS ] ------------- #
+$(EXEC)			: $(OBJ)
+			$(CC) -o $(LBFLAGS) $@ $^
 
-CC			= gcc
+# -------------------- [ All files to compile ] ----------------------- #
 
-CFLAGS		= -Wall -Wextra -Werror
+%.o				: %.c Libft/libft.h
+			$(CC) $(CFLAGS) -o $@ -c $<
 
-AR 			= ar rcs
+# ------------ [ Delete .o ] ------------- #
 
-RM			= rm -rf
+clean			: 
+	rm -rf *.o
 
-.c.o = $(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+fclean			: clean
+	rm -rf exec
 
-$(NAME): $(OBJS)
-		 $(AR) $(NAME) $(OBJS)
+# ------------ [ Exec All ] -------------- #
 
-# ---------------- [ RECIPE ] ----------------- #
+CC				= gcc 
+CFLAGS			= -Wall -Werror -Wextra 
 
-.PHONY: all clean fclean re
+all				: $(EXEC)
 
-all: $(NAME)
-
-clean: $(RM) $(OBJS)*.o
-
-fclean: clean
-		$(RM) $(NAME)
-
-re: fclean all
-
+.PHONY			: all clean fclean

@@ -113,5 +113,6 @@ void    ft_select_sort(t_lst **stack);
 void    ft_ops(char *str, t_lst *op);
 void    ft_print_op(t_lst **stack);
 
-t_lst   *ft_chunk_move(t_lst **stack); // TEST
+
+void    ft_read_test(t_lst **stack);
 #endif

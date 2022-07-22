@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pre_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 00:35:22 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/21 00:36:15 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/22 10:59:15 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,31 +26,21 @@
 //     }
 // }
 
-t_lst   *ft_chunk_move(t_lst **stack)
+void    ft_read_test(t_lst **stack)
 {
     t_lst   *tmp;
-    t_lst   *s_hold;
+    t_obj o = {0};
 
     tmp = (*stack);
-    s_hold = tmp;
-    while (tmp->a)
-    {   
-        if (tmp->size_a < 20)
-        {
-            if (tmp->a->content < s_hold->a->content)
-                s_hold = tmp;
-        }
+    while (tmp->a->next)
+    {
+        tmp->a = tmp->a->next;
+        o.i++;
+    }
+    printf("begin = %d\n", tmp->a->content);
+    while (o.i > tmp->size_a)
+    {
         tmp->a = tmp->a->next;
     }
-    // if (tmp->size_a)
-    // {
-    //     while (tmp->a->content)
-    //     {
-    //         if (tmp->a->content < s_hold->a->content && s_hold->a->content > tmp->a->hold_first)
-    //             tmp->a->hold_second = tmp->a->content;
-    //         tmp->a->content--;
-    //         tmp->a = tmp->a->next;
-    //     }
-    // }
-    return (s_hold);
+    printf("end = %d\n", tmp->a->content);
 }
