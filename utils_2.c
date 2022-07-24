@@ -12,14 +12,15 @@
 
 #include "include/push_swap.h"
 
-int ft_lstlen(t_lst **stack)
+void    ft_lstlen(t_data **stack)
 {
     t_obj o = {0};
+    t_data   *tmp;
 
-    while ((*stack)->a)
+    tmp = (*stack);
+    while (tmp)
     {
-        (*stack)->size_a = o.i++;
-        (*stack)->a = (*stack)->a->next;
+        tmp->pos = o.i++;
+        tmp = tmp->next;
     }
-    return (o.i);
 }

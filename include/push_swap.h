@@ -26,7 +26,10 @@ typedef struct s_op
 typedef struct s_data
 {
     int             content;
+    int             pos;
     int             id;
+    int             min;
+    
     struct s_data   *next;
 }               t_data;
 
@@ -60,7 +63,7 @@ int have_num(char *nb);
 int ft_error(t_data **stack, int arg);
 // int ft_check_double(t_data **stack, int num);
 int is_num(char *str);
-int ft_lstlen(t_lst **stack);
+void    ft_lstlen(t_data **stack);
 
 // ----------------------------- LIST UTILS -------------------------------- //
 
@@ -110,4 +113,8 @@ void    ft_select_sort(t_lst **stack);
 void    ft_ops(char *str, t_lst *op);
 void    ft_print_op(t_lst **stack);
 int find_dist(int size, int id);
+
+// ----------------------- TEST --------------------------- //
+
+void move_smallest(t_lst **stack);
 #endif
