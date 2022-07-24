@@ -12,7 +12,7 @@
 
 #include "include/push_swap.h"
 
-void    ft_lstlen(t_data **stack)
+int ft_lstlen(t_data **stack)
 {
     t_obj o = {0};
     t_data   *tmp;
@@ -23,4 +23,5 @@ void    ft_lstlen(t_data **stack)
         tmp->pos = o.i++;
         tmp = tmp->next;
     }
+    return (o.i);
 }

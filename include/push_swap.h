@@ -38,6 +38,7 @@ typedef struct s_lst
     t_data          *a;
     t_data          *b;
     t_op            *oplst;
+    int             *stack_tab;
     int             size_a;
     int             size_b;
 }               t_lst;
@@ -63,7 +64,7 @@ int have_num(char *nb);
 int ft_error(t_data **stack, int arg);
 // int ft_check_double(t_data **stack, int num);
 int is_num(char *str);
-void    ft_lstlen(t_data **stack);
+int ft_lstlen(t_data **stack);
 
 // ----------------------------- LIST UTILS -------------------------------- //
 
@@ -117,4 +118,6 @@ int find_dist(int size, int id);
 // ----------------------- TEST --------------------------- //
 
 void move_smallest(t_lst **stack);
+void    scan_all_stack(t_lst **stack);
+void    ft_stack_tab(t_lst **stack);
 #endif

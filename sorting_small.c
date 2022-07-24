@@ -30,6 +30,8 @@ void    ft_sorted_three(t_lst **stack)
     
     ft_set_id(&(*stack)->a);
     id = ft_smallest_value(&(*stack)->a);
+    if (ft_lst_is_sort(&(*stack)->a) == 1)
+        return (exit(0));
     if (id == 2)
     {   
         if ((*stack)->a->content > (*stack)->a->next->content)
@@ -78,6 +80,8 @@ void    ft_sorting_five(t_lst **stack)
     int id;
     
     id = ft_set_id(&(*stack)->a);
+    if (ft_lst_is_sort(&(*stack)->a) == 1)
+        return (exit(0));
     if (id == 4)
     {
         ft_small_move(stack);
@@ -101,8 +105,7 @@ void    ft_select_sort(t_lst **stack)
 
     id = ft_set_id(&(*stack)->a);
     tmp = (*stack);
-    if (ft_lst_is_sort(&(*stack)->a) == 1)
-        return (exit(0));
+
     if (id == 2)
     {
         if (tmp->a->content > tmp->a->next->content)

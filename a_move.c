@@ -54,8 +54,6 @@ void    ft_rotate_a(t_data **stack_a, char *s, t_lst *data)
     if (!(*stack_a))
         return ;
     tmp = (*stack_a);
-    while (tmp->content < 1)
-        tmp = tmp->next;
     ft_lstadd_back_value(stack_a, add_newlst((*stack_a), tmp->content));
     ft_del_firstel(stack_a);
     if (s)

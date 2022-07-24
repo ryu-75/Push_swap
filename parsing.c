@@ -65,8 +65,8 @@ t_data  *convert_av(t_data **stack, char **av)
         {
             num = ft_convert_value(av[o.i]);
             ft_lstadd_back_value(tmp, add_newlst(*tmp, ft_convert_value(av[o.i++])));
-            if (ft_check_double(stack, num) == 0)
-                return (write(1, NULL, 6), exit(1), NULL);
+            if (!ft_check_double(stack, num))
+                ft_error(stack, EXIT_FAILURE);
         }
     }
     else
