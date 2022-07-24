@@ -15,12 +15,10 @@ OBJ				= $(SRC:.c=.o)
 $(EXEC)			: $(OBJ)
 			$(CC) $(CFLAGS) -o $@ $^ $(LBFLAGS)
 
-
 # --------- [ All files to compile ] ---------------- #
 
 %.o				: %.c $(DEPENDS)
 			$(CC) $(CFLAGS) -o $@ -c $<
-
 
 # ------------ [ Compiler flags ] ------------------- #
 
@@ -37,4 +35,4 @@ clean			:
 fclean			: clean
 	rm -rf $(EXEC)
 
-.PHONY			: all clean fclean debug
+.PHONY			: all clean fclean

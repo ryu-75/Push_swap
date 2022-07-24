@@ -28,19 +28,16 @@ typedef struct s_data
     int             content;
     int             pos;
     int             id;
-    int             min;
-    
+    size_t          size;
     struct s_data   *next;
 }               t_data;
 
 typedef struct s_lst
 {
+    int             *stack_tab;
     t_data          *a;
     t_data          *b;
     t_op            *oplst;
-    int             *stack_tab;
-    int             size_a;
-    int             size_b;
 }               t_lst;
 
 typedef struct s_obj
@@ -65,6 +62,7 @@ int ft_error(t_data **stack, int arg);
 // int ft_check_double(t_data **stack, int num);
 int is_num(char *str);
 int ft_lstlen(t_data **stack);
+size_t  ft_tablen(char **s);
 
 // ----------------------------- LIST UTILS -------------------------------- //
 

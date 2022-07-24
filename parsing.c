@@ -15,6 +15,17 @@
 // Check if av contain no double and have only digit
 // Return an error if none condition is complete
 
+size_t  ft_tablen(char **av)
+{
+    size_t  i;
+    
+    i = 0;
+    while (*av++)
+        i++;
+    i--;
+    return (i);
+}
+
 static int check_arg(char **av)
 {
     t_obj o = {.i = 1, .j = 1};

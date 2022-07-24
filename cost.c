@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cost.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 21:34:23 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/24 17:16:29 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/24 23:03:07 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,27 +57,22 @@ void    scan_all_stack(t_lst **stack)
 // Stocker dans un tableau toutes les valeurs de la stack_a
 // Utiliser le tableau comme outil d indexation
 
-// void    ft_stack_tab(t_lst **stack)
-// {
-//     t_lst   *tab;
-//     t_obj o = {0};
-//     t_lst   *tmp;
+void    ft_stack_tab(t_lst **stack)
+{
+    t_obj o = {0};
+    t_data   *tmp;
 
-//     tmp = (*stack);
-//     tab = malloc(sizeof(t_lst));
-//     if (!tab)
-//         return ;
-//     while (o.i++ <= tmp->a->content)
-//     {
-//         tab->stack_tab[o.i] = tmp->a->content++;
-//         tmp->a = tmp->a->next;
-//     }
-//     while (o.i < (*stack)->a->pos)
-//     {
-//         printf("%d\n", tab->stack_tab[o.i++]);
-//     }
-//     // return (tab);
-// }
+    tmp = (*stack)->a;
+    (*stack)->stack_tab = malloc(sizeof(int) * tmp->size);
+    if (!(*stack)->stack_tab)
+        free((*stack)->stack_tab);
+    while (tmp)
+    {
+        (*stack)->stack_tab[o.i] = tmp->content;
+        o.i++;
+        tmp = tmp->next;
+    }
+}
 
 void    move_smallest(t_lst **stack)
 {
@@ -96,4 +91,3 @@ void    move_smallest(t_lst **stack)
         }
     }
 }
-
