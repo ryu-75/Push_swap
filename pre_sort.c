@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 00:35:22 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/25 15:15:52 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/25 16:57:43 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void ft_stack_tab(t_lst **stack)
     }
 }
 
-static int  found_median(t_lst **stack, int size)
+static int  found_median(int size)
 {
     int median;
 
@@ -38,11 +38,10 @@ static int  found_median(t_lst **stack, int size)
         median = (size / 2) + 1;
     else
         median = (size + 1) / 2;
-    (*stack)->a->median = median;
     return (median);
 }
 
-static int  *ft_sorting_tab(int *tab, int size)
+static void ft_sorting_tab(int *tab, int size)
 {
     t_obj o = {0};
     int tmp;
@@ -63,17 +62,24 @@ static int  *ft_sorting_tab(int *tab, int size)
         }
         o.i++;
     }
-    return (tab);
 }
 
 void    ft_pre_sort(t_lst **stack)
 {
-    int median;
-    t_lst   *tmp;
-
-    median = found_median(stack, stack->a->size);
-    tmp = (*stack);
+    t_obj o = {0};
+    int median; 
     
+    ft_sorting_tab((*stack)->stack_tab, (int) (*stack)->a->size);
+    median = found_median((int) (*stack)->a->size);
+    while (o.i < (int) (*stack)->a->size)
+    {
+        if (median > (int) (*stack)->a->size)
+            ft_push_b(&(*stack)->a, &(*stack)->b, "pb", (*stack));
+        else
+            ft_rotate_a(&(*stack)->a, "ra", (*stack));
+        o.i++;
+    }
+    ft_stack_tab(stack);
 }
 
 /*

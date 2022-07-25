@@ -116,4 +116,5 @@ int find_dist(int size, int id);
 
 void move_smallest(t_lst **stack);
 void    scan_all_stack(t_lst **stack);
+void    ft_pre_sort(t_lst **stack);
 #endif
