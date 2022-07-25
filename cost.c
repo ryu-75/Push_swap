@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 21:34:23 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/24 23:03:07 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/25 12:31:42 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,18 +60,41 @@ void    scan_all_stack(t_lst **stack)
 void    ft_stack_tab(t_lst **stack)
 {
     t_obj o = {0};
-    t_data   *tmp;
+    t_lst   *tmp;
 
-    tmp = (*stack)->a;
-    (*stack)->stack_tab = malloc(sizeof(int) * tmp->size);
+    tmp = (*stack);
+    (*stack)->stack_tab = malloc(sizeof(int) * tmp->a->size);
     if (!(*stack)->stack_tab)
         free((*stack)->stack_tab);
-    while (tmp)
+    while (tmp->a)
     {
-        (*stack)->stack_tab[o.i] = tmp->content;
+        tmp->stack_tab[o.i] = tmp->a->content;
         o.i++;
-        tmp = tmp->next;
+        tmp->a = tmp->a->next;
     }
+}
+
+int *ft_sorting_tab(int *tab)
+{
+    t_obj o = {0};
+    int tmp;
+    
+    tmp = 0;
+    if (!tab)
+        return(0);
+    while (tab[o.i])
+    {
+        o.j = o.i + 1;
+        while (tab[o.i] > tab[o.j])
+        {
+            tmp = tab[o.j];
+            tab[o.j] = tab[o.i];
+            tab[o.i] = tmp;
+            o.j--;
+        }
+        o.i++;
+    }
+    return (tab);
 }
 
 void    move_smallest(t_lst **stack)

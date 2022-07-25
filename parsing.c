@@ -17,13 +17,24 @@
 
 size_t  ft_tablen(char **av)
 {
-    size_t  i;
+    t_obj o = {0};
     
-    i = 0;
     while (*av++)
-        i++;
-    i--;
-    return (i);
+        o.i++;
+    o.i--;
+    return (o.i);
+}
+
+size_t  ft_numlen(int value)
+{
+    t_obj o = {0};
+
+    while (value != 0)
+    {
+        value = value / 10;
+        o.i++;
+    }
+    return (o.i);
 }
 
 static int check_arg(char **av)
@@ -67,7 +78,9 @@ t_data  *convert_av(t_data **stack, char **av)
     t_obj o = {.i = 1};
     t_data  **tmp;
     int num;
+    size_t  len;
 
+    len = ft_tablen(av);
     stack = malloc(sizeof(t_data**));
     tmp = stack;
     if (check_arg(av) == 1)
@@ -82,5 +95,7 @@ t_data  *convert_av(t_data **stack, char **av)
     }
     else
         ft_error(stack, EXIT_FAILURE);
+    if (av)
+        (*stack)->size = len;
     return (*stack);
 }
