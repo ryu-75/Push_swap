@@ -24,7 +24,7 @@ int ft_smallest_value(t_data **stack)
 }
 
 // This function allow to sort three number 
-void    ft_sorted_three(t_lst **stack)
+static void    ft_sorted_three(t_lst **stack)
 {
     int id;
     
@@ -75,7 +75,7 @@ void    ft_small_move(t_lst **stack)
     ft_push_b(&(*stack)->a, &(*stack)->b, "pb", (*stack));
 }
 
-void    ft_sorting_five(t_lst **stack)
+static void    ft_sorting_five(t_lst **stack)
 {
     int id;
     

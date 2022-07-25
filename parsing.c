@@ -15,25 +15,13 @@
 // Check if av contain no double and have only digit
 // Return an error if none condition is complete
 
-size_t  ft_tablen(char **av)
+static size_t  ft_tablen(char **av)
 {
     t_obj o = {0};
     
     while (*av++)
         o.i++;
     o.i--;
-    return (o.i);
-}
-
-size_t  ft_numlen(int value)
-{
-    t_obj o = {0};
-
-    while (value != 0)
-    {
-        value = value / 10;
-        o.i++;
-    }
     return (o.i);
 }
 
@@ -91,11 +79,11 @@ t_data  *convert_av(t_data **stack, char **av)
             ft_lstadd_back_value(tmp, add_newlst(*tmp, ft_convert_value(av[o.i++])));
             if (!ft_check_double(stack, num))
                 ft_error(stack, EXIT_FAILURE);
+            if (av)
+                (*stack)->size = len;
         }
     }
     else
         ft_error(stack, EXIT_FAILURE);
-    if (av)
-        (*stack)->size = len;
     return (*stack);
 }

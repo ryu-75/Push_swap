@@ -29,6 +29,7 @@ typedef struct s_data
     int             pos;
     int             id;
     size_t          size;
+    int             median;
     struct s_data   *next;
 }               t_data;
 
@@ -59,10 +60,8 @@ int ft_strcmp(const char *s1, const char *s2);
 int ft_isnumber(int nb);
 int have_num(char *nb);
 int ft_error(t_data **stack, int arg);
-// int ft_check_double(t_data **stack, int num);
 int is_num(char *str);
 int ft_lstlen(t_data **stack);
-size_t  ft_tablen(char **s);
 
 // ----------------------------- LIST UTILS -------------------------------- //
 
@@ -101,10 +100,10 @@ void    ss_movement(t_data **stack_a, t_data **stack_b, t_lst *data);
 int ft_set_id(t_data **stack);
 int ft_smallest_value(t_data **stack);
 int ft_highest_value(t_data **stack);
-void    ft_sorted_three(t_lst **stack);
+// void    ft_sorted_three(t_lst **stack);
 void    ft_small_move(t_lst **stack);
 void    ft_high_move(t_lst **stack);
-void    ft_sorting_five(t_lst **stack);
+// void    ft_sorting_five(t_lst **stack);
 void    ft_select_sort(t_lst **stack);
 
 // --------------------------- OPERATION ----------------------------------- //
@@ -117,6 +116,4 @@ int find_dist(int size, int id);
 
 void move_smallest(t_lst **stack);
 void    scan_all_stack(t_lst **stack);
-void    ft_stack_tab(t_lst **stack);
-int *ft_sorting_tab(int *tab);
 #endif
