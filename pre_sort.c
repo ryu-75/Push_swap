@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 00:35:22 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/27 13:15:51 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/27 15:32:40 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,15 @@ void ft_stack_tab(t_lst **stack)
         o.i++;
         tmp->a = tmp->a->next;
     }
-    // o.i = 0;
-    // while (o.i < len)
-    //     printf("index = %d\n", (*stack)->stack_tab[o.i++]);
+    o.i = 0;
 }
 
-int  found_median(int size)
+int  found_median(int *tab, int size)
 {   
-    int median;
-    
     if (size % 2 == 0)
-        median = (size / 2) + 1;
+        return (tab[size / 2 - 1]);
     else
-        median = (size + 1) / 2;
-    return (median);
+        return (tab[size / 2]);
 }
 
 void ft_sorting_tab(int *tab, int size)
@@ -77,24 +72,25 @@ void    ft_pre_sort(t_lst **stack)
     t_obj o = {0};
     int median; 
     int len;
+    t_lst   *tmp;
 
     len = (*stack)->a->size;
-    median = found_median(len);
-    ft_stack_tab(stack);
     ft_sorting_tab((*stack)->stack_tab, len);
+    median = found_median((*stack)->stack_tab, len);
+    tmp = (*stack);
     while (o.i < len)
     {
-        if (median > 3)
+        if (median > tmp->a->content)
             ft_push_b(&(*stack)->a, &(*stack)->b, "pb", (*stack));
         else
             ft_rotate_a(&(*stack)->a, "ra", (*stack));
         o.i++;
     }
-    (*stack)->a->size = ft_lsize(*stack);
+    tmp->a->size = ft_lstlen(&(*stack)->a);
     ft_stack_tab(stack);
 }
 
-/*
+/*%
     J'ai maintenant récupérée tous mes int dans mon tableau.
     Je veux maintenant renvoyer les int 
 */

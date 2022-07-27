@@ -118,7 +118,7 @@ int find_dist(int size, int id);
 void move_smallest(t_lst **stack);
 void    scan_all_stack(t_lst **stack);
 void    ft_pre_sort(t_lst **stack);
-int  found_median(int size);
+int  found_median(int *tab, int size);
 void ft_stack_tab(t_lst **stack);
 void ft_sorting_tab(int *tab, int size);
 
