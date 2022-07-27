@@ -23,7 +23,7 @@ $(EXEC)			: $(OBJ)
 # ------------ [ Compiler flags ] ------------------- #
 
 CC				= gcc 
-CFLAGS			= -Wall -Werror -Wextra 
+CFLAGS			= -g -Wall -Werror -Wextra 
 
 all				: $(EXEC)
 

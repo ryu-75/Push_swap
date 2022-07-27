@@ -93,3 +93,16 @@ int	ft_lst_is_sort(t_data **stack)
 	}
 	return (1);
 }
+
+int	ft_lsize(t_lst *lst)
+{
+	size_t	i;
+
+	i = 0;
+	while (lst->a)
+	{
+		lst->a = lst->a->next;
+		i++;
+	}
+	return (i);
+}

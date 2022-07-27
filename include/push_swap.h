@@ -28,7 +28,7 @@ typedef struct s_data
     int             content;
     int             pos;
     int             id;
-    size_t          size;
+    int             size;
     int             median;
     struct s_data   *next;
 }               t_data;
@@ -75,6 +75,7 @@ void	ft_del_firstel(t_data **stack);
 void	ft_addfront(t_data **stack, t_data *new);
 void	ft_del_lastel(t_data **stack);
 int	ft_lst_is_sort(t_data **stack);
+int	ft_lsize(t_lst *lst);
 
 // ----------------------------- A MOVEMENT -------------------------------- //
 
@@ -117,4 +118,8 @@ int find_dist(int size, int id);
 void move_smallest(t_lst **stack);
 void    scan_all_stack(t_lst **stack);
 void    ft_pre_sort(t_lst **stack);
+int  found_median(int size);
+void ft_stack_tab(t_lst **stack);
+void ft_sorting_tab(int *tab, int size);
+
 #endif

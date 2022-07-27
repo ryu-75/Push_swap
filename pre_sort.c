@@ -6,20 +6,22 @@
 /*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 00:35:22 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/25 16:57:43 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/27 13:15:51 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/push_swap.h"
 
 
-static void ft_stack_tab(t_lst **stack)
+void ft_stack_tab(t_lst **stack)
 {
     t_obj o = {0};
     t_lst   *tmp;
+    int len;
 
+    len = (*stack)->a->size;
     tmp = (*stack);
-    (*stack)->stack_tab = malloc(sizeof(int) * tmp->a->size);
+    (*stack)->stack_tab = malloc(sizeof(int) * len);
     if (!(*stack)->stack_tab)
         free((*stack)->stack_tab);
     while (tmp->a)
@@ -28,12 +30,15 @@ static void ft_stack_tab(t_lst **stack)
         o.i++;
         tmp->a = tmp->a->next;
     }
+    // o.i = 0;
+    // while (o.i < len)
+    //     printf("index = %d\n", (*stack)->stack_tab[o.i++]);
 }
 
-static int  found_median(int size)
-{
+int  found_median(int size)
+{   
     int median;
-
+    
     if (size % 2 == 0)
         median = (size / 2) + 1;
     else
@@ -41,7 +46,7 @@ static int  found_median(int size)
     return (median);
 }
 
-static void ft_sorting_tab(int *tab, int size)
+void ft_sorting_tab(int *tab, int size)
 {
     t_obj o = {0};
     int tmp;
@@ -62,23 +67,30 @@ static void ft_sorting_tab(int *tab, int size)
         }
         o.i++;
     }
+    o.i = 0;
+    while (o.i < size)
+        printf("%d\n", tab[o.i++]);
 }
 
 void    ft_pre_sort(t_lst **stack)
 {
     t_obj o = {0};
     int median; 
-    
-    ft_sorting_tab((*stack)->stack_tab, (int) (*stack)->a->size);
-    median = found_median((int) (*stack)->a->size);
-    while (o.i < (int) (*stack)->a->size)
+    int len;
+
+    len = (*stack)->a->size;
+    median = found_median(len);
+    ft_stack_tab(stack);
+    ft_sorting_tab((*stack)->stack_tab, len);
+    while (o.i < len)
     {
-        if (median > (int) (*stack)->a->size)
+        if (median > 3)
             ft_push_b(&(*stack)->a, &(*stack)->b, "pb", (*stack));
         else
             ft_rotate_a(&(*stack)->a, "ra", (*stack));
         o.i++;
     }
+    (*stack)->a->size = ft_lsize(*stack);
     ft_stack_tab(stack);
 }
 
