@@ -8,7 +8,7 @@
             "name": "gdb",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/a.out",
+            "program": "${workspaceFolder}/push_swap",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

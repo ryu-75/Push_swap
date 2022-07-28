@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 00:35:22 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/27 15:32:40 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/28 18:21:19 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,22 @@
 void ft_stack_tab(t_lst **stack)
 {
     t_obj o = {0};
-    t_lst   *tmp;
-    int len;
+    t_data   *tmp;
 
-    len = (*stack)->a->size;
-    tmp = (*stack);
-    (*stack)->stack_tab = malloc(sizeof(int) * len);
+    free((*stack)->stack_tab);
+    tmp = (*stack)->a;
+    (*stack)->stack_tab = malloc(sizeof(int) * (int) (*stack)->size_tab);
     if (!(*stack)->stack_tab)
         free((*stack)->stack_tab);
-    while (tmp->a)
+    while (tmp)
     {
-        tmp->stack_tab[o.i] = tmp->a->content;
+        (*stack)->stack_tab[o.i] = tmp->content;
         o.i++;
-        tmp->a = tmp->a->next;
+        tmp = tmp->next;
     }
-    o.i = 0;
+    // o.i = 0;
+    // while (o.i < (int) (*stack)->size_tab)
+    //     printf("tab = %d\n", (*stack)->stack_tab[o.i++]);
 }
 
 int  found_median(int *tab, int size)
@@ -62,32 +63,31 @@ void ft_sorting_tab(int *tab, int size)
         }
         o.i++;
     }
-    o.i = 0;
-    while (o.i < size)
-        printf("%d\n", tab[o.i++]);
 }
 
-void    ft_pre_sort(t_lst **stack)
+void    ft_pre_sort(t_lst *stack)
 {
     t_obj o = {0};
     int median; 
-    int len;
-    t_lst   *tmp;
+    t_data   *tmp;
 
-    len = (*stack)->a->size;
-    ft_sorting_tab((*stack)->stack_tab, len);
-    median = found_median((*stack)->stack_tab, len);
-    tmp = (*stack);
-    while (o.i < len)
+    tmp = stack->a;
+    ft_stack_tab(&stack);
+    ft_sorting_tab(stack->stack_tab, (int) stack->size_tab);
+    median = found_median(stack->stack_tab, (int) stack->size_tab);
+    if (tmp)
     {
-        if (median > tmp->a->content)
-            ft_push_b(&(*stack)->a, &(*stack)->b, "pb", (*stack));
-        else
-            ft_rotate_a(&(*stack)->a, "ra", (*stack));
-        o.i++;
+        while (o.i < (int) stack->size_tab)
+        {
+            if (tmp->content < median)
+                ft_push_b(&stack->a, &stack->b, "pb", stack);
+            else
+                ft_rotate_a(&stack->a, "ra", stack);
+            o.i++;
+        }
     }
-    tmp->a->size = ft_lstlen(&(*stack)->a);
-    ft_stack_tab(stack);
+    stack->size_tab = (size_t) ft_lstlen(&stack->a);
+    ft_stack_tab(&stack); 
 }
 
 /*%

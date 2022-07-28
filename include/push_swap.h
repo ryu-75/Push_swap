@@ -28,7 +28,6 @@ typedef struct s_data
     int             content;
     int             pos;
     int             id;
-    int             size;
     int             median;
     struct s_data   *next;
 }               t_data;
@@ -36,6 +35,7 @@ typedef struct s_data
 typedef struct s_lst
 {
     int             *stack_tab;
+    size_t          size_tab;
     t_data          *a;
     t_data          *b;
     t_op            *oplst;
@@ -45,7 +45,6 @@ typedef struct s_obj
 {
     int i;
     int j;
-    int num;
     int len;
 }               t_obj;
 
@@ -62,6 +61,7 @@ int have_num(char *nb);
 int ft_error(t_data **stack, int arg);
 int is_num(char *str);
 int ft_lstlen(t_data **stack);
+int ft_tablen(char **av);
 
 // ----------------------------- LIST UTILS -------------------------------- //
 
@@ -117,7 +117,7 @@ int find_dist(int size, int id);
 
 void move_smallest(t_lst **stack);
 void    scan_all_stack(t_lst **stack);
-void    ft_pre_sort(t_lst **stack);
+void    ft_pre_sort(t_lst *stack);
 int  found_median(int *tab, int size);
 void ft_stack_tab(t_lst **stack);
 void ft_sorting_tab(int *tab, int size);

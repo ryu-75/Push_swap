@@ -25,3 +25,13 @@ int ft_lstlen(t_data **stack)
     }
     return (o.i);
 }
+
+int  ft_tablen(char **av)
+{
+    t_obj o = {0};
+    
+    while (*av++)
+        o.i++;
+    o.i--;
+    return (o.i);
+}
