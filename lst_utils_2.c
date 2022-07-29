@@ -58,7 +58,7 @@ t_data	*ft_lstmin(t_data **stack)
 }
 
 // Found max value and stack it
-t_data	*ft_lstmax(t_data **stack)
+int	ft_lstmax(t_data **stack)
 {
 	t_data	*tmp;
 	t_data	*max;
@@ -68,10 +68,13 @@ t_data	*ft_lstmax(t_data **stack)
 	while (tmp)
 	{
 		if (tmp->content > max->content)
+		{
 			max = tmp;
+			(*stack)->max = tmp->content;
+		}
 		tmp = tmp->next;
 	}
-	return (max);
+	return ((*stack)->max);
 }
 
 int	ft_lst_is_sort(t_data **stack)
@@ -94,14 +97,14 @@ int	ft_lst_is_sort(t_data **stack)
 	return (1);
 }
 
-int	ft_lsize(t_lst *lst)
+int	ft_lsize(t_data *lst)
 {
 	size_t	i;
 
 	i = 0;
-	while (lst->a)
+	while (lst)
 	{
-		lst->a = lst->a->next;
+		lst = lst->next;
 		i++;
 	}
 	return (i);

@@ -28,7 +28,8 @@ typedef struct s_data
     int             content;
     int             pos;
     int             id;
-    int             median;
+    int             cost;
+    int             max;
     struct s_data   *next;
 }               t_data;
 
@@ -38,6 +39,8 @@ typedef struct s_lst
     size_t          size_tab;
     t_data          *a;
     t_data          *b;
+    int             size_a;
+    int             size_b;
     t_op            *oplst;
 }               t_lst;
 
@@ -67,7 +70,7 @@ int ft_tablen(char **av);
 
 t_data  *add_newlst(t_data *new, int el);
 t_data  *ft_lstmin(t_data **stack);
-t_data  *ft_lstmax(t_data **stack);
+int ft_lstmax(t_data **stack);
 void    ft_lstadd_back_value(t_data **lst, t_data *new);
 void	ft_lstdel(t_data *stack, void (*del)(int));
 void	ft_clear_stack(t_data **stack, void (*del)(int));
@@ -75,7 +78,7 @@ void	ft_del_firstel(t_data **stack);
 void	ft_addfront(t_data **stack, t_data *new);
 void	ft_del_lastel(t_data **stack);
 int	ft_lst_is_sort(t_data **stack);
-int	ft_lsize(t_lst *lst);
+int	ft_lsize(t_data *lst);
 
 // ----------------------------- A MOVEMENT -------------------------------- //
 
@@ -122,4 +125,7 @@ int  found_median(int *tab, int size);
 void ft_stack_tab(t_lst **stack);
 void ft_sorting_tab(int *tab, int size);
 
+int ft_find_cost(int id_a, int id_b, int s_a, int s_b);
+int ft_comp(int id_a, int id_b, int s_a, int s_b);
+void    ft_cost(t_lst *stack);
 #endif

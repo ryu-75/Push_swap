@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 00:35:22 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/28 18:21:19 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/07/29 11:17:40 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,17 @@ void ft_stack_tab(t_lst **stack)
         o.i++;
         tmp = tmp->next;
     }
-    // o.i = 0;
-    // while (o.i < (int) (*stack)->size_tab)
-    //     printf("tab = %d\n", (*stack)->stack_tab[o.i++]);
 }
 
 int  found_median(int *tab, int size)
-{   
+{
+    int median;
+    
     if (size % 2 == 0)
-        return (tab[size / 2 - 1]);
+        median = tab[(size / 2) + 1];
     else
-        return (tab[size / 2]);
+        median = tab[(size + 1) / 2];
+    return (median);
 }
 
 void ft_sorting_tab(int *tab, int size)
@@ -89,26 +89,6 @@ void    ft_pre_sort(t_lst *stack)
     stack->size_tab = (size_t) ft_lstlen(&stack->a);
     ft_stack_tab(&stack); 
 }
-
-/*%
-    J'ai maintenant récupérée tous mes int dans mon tableau.
-    Je veux maintenant renvoyer les int 
-*/
-/*  SORT    NOT SORT
-------------------------
-    -68     4
-    -12     5
-    1       78
-    4       1
-    5       94
-    7       -68
-    32      -12  <----------- MEDIAN 
-    42      7
-    78      32
-    93      42
-    94      93
-    102     102
-*/
 
 void    move_smallest(t_lst **stack)
 {
