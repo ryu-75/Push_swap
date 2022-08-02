@@ -36,13 +36,24 @@ int main(int ac, char **av)
 
     stack_a = malloc(sizeof(t_lst));
     stack_a->a = convert_av(&(stack_a)->a, av);
+    ft_push_a(&stack_a->a, &stack_a->b, "pa", stack_a);
+    ft_push_a(&stack_a->a, &stack_a->b, "pa", stack_a);
+    ft_push_a(&stack_a->a, &stack_a->b, "pa", stack_a);
+    ft_push_a(&stack_a->a, &stack_a->b, "pa", stack_a);
     if (ac > 1)
     {       
         stack_a->size_tab = ft_tablen(av);
         ft_cost(stack_a);
         if (stack_a->size_tab <= 5)
             ft_select_sort(&stack_a);
-        // else if (stack_a->size_tab > 5)
+        int a = ft_lsize(stack_a->a);
+        int b = ft_lsize(stack_a->b);
+        int id_a = ft_set_id(&stack_a->a);
+        int id_b = ft_set_id(&stack_a->b);
+        int cost = ft_find_cost(id_a, id_b, a, b);
+        printf("a = %d\nid a = %d\n", a, id_a);
+        printf("b = %d\nid_b = %d\n", b, id_b);
+        printf("comp = %d\n", cost);
         print_lst(&stack_a);
     }
     ft_print_op(&stack_a);
