@@ -38,22 +38,31 @@ int main(int ac, char **av)
     stack_a->a = convert_av(&(stack_a)->a, av);
     stack_a->size_a = ft_lsize(stack_a->a);
     stack_a->size_b = ft_lsize(stack_a->b);      
-
-    ft_push_a(&stack_a->a, &stack_a->b, "pa", stack_a);
-    ft_push_a(&stack_a->a, &stack_a->b, "pa", stack_a);
-    ft_push_a(&stack_a->a, &stack_a->b, "pa", stack_a);
-    ft_push_a(&stack_a->a, &stack_a->b, "pa", stack_a);
-    ft_push_a(&stack_a->a, &stack_a->b, "pa", stack_a);
-    ft_push_a(&stack_a->a, &stack_a->b, "pa", stack_a);
-    
     if (ac > 1)
     {       
         stack_a->size_tab = ft_tablen(av);
-        ft_cost(stack_a);
         if (stack_a->size_tab <= 5)
             ft_select_sort(&stack_a);
-        ft_set_id(&(stack_a)->a);     
-        ft_set_id(&(stack_a)->b);
+        else
+        {
+            ft_pre_sort(stack_a);
+            first_b_move(stack_a);
+            check_a_b(stack_a);
+            // Setting ID
+            if (stack_a->a && stack_a->b)
+            {
+                ft_set_id(&(stack_a)->a);     
+                ft_set_id(&(stack_a)->b);
+            }
+            else if (stack_a->a)
+                ft_set_id(&(stack_a)->a);
+            else
+                ft_set_id(&(stack_a)->b);
+            // check_a_b(stack_a);
+            // check_a_b(stack_a);
+            // check_a_b(stack_a);
+            // check_a_b(stack_a);
+        }
         print_lst(&stack_a);
     }
     ft_print_op(&stack_a);
@@ -61,13 +70,11 @@ int main(int ac, char **av)
 }
 
 /*
-    Récupérer :
-        * L'id de la stack
-        * La taille de la stack A et B
-        * Le nombre de coût nécessaire pour ra ou rra
-        * La taille totale de la stack A
-    
-    Revoir chaque fonction puis trouver une solution pour appliquer chaque valeur 
-    à leur variable attitrée.
-
+    Adapter l'algo de maniere a ranger toutes les valeurs du plus grand au plus petit
+    Optimiser egalement
+    Voir si :
+        * Trouver la valeur la plus grande dans stack b
+        * La remonter a l index 0
+        * Push dans A
+        * Repeter l action
 */

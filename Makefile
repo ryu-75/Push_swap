@@ -8,7 +8,7 @@ EXEC			= $(PREFIXE)
 DEPENDS			= includes/push_swap.h
 LBFLAGS			= Libft/*.c
 
-SRC				= $(wildcard *.c)
+SRC				= $(wildcard *.c algo/*.c)
 
 OBJ				= $(SRC:.c=.o)
 
@@ -30,9 +30,13 @@ all				: $(EXEC)
 # ---------------- [ Delete ] ---------------------- #
 
 clean			: 
-	rm -rf *.o
+	rm -rf *.o algo/*.o
 
 fclean			: clean
 	rm -rf $(EXEC)
 
-.PHONY			: all clean fclean
+# ------------ [ Del & Recomp ] -------------------- #
+
+re				: fclean all
+
+.PHONY			: all clean fclean re

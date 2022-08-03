@@ -69,7 +69,7 @@ int ft_tablen(char **av);
 
 t_data  *add_newlst(t_data *new, int el);
 t_data  *ft_lstmin(t_data **stack);
-int ft_lstmax(t_data **stack);
+t_data  *ft_lstmax(t_data **stack);
 void    ft_lstadd_back_value(t_data **lst, t_data *new);
 void	ft_lstdel(t_data *stack, void (*del)(int));
 void	ft_clear_stack(t_data **stack, void (*del)(int));
@@ -127,4 +127,7 @@ void ft_sorting_tab(int *tab, int size);
 int ft_find_cost(int id_a, int id_b, int s_a, int s_b);
 int ft_comp(int id_a, int id_b, int s_a, int s_b);
 void    ft_cost(t_lst *stack);
+void    first_b_move(t_lst *stack_a);
+void    check_a_b(t_lst *stack);
+int ft_largest_value(t_lst **stack);
 #endif

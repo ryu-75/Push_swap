@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 21:34:23 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/03 13:44:30 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/08/03 15:43:50 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ int ft_find_cost(int id_a, int id_b, int s_a, int s_b)
     return (cost);
 }
 
-
-
 void    ft_cost(t_lst *stack)
 {
     t_data  *tmp_a;
@@ -74,7 +72,7 @@ void    ft_cost(t_lst *stack)
         tmp_a = stack->a;
         while (tmp_a)
         {
-            if (tmp_a->content == ft_lstmax(&stack->a))
+            if (tmp_a->content == stack->a->max)
                 tmp_b->cost = ft_find_cost(stack->a->id, stack->b->id, stack->size_a, stack->size_b);
             tmp_a = tmp_a->next;
         }
