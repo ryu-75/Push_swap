@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cost.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 21:34:23 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/29 15:10:46 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/08/03 13:44:30 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/push_swap.h"
+#include "../include/push_swap.h"
 
+// Je recupere la distance qu il y a en partant de la mediane 
 int find_dist(int size, int id)
 {
     int dist;
@@ -60,6 +61,8 @@ int ft_find_cost(int id_a, int id_b, int s_a, int s_b)
     return (cost);
 }
 
+
+
 void    ft_cost(t_lst *stack)
 {
     t_data  *tmp_a;
@@ -71,8 +74,8 @@ void    ft_cost(t_lst *stack)
         tmp_a = stack->a;
         while (tmp_a)
         {
-            if (tmp_a->content == ft_lstmax(&stack->b))
-                tmp_b->cost = ft_find_cost(stack->a->id, stack->b->id, stack->size_a, stack->size_a);
+            if (tmp_a->content == ft_lstmax(&stack->a))
+                tmp_b->cost = ft_find_cost(stack->a->id, stack->b->id, stack->size_a, stack->size_b);
             tmp_a = tmp_a->next;
         }
         tmp_b = tmp_b->next;

@@ -6,11 +6,11 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 00:35:27 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/24 10:47:16 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/08/03 13:44:29 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/push_swap.h"
+#include "../include/push_swap.h"
 
 // Retrieve index of each value in stack 
 int ft_set_id(t_data **stack)

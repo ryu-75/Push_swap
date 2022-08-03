@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pre_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 00:35:22 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/29 11:17:40 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/08/03 13:44:26 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/push_swap.h"
-
+#include "../include/push_swap.h"
 
 void ft_stack_tab(t_lst **stack)
 {

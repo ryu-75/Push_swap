@@ -39,16 +39,15 @@ typedef struct s_lst
     size_t          size_tab;
     t_data          *a;
     t_data          *b;
+    t_op            *oplst;
     int             size_a;
     int             size_b;
-    t_op            *oplst;
 }               t_lst;
 
 typedef struct s_obj
 {
     int i;
     int j;
-    int len;
 }               t_obj;
 
 // ----------------------------- PARSING ------------------------------------ //
