@@ -33,11 +33,10 @@ void    print_lst(t_lst **stack)
 int main(int ac, char **av)
 {
     t_lst   *stack_a;
-
     stack_a = malloc(sizeof(t_lst));
     stack_a->a = convert_av(&(stack_a)->a, av);
     stack_a->size_a = ft_lsize(stack_a->a);
-    stack_a->size_b = ft_lsize(stack_a->b);      
+    stack_a->size_b = ft_lsize(stack_a->b);     
     if (ac > 1)
     {       
         stack_a->size_tab = ft_tablen(av);
@@ -46,8 +45,6 @@ int main(int ac, char **av)
         else
         {
             ft_pre_sort(stack_a);
-            first_b_move(stack_a);
-            check_a_b(stack_a);
             // Setting ID
             if (stack_a->a && stack_a->b)
             {
@@ -58,10 +55,6 @@ int main(int ac, char **av)
                 ft_set_id(&(stack_a)->a);
             else
                 ft_set_id(&(stack_a)->b);
-            // check_a_b(stack_a);
-            // check_a_b(stack_a);
-            // check_a_b(stack_a);
-            // check_a_b(stack_a);
         }
         print_lst(&stack_a);
     }

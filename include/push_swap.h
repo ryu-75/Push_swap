@@ -30,6 +30,7 @@ typedef struct s_data
     int             id;
     int             cost;
     int             max;
+    int             leader;
     struct s_data   *next;
 }               t_data;
 
@@ -130,4 +131,6 @@ void    ft_cost(t_lst *stack);
 void    first_b_move(t_lst *stack_a);
 void    check_a_b(t_lst *stack);
 int ft_largest_value(t_lst **stack);
+void find_mark(t_lst *content, t_data *s_b);
+void    setting_mark(t_lst *stack);
 #endif

@@ -36,7 +36,7 @@ void    ft_ops(char *str, t_lst *op)
 void    ft_print_op(t_lst **stack)
 {
     t_op  *tmp;
-
+    t_obj o = {.i = 1};
     tmp = (*stack)->oplst;
     while (tmp && tmp->next)
     {
@@ -54,8 +54,10 @@ void    ft_print_op(t_lst **stack)
                 tmp = (printf("ss\n"), tmp->next->next);
         else
             printf("%s\n", tmp->operation);
+        o.i++;
         tmp = tmp->next;
     }
     if (tmp)
         printf("%s\n", tmp->operation);
+    printf("Nb mouvement : %d\n", o.i);
 }

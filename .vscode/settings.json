@@ -12,6 +12,7 @@
         "initializer_list": "c",
         "utility": "c",
         "fstream": "c",
-        "ostream": "c"
+        "ostream": "c",
+        "random": "c"
     }
 }
