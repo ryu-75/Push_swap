@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mark.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 17:14:51 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/04 17:15:18 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/08/05 12:19:51 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,18 @@ void find_mark(t_lst *stack, t_data *s_b)
                 s_b->leader = tmp->content;
         tmp = tmp->next;
     }
-    printf("%d\n", stack->a->leader);
+    // printf("%d\n", stack->b->leader);
 }
 
 void    setting_mark(t_lst *stack)
 {
     t_data   *tmp;
 
-    tmp = stack->b;
+    tmp = stack->a;
     while (tmp)
     {
-        find_lead(stack, stack->b);
+        find_mark(stack, stack->a);
         tmp = tmp->next;
     }
-    stack->b = tmp;
+    stack->a = tmp;
 }

@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 21:34:23 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/03 15:43:50 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/08/05 12:44:37 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int find_dist(int size, int id)
     {
         if (id > size / 2)
             dist = size - id + 1;
-        else if (id == size)
+        else if (id == size / 2)
             dist = size - id;
         else
             dist = id + 1;
@@ -49,7 +49,7 @@ int ft_find_cost(int id_a, int id_b, int s_a, int s_b)
 {
     int cost;
 
-    if (ft_comp(id_a, id_b, s_a, s_b))
+    if (ft_comp(id_a, id_b, s_a, s_b) == 1)
     {
         if (find_dist(s_a, id_a) > find_dist(s_b, id_b))
             cost = find_dist(s_a, id_a);
@@ -73,7 +73,7 @@ void    ft_cost(t_lst *stack)
         while (tmp_a)
         {
             if (tmp_a->content == stack->a->max)
-                tmp_b->cost = ft_find_cost(stack->a->id, stack->b->id, stack->size_a, stack->size_b);
+                tmp_b->cost = ft_find_cost(stack->a->pos, stack->b->pos, stack->size_a, stack->size_b);
             tmp_a = tmp_a->next;
         }
         tmp_b = tmp_b->next;

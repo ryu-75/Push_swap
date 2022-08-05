@@ -49,6 +49,7 @@ typedef struct s_obj
 {
     int i;
     int j;
+    int median;
 }               t_obj;
 
 // ----------------------------- PARSING ------------------------------------ //

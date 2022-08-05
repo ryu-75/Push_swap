@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 00:35:22 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/03 13:44:26 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/08/05 12:05:30 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,23 +67,25 @@ void ft_sorting_tab(int *tab, int size)
 void    ft_pre_sort(t_lst *stack)
 {
     t_obj o = {0};
-    int median; 
     t_data   *tmp;
 
     tmp = stack->a;
     ft_stack_tab(&stack);
     ft_sorting_tab(stack->stack_tab, (int) stack->size_tab);
-    median = found_median(stack->stack_tab, (int) stack->size_tab);
-    if (tmp)
+    o.median = found_median(stack->stack_tab, (int) stack->size_tab);
+    while (o.i < (int) stack->size_tab / 2)
     {
-        while (o.i < (int) stack->size_tab)
+        if (tmp->content < o.median)
+            ft_push_b(&stack->a, &stack->b, "pb", stack);
+        else
         {
-            if (tmp->content < median)
-                ft_push_b(&stack->a, &stack->b, "pb", stack);
-            else
+            while (tmp->content > o.median)
+            {
                 ft_rotate_a(&stack->a, "ra", stack);
-            o.i++;
+                tmp = tmp->next;
+            }
         }
+        o.i++;
     }
     stack->size_tab = (size_t) ft_lstlen(&stack->a);
     ft_stack_tab(&stack); 
