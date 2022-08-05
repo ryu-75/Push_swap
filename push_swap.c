@@ -76,7 +76,9 @@ int main(int ac, char **av)
 
 /**
  * Checker les valeurs par id
- * 
+ * Trouver la longueur la plus longue deja trie et push le reste dans B en meme temps
+ * Creer un tableau d int a deux dimension qui va stocker le nombre de coup de chaque id
+ * Calculer la difference pour recuperer la valeur absolue qui correspond au nombre de coup necessaire
  * 
  */
 
