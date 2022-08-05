@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 21:34:23 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/05 12:44:37 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/08/05 17:10:33 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void    ft_cost(t_lst *stack)
         while (tmp_a)
         {
             if (tmp_a->content == stack->a->max)
-                tmp_b->cost = ft_find_cost(stack->a->pos, stack->b->pos, stack->size_a, stack->size_b);
+                stack->b->cost = ft_find_cost(stack->a->id, stack->b->id, stack->size_a, stack->size_b);
             tmp_a = tmp_a->next;
         }
         tmp_b = tmp_b->next;

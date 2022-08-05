@@ -17,14 +17,14 @@ void    print_lst(t_lst **stack)
     printf("\tpos\t\tstack a\t\n");
     while ((*stack)->a)
     {
-        printf("\t%d\t|\t%d\t\n", (*stack)->a->id, (*stack)->a->content);
+        printf("\t%d\t|\t%d\t|\t%d\t\n", (*stack)->a->id, (*stack)->a->content, (*stack)->a->cost);
         (*stack)->a = (*stack)->a->next;
     }
     write(1, "\n", 1);
     printf("\tpos\t\tstack b\t\n");
     while ((*stack)->b)
     {
-        printf("\t%d\t|\t%d\t\n", (*stack)->b->id, (*stack)->b->content);
+        printf("\t%d\t|\t%d\t|\t%d\t\n", (*stack)->b->id, (*stack)->b->content, (*stack)->b->cost);
         (*stack)->b = (*stack)->b->next;
     }
 }
@@ -32,18 +32,10 @@ void    print_lst(t_lst **stack)
 int main(int ac, char **av)
 {
     t_lst   *stack_a;
-    (void) ac;
     stack_a = malloc(sizeof(t_lst));
     stack_a->a = convert_av(&(stack_a)->a, av);
-    // Register size of both stack 
     stack_a->size_a = ft_lsize(stack_a->a);
-    stack_a->size_b = ft_lsize(stack_a->b);
-
-    // Stack ID of min and max value
-    // ft_set_id(&(stack_a)->a);
-    // found_id_min(stack_a);
-    // found_id_max(stack_a);
-
+    ft_lstmax(&stack_a->a);
     if (ac > 1)
     {   
         // Register tab lenght
@@ -56,10 +48,25 @@ int main(int ac, char **av)
         else
         {
             // Setting ID
-            ft_set_id(&(stack_a)->a);
-            // Sort above 5 until 500 or more
             ft_pre_sort(stack_a);
+            stack_a->size_a = ft_lsize(stack_a->a);
+            stack_a->size_b = ft_lsize(stack_a->b);
+            if (stack_a->a && stack_a->b)
+            {
+                ft_set_id(&(stack_a)->a);
+                ft_set_id(&(stack_a)->b);
+            }
+            stack_id_a(stack_a);
+            stack_id_b(stack_a);
+            ft_cost(stack_a);
+            printf("s_a = %d\ns_b = %d\nid a = %d\nid b = %d\n", stack_a->size_a, stack_a->size_b, stack_a->a->id, stack_a->b->id);
+            if (stack_a->a && stack_a->b)
+            {
+                ft_set_id(&(stack_a)->a);
+                ft_set_id(&(stack_a)->b);
+            }
         }
+        // Sort above 5 until 500 or more
         print_lst(&stack_a);
     }
     ft_print_op(&stack_a);
