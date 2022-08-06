@@ -48,6 +48,7 @@ typedef struct s_obj
 {
     int i;
     int j;
+    int median;
 }               t_obj;
 
 // ----------------------------- PARSING ------------------------------------ //
@@ -132,4 +133,8 @@ void    check_a_b(t_lst *stack);
 int ft_largest_value(t_lst **stack);
 void find_mark(t_lst *content, t_data *s_b);
 void    setting_mark(t_lst *stack);
+void    found_id_min(t_lst *stack);
+void    found_id_max(t_lst *stack);
+void    stack_id_a(t_lst  *stack);
+void    stack_id_b(t_lst  *stack);
 #endif

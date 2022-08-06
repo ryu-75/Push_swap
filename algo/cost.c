@@ -6,7 +6,11 @@
 /*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 21:34:23 by nlorion           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/08/04 17:21:30 by nlorion          ###   ########.fr       */
+=======
+/*   Updated: 2022/08/05 17:10:33 by nlorion          ###   ########.fr       */
+>>>>>>> d2e5d7cf264578819d49de9f1a9a34f388878100
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +53,7 @@ int ft_find_cost(int id_a, int id_b, int s_a, int s_b)
 {
     int cost;
 
-    if (ft_comp(id_a, id_b, s_a, s_b))
+    if (ft_comp(id_a, id_b, s_a, s_b) == 1)
     {
         if (find_dist(s_a, id_a) > find_dist(s_b, id_b))
             cost = find_dist(s_a, id_a);
@@ -72,8 +76,13 @@ void    ft_cost(t_lst *stack)
         tmp_a = stack->a;
         while (tmp_a)
         {
+<<<<<<< HEAD
             if (tmp_a->content == stack->a->mark)
                 tmp_b->cost = ft_find_cost(stack->a->id, stack->b->id, stack->size_a, stack->size_b);
+=======
+            if (tmp_a->content == stack->a->max)
+                stack->b->cost = ft_find_cost(stack->a->id, stack->b->id, stack->size_a, stack->size_b);
+>>>>>>> d2e5d7cf264578819d49de9f1a9a34f388878100
             tmp_a = tmp_a->next;
         }
         tmp_b = tmp_b->next;

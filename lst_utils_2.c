@@ -68,7 +68,10 @@ t_data	*ft_lstmax(t_data **stack)
 	while (tmp)
 	{
 		if (tmp->content > max->content)
+		{
 			max = tmp;
+			max->max = tmp->content;
+		}
 		tmp = tmp->next;
 	}
 	return (max);
