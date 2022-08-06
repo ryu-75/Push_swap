@@ -29,8 +29,7 @@ typedef struct s_data
     int             pos;
     int             id;
     int             cost;
-    int             max;
-    int             leader;
+    int             mark;
     struct s_data   *next;
 }               t_data;
 

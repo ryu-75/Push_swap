@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cost.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 21:34:23 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/03 15:43:50 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/08/04 17:21:30 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int find_dist(int size, int id)
     {
         if (id > size / 2)
             dist = size - id + 1;
-        else if (id == size)
+        else if (id == size / 2)
             dist = size - id;
         else
             dist = id + 1;
@@ -72,7 +72,7 @@ void    ft_cost(t_lst *stack)
         tmp_a = stack->a;
         while (tmp_a)
         {
-            if (tmp_a->content == stack->a->max)
+            if (tmp_a->content == stack->a->mark)
                 tmp_b->cost = ft_find_cost(stack->a->id, stack->b->id, stack->size_a, stack->size_b);
             tmp_a = tmp_a->next;
         }
