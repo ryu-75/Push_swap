@@ -33,6 +33,7 @@ typedef struct s_data
     int             max;
     int             leader;
     int             count;
+    int             mark;
     struct s_data   *next;
 }               t_data;
 
