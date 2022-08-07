@@ -32,7 +32,6 @@ void    print_lst(t_lst **stack)
 int main(int ac, char **av)
 {
     t_lst   *stack_a;
-    // int len;
 
     stack_a = malloc(sizeof(t_lst));
     stack_a->a = convert_av(&(stack_a)->a, av);
@@ -52,7 +51,8 @@ int main(int ac, char **av)
             (void) ft_next_value(stack_a);
             // pre_sort_2(stack_a);
             // ft_pre_sort(stack_a);
-            // Set stack size
+            ft_pre_sort(stack_a);
+            // Setting ID
             stack_a->size_a = ft_lsize(stack_a->a);
             stack_a->size_b = ft_lsize(stack_a->b);
             // Set ID
