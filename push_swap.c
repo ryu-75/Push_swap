@@ -14,17 +14,17 @@
 
 void    print_lst(t_lst **stack)
 {
-    printf("\tpos\t\tstack a\t\n");
+    printf("\tpos\t\tstack a\t\tcost\t\tidx\n");
     while ((*stack)->a)
     {
-        printf("\t%d\t|\t%d\t|\t%d\t\n", (*stack)->a->id, (*stack)->a->content, (*stack)->a->cost);
+        printf("\t%d\t|\t%d\t|\t%d\t|\t%d\t\n", (*stack)->a->id, (*stack)->a->content, (*stack)->a->cost, (*stack)->a->idx);
         (*stack)->a = (*stack)->a->next;
     }
     write(1, "\n", 1);
-    printf("\tpos\t\tstack b\t\n");
+    printf("\tpos\t\tstack b\t\tcost\t\tid\t\n");
     while ((*stack)->b)
     {
-        printf("\t%d\t|\t%d\t|\t%d\t\n", (*stack)->b->id, (*stack)->b->content, (*stack)->b->cost);
+        printf("\t%d\t|\t%d\t|\t%d\t|\t0\t\n", (*stack)->b->id, (*stack)->b->content, (*stack)->b->cost);
         (*stack)->b = (*stack)->b->next;
     }
 }
@@ -32,6 +32,8 @@ void    print_lst(t_lst **stack)
 int main(int ac, char **av)
 {
     t_lst   *stack_a;
+    // int len;
+
     stack_a = malloc(sizeof(t_lst));
     stack_a->a = convert_av(&(stack_a)->a, av);
     stack_a->size_a = ft_lsize(stack_a->a);
@@ -41,25 +43,19 @@ int main(int ac, char **av)
         // Register tab lenght
         stack_a->size_tab = ft_tablen(av);
         if (stack_a->size_tab <= 5)
-        {
-            // Sort only small value less then 5
+        {    // Sort only small value less then 5
             ft_select_sort(&stack_a);
+            ft_set_id(&(stack_a)->a);
         }
         else
         {
-            // Setting ID
-            ft_pre_sort(stack_a);
+            (void) ft_next_value(stack_a);
+            // pre_sort_2(stack_a);
+            // ft_pre_sort(stack_a);
+            // Set stack size
             stack_a->size_a = ft_lsize(stack_a->a);
             stack_a->size_b = ft_lsize(stack_a->b);
-            if (stack_a->a && stack_a->b)
-            {
-                ft_set_id(&(stack_a)->a);
-                ft_set_id(&(stack_a)->b);
-            }
-            stack_id_a(stack_a);
-            stack_id_b(stack_a);
-            ft_cost(stack_a);
-            printf("s_a = %d\ns_b = %d\nid a = %d\nid b = %d\n", stack_a->size_a, stack_a->size_b, stack_a->a->id, stack_a->b->id);
+            // Set ID
             if (stack_a->a && stack_a->b)
             {
                 ft_set_id(&(stack_a)->a);

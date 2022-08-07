@@ -13,7 +13,7 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include "../Libft/libft.h"
+#include "../libft/libft.h"
 
 // ---------------------------- STRUCTURE ----------------------------------- //
 
@@ -28,9 +28,11 @@ typedef struct s_data
     int             content;
     int             pos;
     int             id;
+    int             idx;
     int             cost;
     int             max;
     int             leader;
+    int             count;
     struct s_data   *next;
 }               t_data;
 
@@ -138,4 +140,7 @@ void    found_id_min(t_lst *stack);
 void    found_id_max(t_lst *stack);
 void    stack_id_a(t_lst  *stack);
 void    stack_id_b(t_lst  *stack);
+int ft_next_value(t_lst *stack);
+int find_max_len(t_lst *stack);
+void    pre_sort_2(t_lst *stack);
 #endif
