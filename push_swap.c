@@ -48,43 +48,23 @@ int main(int ac, char **av)
         }
         else
         {
-            (void) ft_next_value(stack_a);
-            // pre_sort_2(stack_a);
-            // ft_pre_sort(stack_a);
-            ft_pre_sort(stack_a);
             // Setting ID
-            stack_a->size_a = ft_lsize(stack_a->a);
-            stack_a->size_b = ft_lsize(stack_a->b);
+            printf("%d\n", small_id_finder(stack_a->a, ft_lstmin(&stack_a->a)->content));
+            insert_sort2(stack_a, stack_a);
+            // insert_sort2(stack_a, stack_b);
+            insert_sort3(stack_a, stack_a);
             // Set ID
             if (stack_a->a && stack_a->b)
             {
                 ft_set_id(&(stack_a)->a);
                 ft_set_id(&(stack_a)->b);
             }
+            else
+                ft_set_id(&(stack_a)->a);
         }
-        // Sort above 5 until 500 or more
+        // Sort above 5 until +1000 or more
         print_lst(&stack_a);
     }
     ft_print_op(&stack_a);
-
     return (0);
 }
-
-/**
- * Checker les valeurs par id
- * Trouver la longueur la plus longue deja trie et push le reste dans B en meme temps
- * Creer un tableau d int a deux dimension qui va stocker le nombre de coup de chaque id
- * Calculer la difference pour recuperer la valeur absolue qui correspond au nombre de coup necessaire
- * 
- */
-
-
-/*
-    Adapter l'algo de maniere a ranger toutes les valeurs du plus grand au plus petit
-    Optimiser egalement
-    Voir si :
-        * Trouver la valeur la plus grande dans stack b
-        * La remonter a l index 0
-        * Push dans A
-        * Repeter l action
-*/

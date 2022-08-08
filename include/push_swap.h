@@ -107,41 +107,38 @@ void    ss_movement(t_data **stack_a, t_data **stack_b, t_lst *data);
 
 int ft_set_id(t_data **stack);
 int ft_smallest_value(t_data **stack);
-int ft_highest_value(t_data **stack);
-// void    ft_sorted_three(t_lst **stack);
-void    ft_small_move(t_lst **stack);
-void    ft_high_move(t_lst **stack);
-// void    ft_sorting_five(t_lst **stack);
 void    ft_select_sort(t_lst **stack);
 
 // --------------------------- OPERATION ----------------------------------- //
 
 void    ft_ops(char *str, t_lst *op);
 void    ft_print_op(t_lst **stack);
-int find_dist(int size, int id);
 
 // ----------------------- TEST --------------------------- //
 
-void move_smallest(t_lst **stack);
-void    scan_all_stack(t_lst **stack);
 void    ft_pre_sort(t_lst *stack);
 int  found_median(int *tab, int size);
 void ft_stack_tab(t_lst **stack);
 void ft_sorting_tab(int *tab, int size);
+int ft_largest_value(t_lst *stack);
+int small_id_finder(t_data *stack, int low_val);
+void    insert_sort(t_lst *s_a, t_lst *s_b);
+void    ra_or_rra(t_lst *stack, int size, int pos);
+void    insert_sort2(t_lst *s_a, t_lst *s_b);
+void    insert_sort3(t_lst *s_a, t_lst *s_b);
 
-int ft_find_cost(int id_a, int id_b, int s_a, int s_b);
-int ft_comp(int id_a, int id_b, int s_a, int s_b);
-void    ft_cost(t_lst *stack);
-void    first_b_move(t_lst *stack_a);
-void    check_a_b(t_lst *stack);
-int ft_largest_value(t_lst **stack);
-void find_mark(t_lst *content, t_data *s_b);
-void    setting_mark(t_lst *stack);
+// DONT USE //
 void    found_id_min(t_lst *stack);
 void    found_id_max(t_lst *stack);
 void    stack_id_a(t_lst  *stack);
 void    stack_id_b(t_lst  *stack);
+int find_dist(int size, int id);
+int ft_find_cost(int id_a, int id_b, int s_a, int s_b);
+int ft_comp(int id_a, int id_b, int s_a, int s_b);
+void    ft_cost(t_lst *stack);
 int ft_next_value(t_lst *stack);
 int find_max_len(t_lst *stack);
 void    pre_sort_2(t_lst *stack);
+void find_mark(t_lst *content, t_data *s_b);
+void    setting_mark(t_lst *stack);
 #endif

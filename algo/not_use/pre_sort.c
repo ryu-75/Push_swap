@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 00:35:22 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/08 00:53:09 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/08/08 13:23:47 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,54 +89,4 @@ void    ft_pre_sort(t_lst *stack)
     }
     stack->size_tab = (size_t) ft_lstlen(&stack->a);
     ft_stack_tab(&stack); 
-}
-
-void    move_smallest(t_lst **stack)
-{
-    int small_id;
-    int smallest_value;
-    int stack_len;
-    
-    small_id = ft_smallest_value(&(*stack)->a);
-    smallest_value = ft_lstmin(&(*stack)->a)->content;
-    stack_len = ft_set_id(&(*stack)->a);
-    if (small_id <= stack_len / 2)
-    {
-        while ((*stack)->a->content != smallest_value)
-        {
-            ft_rrotate_a(&(*stack)->a, "rra", (*stack));
-        }
-    }
-}
-
-void    send_biggest(t_lst **stack)
-{
-    t_lst   *tmp;
-
-    tmp = (*stack);
-    while (tmp->a->next)
-    {
-        if (tmp->a->id == 0)
-        {
-            ft_rrotate_a(&(*stack)->a, "rra", (*stack));
-        }
-        tmp->a = tmp->a->next;
-    }
-}
-
-void    scan_all_stack(t_lst **stack)
-{
-    int hold_first;
-    int hold_second;
-    t_lst   *tmp;
-
-    hold_first = ft_lstmin(&(*stack)->a)->content;
-    tmp = (*stack);
-    while (tmp->a->next)
-    {
-        if (hold_first < 10)
-            hold_second = tmp->a->content;
-        tmp->a = tmp->a->next;
-    }
-    printf("first : %d\n", hold_second);
 }

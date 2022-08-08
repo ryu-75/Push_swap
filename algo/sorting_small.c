@@ -12,19 +12,8 @@
 
 #include "../include/push_swap.h"
 
-// Stack the smallest value
-int ft_smallest_value(t_data **stack)
-{
-    t_data  *tmp;
-
-    tmp = (*stack);
-    while (ft_lstmin(stack)->content != tmp->content)
-        tmp = tmp->next;
-    return (tmp->id);
-}
-
-// This function allow to sort three number 
-static void    ft_sorted_three(t_lst **stack)
+// This function allow to sort three numbers
+static void ft_sorted_three(t_lst **stack)
 {
     int id;
     
@@ -53,7 +42,7 @@ static void    ft_sorted_three(t_lst **stack)
 }
 
 // Move to the top the most minimal value 
-void    ft_small_move(t_lst **stack)
+static void ft_small_move(t_lst **stack)
 {
     int small_content;
     int smallest_id;
@@ -75,7 +64,8 @@ void    ft_small_move(t_lst **stack)
     ft_push_b(&(*stack)->a, &(*stack)->b, "pb", (*stack));
 }
 
-static void    ft_sorting_five(t_lst **stack)
+// This function allow to sort four to five numbers
+static void ft_sorting_five(t_lst **stack)
 {
     int id;
     

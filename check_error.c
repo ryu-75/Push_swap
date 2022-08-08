@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   id.c                                               :+:      :+:    :+:   */
+/*   check_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 00:35:27 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/09 00:23:43 by nlorion          ###   ########.fr       */
+/*   Created: 2022/08/09 00:06:04 by nlorion           #+#    #+#             */
+/*   Updated: 2022/08/09 00:06:38 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "include/push_swap.h"
 
-// Retrieve index of each value in stack 
-int ft_set_id(t_data **stack)
+int    ft_error(t_data **stack, int arg)
 {
-    t_data  *pos;
-    t_obj o = {0};
+    arg = EXIT_FAILURE;
 
-    pos = (*stack);
-	while (pos && pos->next)
-    {
-        pos->id = o.i++;
-        pos = pos->next;
-	}
-	pos->id = o.i;
-    return (o.i + 1);
+    ft_clear_stack(stack, NULL);
+    if (arg)
+        write(1, "Error\n", 6);
+    return (exit(1), EXIT_FAILURE);
 }

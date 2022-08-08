@@ -80,18 +80,3 @@ void    ft_rrotate_b(t_data **stack_b, char *s, t_lst *data)
     if (s)
         ft_ops(s, data);
 }
-
-// int main(int ac, char **av)
-// {
-//     t_data  *stack_a;
-//     (void) ac;
-
-//     stack_a = convert_av(&stack_a, av);
-//     ft_rotate_b(&stack_a);
-//     while (stack_a)
-//     {
-//         printf("%d\n", stack_a->content);
-//         stack_a = stack_a->next;
-//     }
-//     return (0);
-// }

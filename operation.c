@@ -12,6 +12,7 @@
 
 #include "include/push_swap.h"
 
+// Stack each operation in struct
 void    ft_ops(char *str, t_lst *op)
 {
     t_op  *tmp;
@@ -33,6 +34,7 @@ void    ft_ops(char *str, t_lst *op)
     tmp->next = new;
 }
 
+// Print operation
 void    ft_print_op(t_lst **stack)
 {
     t_op  *tmp;
