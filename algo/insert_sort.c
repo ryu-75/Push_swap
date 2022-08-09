@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   insert_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:43:08 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/08 23:06:52 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/08/09 13:49:52 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void    ra_or_rra(t_lst *stack, int size, int pos)
             pos--;
         }
     }
-    if (pos > size / 2)
+    else if (pos > size / 2)
         while (low_pos > 0)
     {
         ft_rrotate_a(&stack->a, "rra", stack);

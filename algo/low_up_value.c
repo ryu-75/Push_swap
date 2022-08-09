@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   low_up_value.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 12:30:25 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/09 00:22:17 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/08/09 13:46:14 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int small_id_finder(t_data *stack, int low_val)
     t_obj o = {.i = -1};
     int pos;
     
-    while (stack->next)
+    while (stack)
     {
         o.i++;
         if (low_val == stack->content)

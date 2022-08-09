@@ -24,7 +24,7 @@ void    print_lst(t_lst **stack)
     printf("\tpos\t\tstack b\t\tcost\t\tid\t\n");
     while ((*stack)->b)
     {
-        printf("\t%d\t|\t%d\t|\t%d\t|\t0\t\n", (*stack)->b->id, (*stack)->b->content, (*stack)->b->cost);
+        printf("\t%d\t|\t%d\t\n", (*stack)->b->id, (*stack)->b->content);
         (*stack)->b = (*stack)->b->next;
     }
 }
@@ -50,9 +50,10 @@ int main(int ac, char **av)
         {
             // Setting ID
             printf("%d\n", small_id_finder(stack_a->a, ft_lstmin(&stack_a->a)->content));
-            insert_sort2(stack_a, stack_a);
-            // insert_sort2(stack_a, stack_b);
-            insert_sort3(stack_a, stack_a);
+            // ft_cost_a(stack_a);
+            set_cost(stack_a);
+            insert_sort(stack_a, stack_a);
+            // insert_sort3(stack_a, stack_a);
             // Set ID
             if (stack_a->a && stack_a->b)
             {
