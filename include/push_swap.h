@@ -126,8 +126,9 @@ void    insert_sort(t_lst *s_a, t_lst *s_b);
 void    ra_or_rra(t_lst *stack, int size, int pos);
 void    insert_sort2(t_lst *s_a, t_lst *s_b);
 void    insert_sort3(t_lst *s_a, t_lst *s_b);
-void    ft_cost_a(t_lst *s_a, int pos);
+int ft_cost_a(t_lst *s_a, int size);
 void    set_cost(t_lst *stack);
+t_data  *ft_cheap_cost(t_lst *stack);
 
 // NOT USE //
 void    found_id_min(t_lst *stack);

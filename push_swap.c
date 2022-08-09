@@ -49,11 +49,8 @@ int main(int ac, char **av)
         else
         {
             // Setting ID
-            printf("%d\n", small_id_finder(stack_a->a, ft_lstmin(&stack_a->a)->content));
-            // ft_cost_a(stack_a);
-            set_cost(stack_a);
-            insert_sort(stack_a, stack_a);
-            // insert_sort3(stack_a, stack_a);
+            insert_sort2(stack_a, stack_a);
+            insert_sort3(stack_a, stack_a);
             // Set ID
             if (stack_a->a && stack_a->b)
             {
@@ -66,6 +63,6 @@ int main(int ac, char **av)
         // Sort above 5 until +1000 or more
         print_lst(&stack_a);
     }
-    ft_print_op(&stack_a);
+    // ft_print_op(&stack_a);
     return (0);
 }

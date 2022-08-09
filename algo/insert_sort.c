@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:43:08 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/09 13:49:52 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/08/09 18:18:57 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void    insert_sort2(t_lst *s_a, t_lst *s_b)
     int size;
     
     t_a = s_a->a;
-    size = ft_lsize(t_a);
+    size = ft_lsize(s_a->a);
     while (size > 0)
     {
         if (t_a->content)
@@ -81,18 +81,13 @@ void    insert_sort2(t_lst *s_a, t_lst *s_b)
 
 void    insert_sort3(t_lst *s_a, t_lst *s_b)
 {
-    t_data  *tmp;
     int size_b;
 
-    tmp = s_a->b;
-    size_b = ft_lsize(tmp);
+    size_b = ft_lsize(s_b->b);
     while (size_b > 0)
     {
-        if (s_b->b->content > s_a->a->content)
-        {
+        if (s_b->b->content < s_a->a->content)
             ft_push_a(&s_b->b, &s_a->a, "pa", s_a);
-            ft_rotate_a(&s_a->a, "ra", s_a);
-        }
         size_b--;
     }
 }
