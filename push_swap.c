@@ -48,9 +48,9 @@ int main(int ac, char **av)
         }
         else
         {
-            // Setting ID
-            insert_sort2(stack_a, stack_a);
-            insert_sort3(stack_a, stack_a);
+            set_cost(stack_a);
+            // insert_sort2(stack_a, stack_a);
+            // insert_sort3(stack_a, stack_a);
             // Set ID
             if (stack_a->a && stack_a->b)
             {
@@ -66,3 +66,13 @@ int main(int ac, char **av)
     // ft_print_op(&stack_a);
     return (0);
 }
+
+/**
+ *  Trouver la plus petite valeur qui est le plus proche de la stack->content dans la 1er et 2eme moitie de la stack
+ *  Une fois trouve, comparer ces deux valeurs entre elle, si le coup est plus faible, envoyer la valeur en haut de la stack puis push_b
+ *  Repeter l action jusqu a que la stack soit vite
+ *  Ensuite trouver la valeur la plus grande dans la stack, meme principe, trouver le coup le plus faible est envoyer tous les chiffres dans la stack A
+ *  
+ *  Possible contrainte : chunck la stack A 25 ou 25 si 100 ou plus
+ * 
+ */

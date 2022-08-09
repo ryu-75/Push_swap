@@ -41,7 +41,7 @@ int ft_cost_a(t_lst *s_a, int size)
     if (pos <= size / 2)
     {        
         while (o.i++ < size / 2)
-            cost = (pos - size) + 3;
+            cost = pos * -1;
     }
     else if (pos > size / 2)
     {
