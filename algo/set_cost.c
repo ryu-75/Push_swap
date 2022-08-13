@@ -33,9 +33,7 @@ int ft_cost_a(t_lst *s_a, int size)
     int cost;
     t_obj o = {.i = 0};
     int pos;
-    // t_data  *tmp;
 
-    // tmp = s_a->a;
     size = ft_lsize(s_a->a);
     pos = small_id_finder(s_a->a, ft_lstmin(&s_a->a)->content);
     if (pos <= size / 2)
@@ -47,7 +45,8 @@ int ft_cost_a(t_lst *s_a, int size)
     {
         while (o.i++ < size)
             cost = size - (pos + 1);   
-    }printf("%d", cost);
+    }
+    printf("%d", cost);
     return (cost);
 }
 

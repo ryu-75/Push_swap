@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:54:37 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/07 23:59:59 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/08/10 16:25:37 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,18 @@ int ft_next_value(t_lst *stack)
 
 void    pre_sort_2(t_lst *stack)
 {
-    t_data  *tmp_a;
-    // t_obj o = {0};
-    
-    tmp_a = stack->a;
-    while (tmp_a)
-    {
-        if (tmp_a->idx == 0)
-            ft_push_b(&stack->a, &stack->b, "pb", stack);
-        ft_rotate_a(&stack->a, "ra", stack);
-        tmp_a = tmp_a->next;
-    }
+    t_data  *curr;
+    int i; 
+
+    i = 0;
+    curr = stack->a;
     (void) ft_next_value(stack);
+    while (curr && curr->next)
+    {
+        if (i < stack->size_a && curr->idx != -1)
+            ft_push_b(&stack->a, &stack->b, "pb", stack);
+        else if (curr->idx == 0)
+            ft_rrotate_a(&stack->a, "ra", stack);
+        curr = curr->next;
+    }
 }

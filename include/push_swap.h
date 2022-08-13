@@ -130,18 +130,4 @@ int ft_cost_a(t_lst *s_a, int size);
 void    set_cost(t_lst *stack);
 t_data  *ft_cheap_cost(t_lst *stack);
 
-// NOT USE //
-void    found_id_min(t_lst *stack);
-void    found_id_max(t_lst *stack);
-void    stack_id_a(t_lst  *stack);
-void    stack_id_b(t_lst  *stack);
-int find_dist(int size, int id);
-int ft_find_cost(int id_a, int id_b, int s_a, int s_b);
-int ft_comp(int id_a, int id_b, int s_a, int s_b);
-void    ft_cost(t_lst *stack);
-int ft_next_value(t_lst *stack);
-int find_max_len(t_lst *stack);
-void    pre_sort_2(t_lst *stack);
-void find_mark(t_lst *content, t_data *s_b);
-void    setting_mark(t_lst *stack);
 #endif
