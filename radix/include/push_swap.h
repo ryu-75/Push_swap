@@ -29,6 +29,7 @@ typedef struct s_data
     int             pos;
     int             min;
     int             max;
+    int             idx;
     struct s_data   *next;
 }               t_data;
 
@@ -99,7 +100,6 @@ void    ss_movement(t_data **stack_a, t_data **stack_b, t_lst *data);
 
 // ----------------------------- SORTING ----------------------------------- //
 
-int ft_set_id(t_data **stack);
 int ft_smallest_value(t_data **stack);
 void    ft_select_sort(t_lst **stack);
 
@@ -107,5 +107,11 @@ void    ft_select_sort(t_lst **stack);
 
 void    ft_ops(char *str, t_lst *op);
 void    ft_print_op(t_lst **stack);
+
+t_data  *get_index_max(t_data *stack);
+t_data  *get_next_min(t_data *stack);
+void    radix_sort(t_lst *stack_a, t_lst *stack_b);
+int ft_set_id(t_lst *stack);
+int get_max_bits(t_lst *stack);
 
 #endif
