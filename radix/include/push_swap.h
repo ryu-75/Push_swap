@@ -112,6 +112,6 @@ t_data  *get_index_max(t_data *stack);
 t_data  *get_next_min(t_data *stack);
 void    radix_sort(t_lst *stack_a, t_lst *stack_b);
 int ft_set_id(t_lst *stack);
-int get_max_bits(t_lst *stack);
-
+t_data  *hash_list(t_data **stack);
+void    index_it(t_data **stack);
 #endif

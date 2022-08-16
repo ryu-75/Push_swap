@@ -17,7 +17,7 @@ void    print_lst(t_lst **stack)
     printf("stack a\n");
     while ((*stack)->a)
     {
-        printf("\t%d\t\n", (*stack)->a->content);
+        printf("\t%d\t%d\t\n", (*stack)->a->content, (*stack)->a->idx);
         (*stack)->a = (*stack)->a->next;
     }
     write(1, "\n", 1);
@@ -37,16 +37,14 @@ int main(int ac, char **av)
     stack_a = malloc(sizeof(t_lst));
     stack_a->a = convert_av(&(stack_a)->a, av);
     stack_b = NULL;
-    int idx = ft_set_id(stack_a);
     if (ac > 1)
     {   
         radix_sort(stack_a, stack_b);
-        printf("%d\n", idx);
         print_lst(&stack_a);
     }
     ft_print_op(&stack_a);
     ft_clear_stack(&stack_a->a, 0);
-    // ft_clear_stack(&stack_b->b, 0);
+    ft_clear_stack(&stack_a->b, 0);
     return (0);
 }
 

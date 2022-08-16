@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:13 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/16 18:30:38 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/08/17 01:41:24 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,27 +26,26 @@ t_data  *get_index_max(t_data *stack)
             max->idx = o.i;
         o.i++;
     }
-    printf("%d\n", max->idx);
     return (max);
 }
 
-t_data  *get_next_min(t_data *stack)
+t_data  *hash_list(t_data **stack)
 {
     t_data  *tmp;
     t_data  *min;
-    int min_val;
+    int min_found;
 
-    min_val = 0;
     min = NULL;
-    tmp = stack;
+    min_found = 0;
+    tmp = *stack;
     if (tmp)
     {
         while (tmp)
         {
-            if (tmp->idx == -1 && (!min_val || tmp->content < min->content))
+            if ((tmp->idx == -1) && (!min_found || tmp->content < min->content))
             {
                 min = tmp;
-                min_val = 1;
+                min_found = 1;
             }
             tmp = tmp->next;
         }
@@ -54,11 +53,16 @@ t_data  *get_next_min(t_data *stack)
     return (min);
 }
 
+void    index_it(t_data **stack)
+{
+    t_data  *tmp;
+    int index;
 
-
-/**
- *  Trouver la valeur la plus petite
- *  Lui appliquer l index 0
- *  Ajouter 1 a chaque index superieur a la min value
- * 
- */
+    index = 0;
+    tmp = hash_list(stack);
+    while (tmp)
+    {
+        tmp->idx = index++;
+        tmp = hash_list(stack);
+    }
+}

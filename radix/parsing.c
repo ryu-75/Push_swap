@@ -71,5 +71,6 @@ t_data  *convert_av(t_data **stack, char **av)
     }
     else
         ft_error(stack, EXIT_FAILURE);
+    index_it(&(*stack));
     return (*stack);
 }
