@@ -62,6 +62,7 @@ int main(int ac, char **av)
         }
         // Sort above 5 until +1000 or more
         print_lst(&stack_a);
+        printf("%d\n", 12&23);
     }
     // ft_print_op(&stack_a);
     return (0);
