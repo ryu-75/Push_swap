@@ -12,42 +12,43 @@
 
 #include "include/push_swap.h"
 
-void    print_lst(t_lst **stack)
+void    print_lst(t_data **a, t_data **b)
 {
     printf("stack a\n");
-    while ((*stack)->a)
+    while ((*a))
     {
-        printf("\t%d\t%d\t\n", (*stack)->a->content, (*stack)->a->idx);
-        (*stack)->a = (*stack)->a->next;
+        printf("\t%d\t%d\t\n", (*a)->content, (*a)->idx);
+        (*a) = (*a)->next;
     }
     write(1, "\n", 1);
     printf("stack b\n");
-    while ((*stack)->b)
+    while ((*b))
     {
-        printf("\t%d\t\n", (*stack)->b->content);
-        (*stack)->b = (*stack)->b->next;
+        printf("\t%d\t%d\t\n", (*b)->content, (*b)->idx);
+        (*b) = (*b)->next;
     }
 }
 
 int main(int ac, char **av)
 {
-    t_lst   *stack_a;
-    t_lst   *stack_b;
+    t_data  *stack_a;
+    t_data  *stack_b;
 
-    stack_a = malloc(sizeof(t_lst));
-    stack_a->a = convert_av(&(stack_a)->a, av);
+    stack_a = malloc(sizeof(t_data));
+    stack_a = convert_av(&(stack_a), av);
     stack_b = NULL;
     if (ac > 1)
-    {   
-        radix_sort(stack_a, stack_b);
-        print_lst(&stack_a);
+    {
+        // radix_sort(&stack_a, &stack_b);
+        ft_move_3(&stack_a);
+        index_it(&stack_a);
+        print_lst(&stack_a, &stack_b);
     }
-    ft_print_op(&stack_a);
-    ft_clear_stack(&stack_a->a, 0);
-    ft_clear_stack(&stack_a->b, 0);
+    // ft_print_op(&stack_a);
+    ft_clear_stack(&stack_a, 0);
+    ft_clear_stack(&stack_b, 0);
     return (0);
 }
-
 
         // if (stack_a->size_tab <= 5)
         // {    // Sort only small value less then 5
@@ -71,4 +72,5 @@ int main(int ac, char **av)
  *              - On trie ce tableau
  *              - 
  * 
+ *  Recuperer la distance : si l index est = index return ; on compte la distance qu il y a entre t_data->index et l index donne
  */

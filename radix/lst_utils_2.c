@@ -53,3 +53,42 @@ int	ft_lsize(t_data *lst)
 	}
 	return (i);
 }
+
+// Check if stack is already sort
+int	ft_lst_is_sort(t_data **stack)
+{
+	t_data	*tmp_1;
+	t_data	*tmp_2;
+
+	tmp_1 = (*stack);
+	while (tmp_1)
+	{
+		tmp_2 = tmp_1->next;
+		while (tmp_2)
+		{
+			if (tmp_1->content > tmp_2->content)
+				return (0);
+			tmp_2 = tmp_2->next;
+		}
+		tmp_1 = tmp_1->next;
+	}
+	return (1);
+}
+
+int	found_distance(t_data **stack, int index)
+{
+	t_data	*tmp;
+	int	distance;
+
+	distance = 0;
+	tmp = *stack;
+	while (tmp)
+	{
+		if (tmp->idx == index)
+			return (0);
+		distance++;
+		printf("%d\n", distance);
+		tmp = tmp->next;
+	}
+	return (distance);
+}

@@ -25,6 +25,7 @@ typedef struct s_op
 
 typedef struct s_data
 {
+    t_op            *oplst;
     int             content;
     int             pos;
     int             min;
@@ -33,28 +34,17 @@ typedef struct s_data
     struct s_data   *next;
 }               t_data;
 
-typedef struct s_lst
-{
-    int             *stack_tab;
-    size_t          size_tab;
-    t_data          *a;
-    t_data          *b;
-    t_op            *oplst;
-    int             size_a;
-    int             size_b;
-}               t_lst;
-
 typedef struct s_obj
 {
     int i;
     int j;
 }               t_obj;
 
-// ----------------------------- PARSING ------------------------------------ //
+// ----------------------------- PARSING ---------------------------------- //
 
 t_data  *convert_av(t_data **stack, char **av);
 
-// ------------------------------ UTILS ------------------------------------ //
+// ------------------------------ UTILS ----------------------------------- //
 
 long long	ft_convert_value(const char *nptr);
 int ft_strcmp(const char *s1, const char *s2);
@@ -65,7 +55,7 @@ int is_num(char *str);
 int ft_lstlen(t_data **stack);
 int ft_tablen(char **av);
 
-// ----------------------------- LIST UTILS -------------------------------- //
+// ----------------------------- LIST UTILS ------------------------------- //
 
 t_data  *add_newlst(t_data *new, int el);
 t_data  *ft_lstmin(t_data **stack);
@@ -79,39 +69,29 @@ void	ft_del_lastel(t_data **stack);
 int	ft_lst_is_sort(t_data **stack);
 int	ft_lsize(t_data *lst);
 
-// ----------------------------- A MOVEMENT -------------------------------- //
+// ----------------------------- MOVEMENT ---------------------------------- //
 
-void    ft_swap_a(t_data **stack_a, char *s, t_lst *data);
-void    ft_push_a(t_data **stack_b, t_data **stack_a, char *s, t_lst *data);
-void    ft_rotate_a(t_data **stack_a, char *s, t_lst *data);
-void    ft_rrotate_a(t_data **stack_a, char *s, t_lst *data);
-
-// ----------------------------- B MOVEMENT -------------------------------- //
-
-void    ft_swap_b(t_data **stack_b, char *s, t_lst *data);
-void    ft_push_b(t_data **stack_a, t_data **stack_b, char *s, t_lst *data);
-void    ft_rotate_b(t_data **stack_b, char *s, t_lst *data);
-void    ft_rrotate_b(t_data **stack_b, char *s, t_lst *data);
-
-// ------------------------- A and B MOVEMENT ------------------------------ //
-
-void    rrr_movement(t_data **stack_a, t_data **stack_b, t_lst *data);
-void    ss_movement(t_data **stack_a, t_data **stack_b, t_lst *data);
-
-// ----------------------------- SORTING ----------------------------------- //
-
-int ft_smallest_value(t_data **stack);
-void    ft_select_sort(t_lst **stack);
+void    ft_swap(t_data **stack, char *s, t_data *data);
+void    ft_push_a(t_data **stack_b, t_data **stack_a, char *s, t_data *data);
+void    ft_push_b(t_data **stack_a, t_data **stack_b, char *s, t_data *data);
+void    ft_rotate(t_data **stack, char *s, t_data *data);
+void    ft_rrotate(t_data **stack, char *s, t_data *data);
+void    rrr_movement(t_data **stack_a, t_data **stack_b, t_data *data);
+void    ss_movement(t_data **stack_a, t_data **stack_b, t_data *data);
 
 // --------------------------- OPERATION ----------------------------------- //
 
-void    ft_ops(char *str, t_lst *op);
-void    ft_print_op(t_lst **stack);
+void    ft_ops(char *str, t_data *op);
+void    ft_print_op(t_data **stack);
 
-t_data  *get_index_max(t_data *stack);
+// --------------------------- RADIX FUNCTION ------------------------------ //
+
+int get_index_max(t_data *stack);
 t_data  *get_next_min(t_data *stack);
-void    radix_sort(t_lst *stack_a, t_lst *stack_b);
-int ft_set_id(t_lst *stack);
+void    radix_sort(t_data **stack_a, t_data **stack_b);
 t_data  *hash_list(t_data **stack);
 void    index_it(t_data **stack);
+int	found_distance(t_data **stack, int index);
+int ft_id_min(t_data **stack, int val);
+void    ft_move_3(t_data **stack);
 #endif

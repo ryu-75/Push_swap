@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 14:50:13 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/17 01:41:24 by nlorion          ###   ########.fr       */
+/*   Created: 2022/08/17 17:21:07 by nlorion           #+#    #+#             */
+/*   Updated: 2022/08/17 17:23:00 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/push_swap.h"
 
-t_data  *get_index_max(t_data *stack)
+int get_index_max(t_data *stack)
 {
     t_data  *max_value;
     t_data  *max;
@@ -26,7 +26,7 @@ t_data  *get_index_max(t_data *stack)
             max->idx = o.i;
         o.i++;
     }
-    return (max);
+    return (max->idx);
 }
 
 t_data  *hash_list(t_data **stack)
