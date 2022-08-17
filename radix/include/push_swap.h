@@ -94,4 +94,6 @@ void    index_it(t_data **stack);
 int	found_distance(t_data **stack, int index);
 int ft_id_min(t_data **stack, int val);
 void    ft_move_3(t_data **stack);
+int ft_set_pos(t_data **stack);
+
 #endif

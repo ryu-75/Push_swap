@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 17:21:07 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/17 17:23:00 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/08/18 01:43:27 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/push_swap.h"
+
+int ft_set_pos(t_data **stack)
+{
+    t_data  *pos;
+    t_obj o = {0};
+
+    pos = (*stack);
+	while (pos && pos->next)
+    {
+        pos->id = o.i++;
+        pos = pos->next;
+	}
+	pos->id = o.i;
+    return (o.i + 1);
+}
 
 int get_index_max(t_data *stack)
 {

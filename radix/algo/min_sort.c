@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   min_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 11:35:43 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/17 20:06:06 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/08/18 01:38:50 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,42 +26,102 @@ int ft_id_min(t_data **stack, int val)
             min = tmp;
         tmp = tmp->next;
     }
-    printf("%d\n", min->content);
     return (min->idx);
 }
 
 void    ft_move_3(t_data **stack)
 {
     t_data  *tmp;
-    int min;
-    int nxt_min;
-    
-    min = ft_id_min(stack, -1); // 1
-    nxt_min = ft_id_min(stack, min); // 0
+
     tmp = *stack;
-    index_it(stack);
     if (ft_lst_is_sort(stack))
-        return ;
-    if (tmp->idx == min && tmp->next->idx != nxt_min)
+        return (exit(0));
+    if (ft_id_min(stack, -1) + 2)
     {
-        ft_rotate(stack, "ra", *stack);
-        ft_swap(stack, "sa", *stack);
+        if (tmp->content > tmp->next->content)
+            ft_swap(stack, "sa", *stack);
         ft_rrotate(stack, "rra", *stack);
     }
-    else if (tmp->next->idx == nxt_min)
+    else if (ft_id_min(stack, -1))
     {
-        if (tmp->idx > tmp->next->next->idx)
-        {
-            ft_swap(stack, "sa", *stack);
-            ft_rrotate(stack, "ra", *stack);
-        }
-    }
-    else if (tmp->next->idx == min)
-    {
-        ft_rotate(stack, "ra", *stack);
         ft_swap(stack, "sa", *stack);
+        ft_rotate(stack, "ra", *stack);
+    }
+    else
+    {
+        if (tmp->content > tmp->next->next->content)
+            ft_rotate(stack, "rra", *stack);
+        else
+            ft_swap(stack, "sa", *stack);
     }
 }
+
+// void    ft_move_3(t_data **stack)
+// {
+//     t_data  *head;
+//     int min;
+//     int nextmin;
+    
+//     min = ft_id_min(stack, -1);
+//     nextmin = ft_id_min(stack, min);
+//     head = *stack;
+//     if (head->idx == min && head->next->idx != nextmin)
+//     {
+//         ft_rotate(stack, "ra", *stack);
+//         ft_swap(stack, "sa", *stack);
+//         ft_rrotate(stack, "ra", *stack);
+//     }
+//     else if (head->idx == nextmin)
+//     {
+//         if (head->next->idx == min)
+//             ft_swap(stack, "sa", *stack);
+//         else
+//             ft_rrotate(stack, "ra", *stack);
+//     }
+//     else
+//     {
+//         if (head->next->idx == min)
+//             ft_rotate(stack, "ra", *stack);
+//         else
+//         {
+//             ft_swap(stack, "ra", *stack);
+//             ft_rrotate(stack, "rra", *stack);
+//         }
+//     }
+// }
+
+// void    ft_move_3(t_data **stack)
+// {
+//     t_data  *tmp;
+//     int min;
+//     int nxt_min;
+    
+//     min = ft_id_min(stack, -1); // 1
+//     nxt_min = ft_id_min(stack, min); // 0
+//     tmp = *stack;
+//     index_it(stack);
+//     if (ft_lst_is_sort(stack))
+//         return ;
+//     if (tmp->idx == min && tmp->next->idx != nxt_min)
+//     {
+//         ft_rotate(stack, "ra", *stack);
+//         ft_swap(stack, "sa", *stack);
+//         ft_rrotate(stack, "rra", *stack);
+//     }
+//     else if (tmp->next->idx == nxt_min)
+//     {
+//         if (tmp->idx > tmp->next->next->idx)
+//         {
+//             ft_swap(stack, "sa", *stack);
+//             ft_rrotate(stack, "ra", *stack);
+//         }
+//     }
+//     else if (tmp->next->idx == min)
+//     {
+//         ft_rotate(stack, "ra", *stack);
+//         ft_swap(stack, "sa", *stack);
+//     }
+// }
 
 // Found best trick and write less line as if possible 
 
