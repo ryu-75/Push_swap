@@ -12,19 +12,28 @@
 
 #include "include/push_swap.h"
 
+// static void ft_push_swap(t_data **stack_a, t_data **stack_b)
+// {
+//     int id;
+
+//     id = ft_set_pos(stack_a);
+//     if (id <= 5)
+//         ft_small_sort(stack_a, stack_b);
+// }
+
 void    print_lst(t_data **a, t_data **b)
 {
-    printf("stack a\n");
+    printf("\tpos\t\tstack a\t\tid\n\n");
     while ((*a))
     {
-        printf("\t%d\t%d\t\n", (*a)->content, (*a)->idx);
+        printf("\t%d\t\t%d\t\t%d\t\n", (*a)->pos, (*a)->content, (*a)->idx);
         (*a) = (*a)->next;
     }
     write(1, "\n", 1);
-    printf("stack b\n");
+    printf("\tpos\t\tstack a\t\tid\n\n");
     while ((*b))
     {
-        printf("\t%d\t%d\t\n", (*b)->content, (*b)->idx);
+        printf("\t%d\t\t%d\t\t%d\t\n", (*b)->pos, (*b)->content, (*b)->idx);
         (*b) = (*b)->next;
     }
 }
@@ -40,7 +49,10 @@ int main(int ac, char **av)
     if (ac > 1)
     {
         // radix_sort(&stack_a, &stack_b);
-        ft_move_3(&stack_a);
+        // ft_move_3(&stack_a);
+        index_it(&stack_a);
+        ft_move_4_5(&stack_a, &stack_b);
+        ft_set_pos(&stack_a);
         index_it(&stack_a);
         print_lst(&stack_a, &stack_b);
     }

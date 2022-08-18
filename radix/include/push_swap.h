@@ -28,7 +28,6 @@ typedef struct s_data
     t_op            *oplst;
     int             content;
     int             pos;
-    int             min;
     int             max;
     int             idx;
     struct s_data   *next;
@@ -92,8 +91,9 @@ void    radix_sort(t_data **stack_a, t_data **stack_b);
 t_data  *hash_list(t_data **stack);
 void    index_it(t_data **stack);
 int	found_distance(t_data **stack, int index);
-int ft_id_min(t_data **stack, int val);
-void    ft_move_3(t_data **stack);
 int ft_set_pos(t_data **stack);
+void    ft_small_sort(t_data **stack_a, t_data **stack_b);
 
+void    ft_move_3(t_data **stack);
+void    ft_move_4_5(t_data **stack_a, t_data **stack_b);
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 17:21:07 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/18 01:43:27 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/08/18 15:21:52 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ int ft_set_pos(t_data **stack)
     pos = (*stack);
 	while (pos && pos->next)
     {
-        pos->id = o.i++;
+        pos->pos = o.i++;
         pos = pos->next;
 	}
-	pos->id = o.i;
+	pos->pos = o.i;
     return (o.i + 1);
 }
 
