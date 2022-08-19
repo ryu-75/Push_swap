@@ -96,4 +96,7 @@ void    ft_small_sort(t_data **stack_a, t_data **stack_b);
 
 void    ft_move_3(t_data **stack);
 void    ft_move_4_5(t_data **stack_a, t_data **stack_b);
+
+int ft_smallest_value(t_data **stack);
+int ft_largest_value(t_data **stack);
 #endif

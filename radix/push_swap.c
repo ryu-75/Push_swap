@@ -30,7 +30,7 @@ void    print_lst(t_data **a, t_data **b)
         (*a) = (*a)->next;
     }
     write(1, "\n", 1);
-    printf("\tpos\t\tstack a\t\tid\n\n");
+    printf("\tpos\t\tstack b\t\tid\n\n");
     while ((*b))
     {
         printf("\t%d\t\t%d\t\t%d\t\n", (*b)->pos, (*b)->content, (*b)->idx);
@@ -49,8 +49,9 @@ int main(int ac, char **av)
     if (ac > 1)
     {
         // radix_sort(&stack_a, &stack_b);
-        // ft_move_3(&stack_a);
         index_it(&stack_a);
+        ft_set_pos(&stack_a);
+        // ft_move_3(&stack_a);
         ft_move_4_5(&stack_a, &stack_b);
         ft_set_pos(&stack_a);
         index_it(&stack_a);

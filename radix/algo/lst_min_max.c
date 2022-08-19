@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   min_max_value.c                                    :+:      :+:    :+:   */
+/*   lst_min_max.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 00:05:00 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/16 23:50:00 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/08/19 23:18:36 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,25 @@ t_data	*ft_lstmax(t_data **stack)
 		tmp = tmp->next;
 	}
 	return (max);
+}
+
+int ft_smallest_value(t_data **stack)
+{
+    t_data  *tmp;
+
+    tmp = *stack;
+    while (ft_lstmin(stack)->content != tmp->content)
+        tmp = tmp->next;
+    return (tmp->pos);
+}
+
+// Found the largest value in stack B
+int ft_largest_value(t_data **stack)
+{
+    t_data  *tmp;
+
+    tmp = *stack;
+    while (ft_lstmax(stack)->content != tmp->content)
+        tmp = tmp->next;
+    return (tmp->pos);
 }
