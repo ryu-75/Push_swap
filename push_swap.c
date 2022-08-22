@@ -17,14 +17,14 @@ void    print_lst(t_lst **stack)
     printf("\tpos\t\tstack a\t\t\tcost\t\tidx\n");
     while ((*stack)->a)
     {
-        printf("\t%d\t|\t%d\t\t|\t%d\t|\t%d\t\n", (*stack)->a->id, (*stack)->a->content, (*stack)->a->cost, (*stack)->a->idx);
+        printf("\t%d\t|\t%d\t\t|\t%d\t|\t%d\t\n", (*stack)->a->pos, (*stack)->a->content, (*stack)->a->cost, (*stack)->a->id);
         (*stack)->a = (*stack)->a->next;
     }
     write(1, "\n", 1);
     printf("\tpos\t\tstack b\t\t\tcost\t\tid\t\n");
     while ((*stack)->b)
     {
-        printf("\t%d\t|\t%d\t\t\n", (*stack)->b->id, (*stack)->b->content);
+        printf("\t%d\t|\t%d\t\t\n", (*stack)->b->pos, (*stack)->b->content);
         (*stack)->b = (*stack)->b->next;
     }
 }
@@ -44,27 +44,12 @@ int main(int ac, char **av)
         if (stack_a->size_tab <= 5)
         {    // Sort only small value less then 5
             ft_select_sort(&stack_a);
-            ft_set_id(&(stack_a)->a);
-        }
-        else
-        {
-            // set_cost(stack_a);
-            insert_sort2(stack_a, stack_a);
-            insert_sort3(stack_a, stack_a);
-            // Set ID
-            if (stack_a->a && stack_a->b)
-            {
-                ft_set_id(&(stack_a)->a);
-                ft_set_id(&(stack_a)->b);
-            }
-            else
-                ft_set_id(&(stack_a)->a);
+            ft_set_pos(&(stack_a)->a);
         }
         // Sort above 5 until +1000 or more
         print_lst(&stack_a);
-        printf("%d\n", 12&23);
     }
-    // ft_print_op(&stack_a);
+    ft_print_op(&stack_a);
     return (0);
 }
 
@@ -83,5 +68,5 @@ int main(int ac, char **av)
  *              - Stocker les valeurs dans un tableau.
  *              - On trie ce tableau
  *              - 
- * 
+ * stack
  */

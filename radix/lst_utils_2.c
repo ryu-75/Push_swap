@@ -84,10 +84,9 @@ int	found_distance(t_data **stack, int index)
 	tmp = *stack;
 	while (tmp)
 	{
-		if (tmp->idx == index)
-			return (0);
+		if (distance == index)
+			break ;
 		distance++;
-		printf("%d\n", distance);
 		tmp = tmp->next;
 	}
 	return (distance);

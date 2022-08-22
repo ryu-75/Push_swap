@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 17:21:07 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/20 00:00:24 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/08/22 17:24:17 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,8 @@ void    index_it(t_data **stack)
 {
     t_data  *tmp;
     int index;
-
-    index = 0;
     tmp = hash_list(stack);
+    index = 0;
     while (tmp)
     {
         tmp->idx = index++;

@@ -1,108 +1,108 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   sorting_small.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/14 21:36:54 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/17 16:26:23 by nlorion          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+// /* ************************************************************************** */
+// /*                                                                            */
+// /*                                                        :::      ::::::::   */
+// /*   sorting_small.c                                    :+:      :+:    :+:   */
+// /*                                                    +:+ +:+         +:+     */
+// /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
+// /*                                                +#+#+#+#+#+   +#+           */
+// /*   Created: 2022/07/14 21:36:54 by nlorion           #+#    #+#             */
+// /*   Updated: 2022/07/17 16:26:23 by nlorion          ###   ########.fr       */
+// /*                                                                            */
+// /* ************************************************************************** */
 
-// #include "../include/push_swap.h"
+// // #include "../include/push_swap.h"
 
-// // This function allow to sort three numbers
-// static void ft_sorted_three(t_data **stack)
-// {
-//     int id;
+// // // This function allow to sort three numbers
+// // static void ft_sorted_three(t_data **stack)
+// // {
+// //     int id;
     
-//     index_it(stack);
-//     id = ft_smallest_value(&(*stack)->a);
-//     if (ft_lst_is_sort(&(*stack)->a) == 1)
-//         return (exit(0));
-//     if (id == 2)
-//     {   
-//         if ((*stack)->a->content > (*stack)->a->next->content)
-//             ft_swap_a(&(*stack)->a, "sa", (*stack));
-//         ft_rrotate_a(&(*stack)->a, "rra", (*stack));
-//     }
-//     else if (id == 0)
-//     {
-//         ft_swap_a(&(*stack)->a, "sa", (*stack));
-//         ft_rotate_a(&(*stack)->a, "ra", (*stack));
-//     }
-//     else
-//     {
-//         if ((*stack)->a->content > (*stack)->a->next->next->content)
-//             ft_rotate_a(&(*stack)->a, "rra", (*stack));
-//         else
-//             ft_swap_a(&(*stack)->a, "sa", (*stack));
-//     }
-// }
+// //     index_it(stack);
+// //     id = ft_smallest_value(&(*stack)->a);
+// //     if (ft_lst_is_sort(&(*stack)->a) == 1)
+// //         return (exit(0));
+// //     if (id == 2)
+// //     {   
+// //         if ((*stack)->a->content > (*stack)->a->next->content)
+// //             ft_swap_a(&(*stack)->a, "sa", (*stack));
+// //         ft_rrotate_a(&(*stack)->a, "rra", (*stack));
+// //     }
+// //     else if (id == 0)
+// //     {
+// //         ft_swap_a(&(*stack)->a, "sa", (*stack));
+// //         ft_rotate_a(&(*stack)->a, "ra", (*stack));
+// //     }
+// //     else
+// //     {
+// //         if ((*stack)->a->content > (*stack)->a->next->next->content)
+// //             ft_rotate_a(&(*stack)->a, "rra", (*stack));
+// //         else
+// //             ft_swap_a(&(*stack)->a, "sa", (*stack));
+// //     }
+// // }
 
-// // Move to the top the most minimal value 
-// static void ft_small_move(t_lst **stack)
-// {
-//     int small_content;
-//     int smallest_id;
-//     int stack_len;
+// // // Move to the top the most minimal value 
+// // static void ft_small_move(t_lst **stack)
+// // {
+// //     int small_content;
+// //     int smallest_id;
+// //     int stack_len;
 
-//     stack_len = ft_set_id(&(*stack)->a);
-//     smallest_id = ft_smallest_value(&(*stack)->a);
-//     small_content = ft_lstmin(&(*stack)->a)->content;
-//     if (smallest_id > stack_len / 2)
-//     {
-//         while ((*stack)->a->content != small_content)
-//             ft_rrotate_a(&(*stack)->a, "rra", (*stack));
-//     }
-//     else if (smallest_id <= stack_len / 2)
-//     {
-//         while ((*stack)->a->content != small_content)
-//             ft_rotate_a(&(*stack)->a, "ra", (*stack));
-//     }
-//     ft_push_b(&(*stack)->a, &(*stack)->b, "pb", (*stack));
-// }
+// //     stack_len = ft_set_id(&(*stack)->a);
+// //     smallest_id = ft_smallest_value(&(*stack)->a);
+// //     small_content = ft_lstmin(&(*stack)->a)->content;
+// //     if (smallest_id > stack_len / 2)
+// //     {
+// //         while ((*stack)->a->content != small_content)
+// //             ft_rrotate_a(&(*stack)->a, "rra", (*stack));
+// //     }
+// //     else if (smallest_id <= stack_len / 2)
+// //     {
+// //         while ((*stack)->a->content != small_content)
+// //             ft_rotate_a(&(*stack)->a, "ra", (*stack));
+// //     }
+// //     ft_push_b(&(*stack)->a, &(*stack)->b, "pb", (*stack));
+// // }
 
-// // This function allow to sort four to five numbers
-// static void ft_sorting_five(t_lst **stack)
-// {
-//     int id;
+// // // This function allow to sort four to five numbers
+// // static void ft_sorting_five(t_lst **stack)
+// // {
+// //     int id;
     
-//     id = ft_set_id(&(*stack)->a);
-//     if (ft_lst_is_sort(&(*stack)->a) == 1)
-//         return (exit(0));
-//     if (id == 4)
-//     {
-//         ft_small_move(stack);
-//         ft_sorted_three(stack);
-//         ft_push_a(&(*stack)->b, &(*stack)->a, "pa", (*stack));
-//     }
-//     else if (id == 5)
-//     {
-//         ft_small_move(stack);
-//         ft_small_move(stack);
-//         ft_sorted_three(stack);
-//         ft_push_a(&(*stack)->b, &(*stack)->a, "pa", (*stack));
-//         ft_push_a(&(*stack)->b, &(*stack)->a, "pa", (*stack));
-//     }
-// }
+// //     id = ft_set_id(&(*stack)->a);
+// //     if (ft_lst_is_sort(&(*stack)->a) == 1)
+// //         return (exit(0));
+// //     if (id == 4)
+// //     {
+// //         ft_small_move(stack);
+// //         ft_sorted_three(stack);
+// //         ft_push_a(&(*stack)->b, &(*stack)->a, "pa", (*stack));
+// //     }
+// //     else if (id == 5)
+// //     {
+// //         ft_small_move(stack);
+// //         ft_small_move(stack);
+// //         ft_sorted_three(stack);
+// //         ft_push_a(&(*stack)->b, &(*stack)->a, "pa", (*stack));
+// //         ft_push_a(&(*stack)->b, &(*stack)->a, "pa", (*stack));
+// //     }
+// // }
 
-// void    ft_select_sort(t_lst **stack)
-// {
-//     t_lst   *tmp;
-//     int id;
+// // void    ft_select_sort(t_lst **stack)
+// // {
+// //     t_lst   *tmp;
+// //     int id;
 
-//     id = ft_set_id(&(*stack)->a);
-//     tmp = (*stack);
+// //     id = ft_set_id(&(*stack)->a);
+// //     tmp = (*stack);
 
-//     if (id == 2)
-//     {
-//         if (tmp->a->content > tmp->a->next->content)
-//             ft_swap_a(&tmp->a, "sa", (*stack));
-//     }
-//     if (id == 3)
-//         ft_sorted_three(&tmp);
-//     if (id == 4 || id == 5)
-//         ft_sorting_five(&tmp);
-// }
+// //     if (id == 2)
+// //     {
+// //         if (tmp->a->content > tmp->a->next->content)
+// //             ft_swap_a(&tmp->a, "sa", (*stack));
+// //     }
+// //     if (id == 3)
+// //         ft_sorted_three(&tmp);
+// //     if (id == 4 || id == 5)
+// //         ft_sorting_five(&tmp);
+// // }

@@ -105,7 +105,7 @@ void    ss_movement(t_data **stack_a, t_data **stack_b, t_lst *data);
 
 // ----------------------------- SORTING ----------------------------------- //
 
-int ft_set_id(t_data **stack);
+int ft_set_pos(t_data **stack);
 int ft_smallest_value(t_data **stack);
 void    ft_select_sort(t_lst **stack);
 
@@ -116,8 +116,10 @@ void    ft_print_op(t_lst **stack);
 
 // ----------------------- TEST --------------------------- //
 
+int ft_found_median(t_lst **stack); // NEW
+
 void    ft_pre_sort(t_lst *stack);
-int  found_median(int *tab, int size);
+// int  found_median(int *tab, int size); // OLD
 void ft_stack_tab(t_lst **stack);
 void ft_sorting_tab(int *tab, int size);
 int ft_largest_value(t_lst *stack);
@@ -129,5 +131,9 @@ void    insert_sort3(t_lst *s_a, t_lst *s_b);
 int ft_cost_a(t_lst *s_a, int size);
 void    set_cost(t_lst *stack);
 t_data  *ft_cheap_cost(t_lst *stack);
+
+int get_index_max(t_data *stack);
+t_data  *hash_list(t_data **stack);
+void    index_it(t_data **stack);
 
 #endif

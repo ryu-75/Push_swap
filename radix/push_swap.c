@@ -50,13 +50,12 @@ int main(int ac, char **av)
     if (ac > 1)
     {
         // radix_sort(&stack_a, &stack_b);
+        // index_it(&stack_a);
         index_it(&stack_a);
         ft_set_pos(&stack_a);
-        ft_get_min(&stack_a, -1);
-        ft_move_3(&stack_a);
+        // ft_move_3(&stack_a);
         // ft_move_4(&stack_a, &stack_b);
         ft_set_pos(&stack_a);
-        index_it(&stack_a);
         print_lst(&stack_a, &stack_b);
     }
     // ft_print_op(&stack_a);

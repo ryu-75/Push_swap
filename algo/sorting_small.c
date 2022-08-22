@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/14 21:36:54 by nlorion           #+#    #+#             */
-/*   Updated: 2022/07/17 16:26:23 by nlorion          ###   ########.fr       */
+/*   Created: 2022/08/22 23:22:42 by nlorion           #+#    #+#             */
+/*   Updated: 2022/08/22 23:22:42 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,26 @@ static void ft_sorted_three(t_lst **stack)
 {
     int id;
     
-    ft_set_id(&(*stack)->a);
+    index_it(&(*stack)->a);
     id = ft_smallest_value(&(*stack)->a);
     if (ft_lst_is_sort(&(*stack)->a) == 1)
         return (exit(0));
-    if (id == 2)
+    printf("%d\n", id);
+    if (id + 1 == 2)
     {   
         if ((*stack)->a->content > (*stack)->a->next->content)
             ft_swap_a(&(*stack)->a, "sa", (*stack));
         ft_rrotate_a(&(*stack)->a, "rra", (*stack));
     }
-    else if (id == 0)
+    else if (id + 2 == 0)
     {
         ft_swap_a(&(*stack)->a, "sa", (*stack));
         ft_rotate_a(&(*stack)->a, "ra", (*stack));
     }
-    else
+    else if (id == 3)
     {
         if ((*stack)->a->content > (*stack)->a->next->next->content)
-            ft_rotate_a(&(*stack)->a, "rra", (*stack));
+            ft_rotate_a(&(*stack)->a, "ra", (*stack));
         else
             ft_swap_a(&(*stack)->a, "sa", (*stack));
     }
@@ -48,7 +49,7 @@ static void ft_small_move(t_lst **stack)
     int smallest_id;
     int stack_len;
 
-    stack_len = ft_set_id(&(*stack)->a);
+    stack_len = ft_set_pos(&(*stack)->a);
     smallest_id = ft_smallest_value(&(*stack)->a);
     small_content = ft_lstmin(&(*stack)->a)->content;
     if (smallest_id > stack_len / 2)
@@ -69,7 +70,7 @@ static void ft_sorting_five(t_lst **stack)
 {
     int id;
     
-    id = ft_set_id(&(*stack)->a);
+    id = ft_set_pos(&(*stack)->a);
     if (ft_lst_is_sort(&(*stack)->a) == 1)
         return (exit(0));
     if (id == 4)
@@ -93,7 +94,7 @@ void    ft_select_sort(t_lst **stack)
     t_lst   *tmp;
     int id;
 
-    id = ft_set_id(&(*stack)->a);
+    id = ft_set_pos(&(*stack)->a);
     tmp = (*stack);
 
     if (id == 2)
@@ -106,3 +107,27 @@ void    ft_select_sort(t_lst **stack)
     if (id == 4 || id == 5)
         ft_sorting_five(&tmp);
 }
+
+// CORRIGER
+/**
+ * L'algo de trie des 3 a 5 valeur
+ */
+
+// FAIRE
+/**
+ *  Set les id en les indexantx par leurs tailles 
+ * 
+ *  Bien recuperer la median par la division de la taille de la stack par 3
+ * 
+ *  Recuperer la low median et la high median puis renvoyer les valeurs correspondantes 
+ *  dans la stack B. Finir par les valeurs en dessous des deux medianes
+ * 
+ *  Le pre tri est fait apres ca
+ * 
+ *  Faire les fonctions qui vont permettre de recuperer le nombre de coup pour push les valeurs de B dans A
+ *  (Check ca avant le pre tri avec 10 ou 20 valeurs)
+ * 
+ *  Une fois le calcule de coup fonctionnel faire en sorte de push_a en se basant sur le nombre de coup pour
+ *  finir le tri
+ * 
+ */

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   min_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 11:35:43 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/21 19:43:19 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/08/22 18:45:28 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int  ft_get_min(t_data **stack, int val)
     while (head)
     {
         min = *stack;
-        if (head->idx < min->idx && val == -1)
+        if (head->idx < min->idx && val != -1)
             min = head;
         head = head->next;
     }
@@ -64,33 +64,6 @@ int  ft_get_min(t_data **stack, int val)
 //     return (max->idx);
 // }
 
-void    ft_move_3(t_data **stack)
-{
-    // if (ft_lst_is_sort(stack))
-        // return (exit(1));
-    if ((*stack)->idx == 1)
-    {
-        if ((*stack)->idx > (*stack)->next->idx)
-            ft_swap(stack, "sa", *stack);
-        else
-            ft_rrotate(stack, "rra", *stack);
-    }
-    else if ((*stack)->idx == 0)
-    {
-        ft_swap(stack, "sa",*stack);
-        ft_rotate(stack, "ra", *stack);
-    }
-    else
-    {
-        if ((*stack)->idx == 2 && (*stack)->next->idx == 0)
-            ft_rotate(stack, "rra", *stack);
-        else if ((*stack)->idx == 2 && (*stack)->next->idx == 1)
-        {
-            ft_swap(stack, "sa", *stack);
-            // ft_rrotate(stack, "rra", *stack);
-        }
-    }
-}
 
 // static void    ft_move_small(t_data **stack_a, t_data **stack_b)
 // {
@@ -112,26 +85,57 @@ void    ft_move_3(t_data **stack)
 //     ft_push_b(stack_a, stack_b, "pb", *stack_a);
 // }
 
+void    ft_move_3(t_data **stack)
+{
+    if ((*stack)->idx == 1)
+    {
+        if ((*stack)->idx > (*stack)->next->idx)
+            ft_swap(stack, "sa", *stack);
+        else
+            ft_rrotate(stack, "rra", *stack);
+    }
+    else if ((*stack)->idx == 0)
+    {
+        ft_swap(stack, "sa",*stack);
+        ft_rotate(stack, "ra", *stack);
+    }
+    else
+    {
+        if ((*stack)->idx == 2 && (*stack)->next->idx == 0)
+            ft_rotate(stack, "ra", *stack);
+        else if ((*stack)->idx == 2 && (*stack)->next->idx == 1)
+        {
+            ft_swap(stack, "sa", *stack);
+            ft_rrotate(stack, "rra", *stack);
+        }
+    }
+}
+
 void    ft_move_4(t_data **stack_a, t_data **stack_b)
 {
     int distance;
 
     distance = found_distance(stack_a, ft_get_min(stack_a, -1));
-    printf("%d\n", distance);
+    // ft_move_small(stack_a, stack_b);
     if (ft_lst_is_sort(stack_a))
         return (exit(1));
     if (distance == 1)
-        ft_rotate(stack_a, "ra", *stack_a);
+        ft_rrotate(stack_a, "ra", *stack_a);
     else if (distance == 2)
     {
         ft_rotate(stack_a, "ra", *stack_a);
         ft_rotate(stack_a, "ra", *stack_a);
     }
     else if (distance == 3)
-        ft_rrotate(stack_a, "rra", *stack_a);
+    {
+        ft_rotate(stack_a, "rra", *stack_a);
+        ft_rotate(stack_a, "rra", *stack_a);
+    }
+    printf("dist : %d\n", distance);
     ft_push_b(stack_a, stack_b, "pb", *stack_b);
     ft_move_3(stack_a);
-    // ft_push_a(stack_a, stack_b, "pa", *stack_a);
+    // ft_push_a(stack_b, stack_a, "pa", *stack_a);
+    // ft_rotate(stack_a, "ra", *stack_a);
 }
 
 // void    ft_small_sort(t_data **stack_a, t_data **stack_b)
