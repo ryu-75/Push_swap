@@ -6,26 +6,27 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 00:35:27 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/22 22:02:27 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/08/23 18:18:10 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int get_index_max(t_data *stack)
+int get_index_max(t_data **stack)
 {
     t_data  *max_value;
     t_data  *max;
     t_obj o = {0};
     
-    max_value = stack;
-    max = stack;
-    while (max_value && o.i < ft_lsize(stack))
+    max_value = (*stack);
+    max = (*stack);
+    while (max_value && o.i < ft_lsize(*stack))
     {
         if (max_value->content > max->idx - 1)
             max->idx = o.i;
         o.i++;
     }
+    printf("%d\n", max->idx);
     return (max->idx);
 }
 

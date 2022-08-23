@@ -12,44 +12,44 @@
 
 #include "include/push_swap.h"
 
-void    print_lst(t_lst **stack)
+void    print_lst(t_data **stack)
 {
-    printf("\tpos\t\tstack a\t\t\tcost\t\tidx\n");
-    while ((*stack)->a)
+    printf("\tpos\t\tstack\t\t\tcost\t\tidx\n");
+    while ((*stack))
     {
-        printf("\t%d\t|\t%d\t\t|\t%d\t|\t%d\t\n", (*stack)->a->pos, (*stack)->a->content, (*stack)->a->cost, (*stack)->a->id);
-        (*stack)->a = (*stack)->a->next;
+        printf("\t%d\t|\t%d\t\t|\t%d\t|\t%d\t\n", (*stack)->pos, (*stack)->content, (*stack)->cost, (*stack)->idx);
+        (*stack) = (*stack)->next;
     }
-    write(1, "\n", 1);
-    printf("\tpos\t\tstack b\t\t\tcost\t\tid\t\n");
-    while ((*stack)->b)
-    {
-        printf("\t%d\t|\t%d\t\t\n", (*stack)->b->pos, (*stack)->b->content);
-        (*stack)->b = (*stack)->b->next;
-    }
+    write (1, "\n", 1);
 }
 
 int main(int ac, char **av)
 {
-    t_lst   *stack_a;
+    t_data  *stack_a;
+    t_data  *stack_b;
+    int size;
 
-    stack_a = malloc(sizeof(t_lst));
-    stack_a->a = convert_av(&(stack_a)->a, av);
-    stack_a->size_a = ft_lsize(stack_a->a);
-    ft_lstmax(&stack_a->a);
+    stack_a = malloc(sizeof(t_data));
+    stack_a = convert_av(&stack_a, av);
+    size = ft_lsize(stack_a);
+    stack_b = malloc(sizeof(t_data));
+    stack_b = NULL;
     if (ac > 1)
     {   
-        // Register tab lenght
-        stack_a->size_tab = ft_tablen(av);
-        if (stack_a->size_tab <= 5)
+        if (size <= 5)
         {    // Sort only small value less then 5
-            ft_select_sort(&stack_a);
-            ft_set_pos(&(stack_a)->a);
+            ft_select_sort(&stack_a, &stack_b);
         }
-        // Sort above 5 until +1000 or more
+        // Retrieve pos, index and cost
+        ft_set_pos(&stack_a);
+        found_median(&stack_a);
+        index_it(&stack_a);
+        index_it(&stack_b);
+        // Print all stack 
         print_lst(&stack_a);
+        print_lst(&stack_b);
     }
-    ft_print_op(&stack_a);
+    // ft_print_op(&stack_a);
     return (0);
 }
 

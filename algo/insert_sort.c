@@ -6,23 +6,23 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:43:08 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/22 20:17:57 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/08/23 16:39:45 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int push_finder(t_lst *s_a, t_lst *s_b)
+int push_finder(t_data **s_a, t_data **s_b)
 {
     int small;
     
-    ft_push_b(&s_a->a, &s_b->b, "pb", s_a);
+    ft_push_b(s_a, s_b, "pb", *s_a);
     if (s_a)
-        small = ft_lstmin(&s_a->a)->content;
+        small = ft_lstmin(s_a)->content;
     return (small);
 }
 
-void    ra_or_rra(t_lst *stack, int size, int pos)
+void    ra_or_rra(t_data **stack, int size, int pos)
 {
     int low_pos;
     
@@ -31,63 +31,63 @@ void    ra_or_rra(t_lst *stack, int size, int pos)
     {
         while (pos > 0)
         {
-            ft_rotate_a(&stack->a, "ra", stack);
+            ft_rotate(stack, "ra", *stack);
             pos--;
         }
     }
     else if (pos > size / 2)
         while (low_pos > 0)
     {
-        ft_rrotate_a(&stack->a, "rra", stack);
+        ft_rrotate(stack, "rra", *stack);
         low_pos--;
     }
 }
 
-void    insert_sort(t_lst *s_a, t_lst *s_b)
+void    insert_sort(t_data **s_a, t_data **s_b)
 {
     int low_val;
     int size;
     int pos;
     t_data  *t_a;
     
-    t_a = s_a->a;
-    if (ft_lst_is_sort(&s_a->a))
+    t_a = *s_a;
+    if (ft_lst_is_sort(s_a))
         return ;
     if (t_a)
     {
-        size = ft_lsize(s_a->a);
+        size = ft_lsize(*s_a);
         low_val = ft_lstmin(&t_a)->content;
-        pos = small_id_finder(s_a->a, low_val);
+        pos = small_id_finder(s_a, low_val);
         ra_or_rra(s_a, size, pos);
-        ft_push_b(&s_a->a, &s_b->b, "pb", s_a);
+        ft_push_b(s_a, s_b, "pb", *s_a);
     }
 }
 
-void    insert_sort2(t_lst *s_a, t_lst *s_b)
+void    insert_sort2(t_data **s_a, t_data **s_b)
 {
     t_data  *t_a;
     int size;
     
-    t_a = s_a->a;
-    size = ft_lsize(s_a->a);
+    t_a = *s_a;
+    size = ft_lsize(*s_a);
     while (size > 0)
     {
         if (t_a->content)
             insert_sort(s_a, s_b);
         size--;
     }
-    s_b->size_b = ft_lsize(s_b->b);
+    (*s_b)->size = ft_lsize(*s_b);
 }
 
-void    insert_sort3(t_lst *s_a, t_lst *s_b)
+void    insert_sort3(t_data **s_a, t_data **s_b)
 {
     int size_b;
 
-    size_b = ft_lsize(s_b->b);
+    size_b = ft_lsize(*s_b);
     while (size_b > 0)
     {
-        if (s_b->b->content < s_a->a->content)
-            ft_push_a(&s_b->b, &s_a->a, "pa", s_a);
+        if ((*s_b)->content < (*s_a)->content)
+            ft_push_a(s_b, s_a, "pa", *s_a);
         size_b--;
     }
 }

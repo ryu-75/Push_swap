@@ -13,98 +13,100 @@
 #include "../include/push_swap.h"
 
 // This function allow to sort three numbers
-static void ft_sorted_three(t_lst **stack)
+static void ft_move_3(t_data **a)
 {
-    int id;
+    int pos;
     
-    index_it(&(*stack)->a);
-    id = ft_smallest_value(&(*stack)->a);
-    if (ft_lst_is_sort(&(*stack)->a) == 1)
+    index_it(a);
+    pos = ft_smallest_value(a);
+    if (ft_lst_is_sort(a) == 1)
         return (exit(0));
-    if (id == 2)
+    if (pos == 2)
     {   
-        if ((*stack)->a->content > (*stack)->a->next->content)
-            ft_swap_a(&(*stack)->a, "sa", (*stack));
-        ft_rrotate_a(&(*stack)->a, "rra", (*stack));
+        if ((*a)->content > (*a)->next->content)
+            ft_swap(a, "sa", (*a));
+        ft_rrotate(a, "rra", (*a));
     }
-    else if (id == 0)
+    else if (pos == 0)
     {
-        ft_swap_a(&(*stack)->a, "sa", (*stack));
-        ft_rotate_a(&(*stack)->a, "ra", (*stack));
+        ft_swap(a, "sa", (*a));
+        ft_rotate(a, "ra", (*a));
     }
     else
     {
-        if ((*stack)->a->content > (*stack)->a->next->next->content)
-            ft_rotate_a(&(*stack)->a, "ra", (*stack));
+        if ((*a)->content > (*a)->next->next->content)
+            ft_rotate(a, "ra", (*a));
         else
-            ft_swap_a(&(*stack)->a, "sa", (*stack));
+            ft_swap(a, "sa", (*a));
     }
 }
 
 // Move to the top the most minimal value 
-static void ft_small_move(t_lst **stack)
+static void ft_small_move(t_data **a, t_data **b)
 {
     int small_content;
     int smallest_id;
     int stack_len;
-
-    stack_len = ft_set_pos(&(*stack)->a);
-    smallest_id = ft_smallest_value(&(*stack)->a);
-    small_content = ft_lstmin(&(*stack)->a)->content;
+    (void) b;
+    stack_len = ft_set_pos(a);
+    smallest_id = ft_smallest_value(a);
+    small_content = ft_lstmin(a)->content;
     if (smallest_id > stack_len / 2)
     {
-        while ((*stack)->a->content != small_content)
-            ft_rrotate_a(&(*stack)->a, "rra", (*stack));
+        while ((*a)->content != small_content)
+            ft_rrotate(a, "rra", (*a));
     }
     else if (smallest_id <= stack_len / 2)
     {
-        while ((*stack)->a->content != small_content)
-            ft_rotate_a(&(*stack)->a, "ra", (*stack));
+        while ((*a)->content != small_content)
+            ft_rotate(a, "ra", (*a));
     }
-    ft_push_b(&(*stack)->a, &(*stack)->b, "pb", (*stack));
+    ft_push_b(a, b, "pb", (*a));
 }
 
 // This function allow to sort four to five numbers
-static void ft_sorting_five(t_lst **stack)
+static void ft_move_4_5(t_data **a, t_data **b)
 {
-    int id;
+    int pos;
     
-    id = ft_set_pos(&(*stack)->a);
-    if (ft_lst_is_sort(&(*stack)->a) == 1)
+    pos = ft_set_pos(a);
+    if (ft_lst_is_sort(a) == 1)
         return (exit(0));
-    if (id == 4)
+    if (pos == 4)
     {
-        ft_small_move(stack);
-        ft_sorted_three(stack);
-        ft_push_a(&(*stack)->b, &(*stack)->a, "pa", (*stack));
+        ft_small_move(a, b);
+        pos = ft_set_pos(a);
+        ft_move_3(a);
+        ft_push_a(b, a, "pa", (*a));
     }
-    else if (id == 5)
+    else if (pos == 5)
     {
-        ft_small_move(stack);
-        ft_small_move(stack);
-        ft_sorted_three(stack);
-        ft_push_a(&(*stack)->b, &(*stack)->a, "pa", (*stack));
-        ft_push_a(&(*stack)->b, &(*stack)->a, "pa", (*stack));
+        ft_small_move(a, b);
+        ft_small_move(a, b);
+        pos = ft_set_pos(a);
+        ft_move_3(a);
+        ft_push_a(b, a, "pa", (*a));
+        ft_push_a(b, a, "pa", (*a));
     }
 }
 
-void    ft_select_sort(t_lst **stack)
+void    ft_select_sort(t_data **a, t_data **b)
 {
-    t_lst   *tmp;
-    int id;
+    t_data   *tmp;
+    int pos;
 
-    id = ft_set_pos(&(*stack)->a);
-    tmp = (*stack);
+    pos = ft_set_pos(a);
+    tmp = (*a);
 
-    if (id == 2)
+    if (pos == 2)
     {
-        if (tmp->a->content > tmp->a->next->content)
-            ft_swap_a(&tmp->a, "sa", (*stack));
+        if (tmp->content > tmp->next->content)
+            ft_swap(a, "sa", (*a));
     }
-    if (id == 3)
-        ft_sorted_three(&tmp);
-    if (id == 4 || id == 5)
-        ft_sorting_five(&tmp);
+    else if (pos == 3)
+        ft_move_3(a);
+    else if (pos == 4 || pos == 5)
+        ft_move_4_5(a, b);
 }
 
 // CORRIGER

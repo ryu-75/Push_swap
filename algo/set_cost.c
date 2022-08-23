@@ -1,16 +1,16 @@
 #include "../include/push_swap.h"
 
-t_data  *ft_cheap_cost(t_lst *stack)
+t_data  *ft_cheap_cost(t_data **stack)
 {
     t_data  *tmp;
     t_data  *min;
     int size;
     int pos;
 
-    size = ft_lsize(stack->a);
-    tmp = stack->a;
+    size = ft_lsize(*stack);
+    tmp = *stack;
     min = tmp;
-    pos = small_id_finder(stack->a, ft_lstmin(&stack->a)->content);
+    pos = small_id_finder(stack, ft_lstmin(stack)->content);
     while (tmp)
     {
         if (pos > size / 2)
@@ -28,14 +28,14 @@ t_data  *ft_cheap_cost(t_lst *stack)
     return (min);
 }
 
-int ft_cost_a(t_lst *s_a, int size)
+int ft_cost_a(t_data **s_a, int size)
 {
     int cost;
     t_obj o = {.i = 0};
     int pos;
 
-    size = ft_lsize(s_a->a);
-    pos = small_id_finder(s_a->a, ft_lstmin(&s_a->a)->content);
+    size = ft_lsize(*s_a);
+    pos = small_id_finder(s_a, ft_lstmin(s_a)->content);
     if (pos <= size / 2)
     {        
         while (o.i++ < size / 2)
@@ -50,27 +50,27 @@ int ft_cost_a(t_lst *s_a, int size)
     return (cost);
 }
 
-void    set_cost(t_lst *stack)
+void    set_cost(t_data **stack)
 {
     t_data  *tmp;
     // int pos;
     int size;
 
-    size = ft_lsize(stack->a);
+    size = ft_lsize(*stack);
     // pos = small_id_finder(stack->a, ft_lstmin(&stack->a)->content);
-    tmp = stack->a->next;
+    tmp = (*stack)->next;
     while (tmp)
     {
-        if (ft_lstmin(&stack->a)->content < size / 2)
+        if (ft_lstmin(stack)->content < size / 2)
         {
-            if (tmp == ft_lstmin(&stack->a))
+            if (tmp == ft_lstmin(stack))
                 tmp->cost = ft_cost_a(stack, size);
             else
                 tmp->cost = 0;
         }
-        else if (ft_lstmin(&stack->a)->content > size / 2)
+        else if (ft_lstmin(stack)->content > size / 2)
         {
-            if (tmp == ft_lstmin(&stack->a))
+            if (tmp == ft_lstmin(stack))
                 tmp->cost = ft_cost_a(stack, size);
             else
                 tmp->cost = 0;

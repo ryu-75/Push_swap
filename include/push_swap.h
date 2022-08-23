@@ -34,19 +34,10 @@ typedef struct s_data
     int             leader;
     int             count;
     int             mark;
+    int             size;
+    t_op            *oplst;
     struct s_data   *next;
 }               t_data;
-
-typedef struct s_lst
-{
-    int             *stack_tab;
-    size_t          size_tab;
-    t_data          *a;
-    t_data          *b;
-    t_op            *oplst;
-    int             size_a;
-    int             size_b;
-}               t_lst;
 
 typedef struct s_obj
 {
@@ -84,55 +75,44 @@ void	ft_del_lastel(t_data **stack);
 int	ft_lst_is_sort(t_data **stack);
 int	ft_lsize(t_data *lst);
 
-// ----------------------------- A MOVEMENT -------------------------------- //
+// ----------------------------- A & B MOVEMENT -------------------------------- //
 
-void    ft_swap_a(t_data **stack_a, char *s, t_lst *data);
-void    ft_push_a(t_data **stack_b, t_data **stack_a, char *s, t_lst *data);
-void    ft_rotate_a(t_data **stack_a, char *s, t_lst *data);
-void    ft_rrotate_a(t_data **stack_a, char *s, t_lst *data);
+void    ft_swap(t_data **stack, char *s, t_data *data);
+void    ft_push_a(t_data **b, t_data **a, char *s, t_data *data);
+void    ft_push_b(t_data **a, t_data **b, char *s, t_data *data);
+void    ft_rotate(t_data **stack, char *s, t_data *data);
+void    ft_rrotate(t_data **stack, char *s, t_data *data);
 
-// ----------------------------- B MOVEMENT -------------------------------- //
+// ------------------------- AB MOVEMENT ------------------------------ //
 
-void    ft_swap_b(t_data **stack_b, char *s, t_lst *data);
-void    ft_push_b(t_data **stack_a, t_data **stack_b, char *s, t_lst *data);
-void    ft_rotate_b(t_data **stack_b, char *s, t_lst *data);
-void    ft_rrotate_b(t_data **stack_b, char *s, t_lst *data);
-
-// ------------------------- A and B MOVEMENT ------------------------------ //
-
-void    rrr_movement(t_data **stack_a, t_data **stack_b, t_lst *data);
-void    ss_movement(t_data **stack_a, t_data **stack_b, t_lst *data);
+void    rrr_movement(t_data **a, t_data **b, t_data *data);
+void    ss_movement(t_data **a, t_data **b, t_data *data);
 
 // ----------------------------- SORTING ----------------------------------- //
 
 int ft_set_pos(t_data **stack);
 int ft_smallest_value(t_data **stack);
-void    ft_select_sort(t_lst **stack);
+void    ft_select_sort(t_data **a, t_data **b);
 
 // --------------------------- OPERATION ----------------------------------- //
 
-void    ft_ops(char *str, t_lst *op);
-void    ft_print_op(t_lst **stack);
+void    ft_ops(char *str, t_data *op);
+void    ft_print_op(t_data **stack);
 
 // ----------------------- TEST --------------------------- //
 
-int ft_found_median(t_lst **stack); // NEW
-
-void    ft_pre_sort(t_lst *stack);
+int found_median(t_data **stack_a); // NEW
+void    ft_pre_sort(t_data **stack);
 // int  found_median(int *tab, int size); // OLD
-void ft_stack_tab(t_lst **stack);
-void ft_sorting_tab(int *tab, int size);
-int ft_largest_value(t_lst *stack);
-int small_id_finder(t_data *stack, int low_val);
-void    insert_sort(t_lst *s_a, t_lst *s_b);
-void    ra_or_rra(t_lst *stack, int size, int pos);
-void    insert_sort2(t_lst *s_a, t_lst *s_b);
-void    insert_sort3(t_lst *s_a, t_lst *s_b);
-int ft_cost_a(t_lst *s_a, int size);
-void    set_cost(t_lst *stack);
-t_data  *ft_cheap_cost(t_lst *stack);
-
-int get_index_max(t_data *stack);
+void ft_stack_tab(t_data **stack);
+void ft_sorting_tab(int **tab, int size);
+int ft_largest_value(t_data **stack);
+int small_id_finder(t_data **stack, int low_val);
+void    ra_or_rra(t_data **stack, int size, int pos);
+int ft_cost_a(t_data **s_a, int size);
+void    set_cost(t_data **stack);
+t_data  *ft_cheap_cost(t_data **stack);
+int get_index_max(t_data **stack);
 t_data  *hash_list(t_data **stack);
 void    index_it(t_data **stack);
 

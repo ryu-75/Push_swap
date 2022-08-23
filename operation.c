@@ -13,12 +13,12 @@
 #include "include/push_swap.h"
 
 // Stack each operation in struct
-void    ft_ops(char *str, t_lst *op)
+void    ft_ops(char *str, t_data *op)
 {
     t_op  *tmp;
     t_op  *new;
 
-    new = malloc(sizeof(t_lst));
+    new = malloc(sizeof(t_data));
     if (!new)
         return ;
     new->operation = str;
@@ -35,7 +35,7 @@ void    ft_ops(char *str, t_lst *op)
 }
 
 // Print operation
-void    ft_print_op(t_lst **stack)
+void    ft_print_op(t_data **stack)
 {
     t_op  *tmp;
     t_obj o = {.i = 1};
