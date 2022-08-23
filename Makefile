@@ -6,7 +6,7 @@ EXEC			= $(PREFIXE)
 # ------------- [ IMPORT LIBRARY ] ------------------ #
 
 DEPENDS			= includes/push_swap.h
-LBFLAGS			= libft/*.c
+LBFLAGS			= Libft/*.c
 
 SRC				= $(wildcard *.c algo/*.c)
 

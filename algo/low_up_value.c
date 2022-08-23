@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   low_up_value.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 12:30:25 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/22 23:16:28 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/08/23 02:12:02 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int ft_smallest_value(t_data **stack)
 {
     t_data  *tmp;
 
-    tmp = (*stack);
+    tmp = *stack;
     while (ft_lstmin(stack)->content != tmp->content)
         tmp = tmp->next;
     return (tmp->id);

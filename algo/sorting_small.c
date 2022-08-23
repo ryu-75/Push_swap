@@ -21,19 +21,18 @@ static void ft_sorted_three(t_lst **stack)
     id = ft_smallest_value(&(*stack)->a);
     if (ft_lst_is_sort(&(*stack)->a) == 1)
         return (exit(0));
-    printf("%d\n", id);
-    if (id + 1 == 2)
+    if (id == 2)
     {   
         if ((*stack)->a->content > (*stack)->a->next->content)
             ft_swap_a(&(*stack)->a, "sa", (*stack));
         ft_rrotate_a(&(*stack)->a, "rra", (*stack));
     }
-    else if (id + 2 == 0)
+    else if (id == 0)
     {
         ft_swap_a(&(*stack)->a, "sa", (*stack));
         ft_rotate_a(&(*stack)->a, "ra", (*stack));
     }
-    else if (id == 3)
+    else
     {
         if ((*stack)->a->content > (*stack)->a->next->next->content)
             ft_rotate_a(&(*stack)->a, "ra", (*stack));
