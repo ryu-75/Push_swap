@@ -47,7 +47,6 @@ static void ft_small_move(t_data **a, t_data **b)
     int small_content;
     int smallest_id;
     int stack_len;
-    (void) b;
     stack_len = ft_set_pos(a);
     smallest_id = ft_smallest_value(a);
     small_content = ft_lstmin(a)->content;

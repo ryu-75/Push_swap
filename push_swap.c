@@ -40,11 +40,18 @@ int main(int ac, char **av)
         {    // Sort only small value less then 5
             ft_select_sort(&stack_a, &stack_b);
         }
-        // Retrieve pos, index and cost
-        ft_set_pos(&stack_a);
-        found_median(&stack_a);
-        index_it(&stack_a);
-        index_it(&stack_b);
+        else if (size > 5)
+        {
+            ft_pre_sort(&stack_a, &stack_b);
+            // Retrieve pos, index and cost
+            ft_set_pos(&stack_a);
+            index_it(&stack_a);
+            if (stack_b)
+            {
+                index_it(&stack_b);
+                ft_set_pos(&stack_b);
+            }       
+        }
         // Print all stack 
         print_lst(&stack_a);
         print_lst(&stack_b);

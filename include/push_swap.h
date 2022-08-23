@@ -74,6 +74,7 @@ void	ft_addfront(t_data **stack, t_data *new);
 void	ft_del_lastel(t_data **stack);
 int	ft_lst_is_sort(t_data **stack);
 int	ft_lsize(t_data *lst);
+t_data  *ft_lst_last(t_data **stack);
 
 // ----------------------------- A & B MOVEMENT -------------------------------- //
 
@@ -93,27 +94,29 @@ void    ss_movement(t_data **a, t_data **b, t_data *data);
 int ft_set_pos(t_data **stack);
 int ft_smallest_value(t_data **stack);
 void    ft_select_sort(t_data **a, t_data **b);
+int found_median(t_data **stack_a);
+void    ft_pre_sort(t_data **a, t_data **b);
+int ft_is_chunck(t_data **stack, int med);
 
 // --------------------------- OPERATION ----------------------------------- //
 
 void    ft_ops(char *str, t_data *op);
 void    ft_print_op(t_data **stack);
 
-// ----------------------- TEST --------------------------- //
+// ------------------------------ COST ------------------------------------- //
 
-int found_median(t_data **stack_a); // NEW
-void    ft_pre_sort(t_data **stack);
-// int  found_median(int *tab, int size); // OLD
-void ft_stack_tab(t_data **stack);
-void ft_sorting_tab(int **tab, int size);
-int ft_largest_value(t_data **stack);
-int small_id_finder(t_data **stack, int low_val);
-void    ra_or_rra(t_data **stack, int size, int pos);
 int ft_cost_a(t_data **s_a, int size);
 void    set_cost(t_data **stack);
 t_data  *ft_cheap_cost(t_data **stack);
+
+
+void ft_sorting_tab(int **tab, int size);
+int small_id_finder(t_data **stack, int low_val);
 int get_index_max(t_data **stack);
 t_data  *hash_list(t_data **stack);
 void    index_it(t_data **stack);
+void    ra_or_rra(t_data **stack, int size, int pos);
+int ft_largest_value(t_data **stack);
+void ft_stack_tab(t_data **stack);
 
 #endif

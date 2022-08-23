@@ -40,6 +40,19 @@ void	ft_del_lastel(t_data **stack)
 	tmp->next = NULL;
 }
 
+t_data	*ft_lst_last(t_data **stack)
+{
+	t_data *head;
+
+	head = *stack;
+	if (!head)
+		return (NULL);
+	head = *stack;
+	while (!head->next)
+		head = head->next;
+	return (head);
+}
+
 // Return stack size
 int	ft_lsize(t_data *lst)
 {
