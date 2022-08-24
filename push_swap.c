@@ -28,6 +28,7 @@ int main(int ac, char **av)
     t_data  *stack_a;
     t_data  *stack_b;
     int size;
+    t_obj o = {0};
 
     stack_a = malloc(sizeof(t_data));
     stack_a = convert_av(&stack_a, av);
@@ -42,9 +43,20 @@ int main(int ac, char **av)
         }
         else if (size > 5)
         {
-            ft_pre_sort(&stack_a, &stack_b);
-            // Retrieve pos, index and cost
             ft_set_pos(&stack_a);
+            ft_pre_sort(&stack_a, &stack_b);
+
+            while (o.i++ < 3)
+                ft_push_a(&stack_b, &stack_a, "pa", stack_a);
+
+            ft_set_pos(&stack_a);
+            ft_set_pos(&stack_b);
+            ft_set_cost(&stack_b);
+            ft_set_cost(&stack_a);
+
+            t_data  *target = ft_found_target(&stack_a, &stack_b);
+            printf("target = %d\n", target->idx);
+            // Retrieve pos, index and cost
             index_it(&stack_a);
             if (stack_b)
             {
@@ -75,5 +87,5 @@ int main(int ac, char **av)
  *              - Stocker les valeurs dans un tableau.
  *              - On trie ce tableau
  *              - 
- * stack
+ *  Revoir l affiche des operations. Changer de fonction pour l appel et la comparaison des valeurs appeler entre sa et sb par exemple
  */

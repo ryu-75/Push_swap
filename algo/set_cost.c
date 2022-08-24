@@ -1,80 +1,32 @@
 #include "../include/push_swap.h"
 
-t_data  *ft_cheap_cost(t_data **stack)
+void    ft_set_cost(t_data **stack)
 {
-    t_data  *tmp;
-    t_data  *min;
-    int size;
-    int pos;
-
-    size = ft_lsize(*stack);
-    tmp = *stack;
-    min = tmp;
-    pos = small_id_finder(stack, ft_lstmin(stack)->content);
-    while (tmp)
-    {
-        if (pos > size / 2)
-        {
-            if (tmp->content < min->content)
-                min = tmp;
-        }
-        if (pos <= size / 2)
-        {
-            if (tmp->content < min->content)
-                min = tmp;
-        }
-        tmp = tmp->next;
-    }
-    return (min);
-}
-
-int ft_cost_a(t_data **s_a, int size)
-{
-    int cost;
-    t_obj o = {.i = 0};
-    int pos;
-
-    size = ft_lsize(*s_a);
-    pos = small_id_finder(s_a, ft_lstmin(s_a)->content);
-    if (pos <= size / 2)
-    {        
-        while (o.i++ < size / 2)
-            cost = pos * -1;
-    }
-    else if (pos > size / 2)
-    {
-        while (o.i++ < size)
-            cost = size - (pos + 1);   
-    }
-    printf("%d", cost);
-    return (cost);
-}
-
-void    set_cost(t_data **stack)
-{
-    t_data  *tmp;
-    // int pos;
+    t_data  *head;
     int size;
 
+    head = *stack;
     size = ft_lsize(*stack);
-    // pos = small_id_finder(stack->a, ft_lstmin(&stack->a)->content);
-    tmp = (*stack)->next;
-    while (tmp)
+    while (head)
     {
-        if (ft_lstmin(stack)->content < size / 2)
-        {
-            if (tmp == ft_lstmin(stack))
-                tmp->cost = ft_cost_a(stack, size);
-            else
-                tmp->cost = 0;
-        }
-        else if (ft_lstmin(stack)->content > size / 2)
-        {
-            if (tmp == ft_lstmin(stack))
-                tmp->cost = ft_cost_a(stack, size);
-            else
-                tmp->cost = 0;
-        }
-        tmp = tmp->next;
+        if (head->pos >= size / 2)
+            head->cost = head->pos - size;
+        else
+            head->cost = head->pos;
+        head = head->next;
     }
+}
+
+t_data  *ft_found_target(t_data **a, t_data **b)
+{
+    if ((*a)->idx < (*b)->idx && ft_lst_last(b)->idx > (*a)->idx)
+        return (*a);
+    else if ((*b)->idx < ft_lstmin(a)->content)
+        return (ft_lstmin(a));
+    else if ((*b)->idx > ft_lstmax(a)->content)
+    {
+        if (ft_lstmax(a)->next)
+            return (*a);
+    }
+    return (NULL);
 }

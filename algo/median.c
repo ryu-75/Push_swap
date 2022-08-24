@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 22:27:10 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/23 23:17:26 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/08/24 17:21:22 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,24 +45,22 @@ int ft_is_chunck(t_data **stack, int med)
 
 void    ft_pre_sort(t_data **a, t_data **b)
 {
-    t_data  *t_a;
     int med_median;
     int hi_median;
     
-    t_a = *a;
-    med_median = found_median(a);
-    hi_median = med_median * 2;
-    while (!ft_is_chunck(a, med_median))
+    med_median = found_median(a);   // Ex pour 100 = 33
+    hi_median = med_median * 2;     // 66
+    while (!ft_is_chunck(a, hi_median))
     {
-        if (t_a->idx < med_median)
+        if ((*a)->idx < med_median)
             ft_rotate(a, "ra", *a);
-        if (t_a->idx >= med_median && t_a->idx <= hi_median)
+        if ((*a)->idx >= med_median && (*a)->idx <= hi_median)
             ft_push_b(a, b, "pb", *a);
-        else if (t_a->idx >= hi_median)
+        else if ((*a)->idx > hi_median)
         {
             ft_push_b(a, b, "pb", *a);
             ft_rotate(b, "rb", *b);
-        } 
+        }
     }
     while (ft_lsize(*a) > 2)
         ft_push_b(a, b, "pb", *a); 

@@ -27,13 +27,12 @@ typedef struct s_data
 {
     int             content;
     int             pos;
-    int             id;
     int             idx;
+    int             id;
     int             cost;
+    int             abs;
     int             max;
-    int             leader;
     int             count;
-    int             mark;
     int             size;
     t_op            *oplst;
     struct s_data   *next;
@@ -105,9 +104,8 @@ void    ft_print_op(t_data **stack);
 
 // ------------------------------ COST ------------------------------------- //
 
-int ft_cost_a(t_data **s_a, int size);
 void    set_cost(t_data **stack);
-t_data  *ft_cheap_cost(t_data **stack);
+void    ft_set_cost(t_data **stack);
 
 
 void ft_sorting_tab(int **tab, int size);
@@ -118,5 +116,5 @@ void    index_it(t_data **stack);
 void    ra_or_rra(t_data **stack, int size, int pos);
 int ft_largest_value(t_data **stack);
 void ft_stack_tab(t_data **stack);
-
+t_data  *ft_found_target(t_data **a, t_data **b);
 #endif

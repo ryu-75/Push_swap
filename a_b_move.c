@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 21:37:09 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/23 16:18:10 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/08/24 18:37:33 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void    rrr_movement(t_data **a, t_data **b, t_data *data)
 {
     ft_rrotate(a, "rra", data);
     ft_rrotate(b, "rrb", data);
-    ft_ops("rrr", data);
+    write(1, "rrr", 3);
+    // ft_ops("rrr", data);
 }
 
 // Stack a and stack b swap at the same time
@@ -25,5 +26,6 @@ void    ss_movement(t_data **a, t_data **b, t_data *data)
 {
     ft_swap(a, "sa", data);
     ft_swap(b, "sb", data);
-    ft_ops("ss", data);
+    write (1, "ss", 2);
+    // ft_ops("ss", data);
 }
