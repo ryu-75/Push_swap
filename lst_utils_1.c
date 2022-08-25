@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 22:37:37 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/23 18:19:55 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/08/25 19:18:56 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ void	ft_clear_stack(t_data **stack, void (*del)(int))
 // Add a new element at first of list 
 void	ft_addfront(t_data **stack, t_data *new)
 {
+	if (!(*stack))
+		return ;
 	new->next = *stack;
 	*stack = new;
 }

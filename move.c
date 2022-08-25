@@ -16,6 +16,8 @@
 void    ft_swap(t_data **stack, char *s, t_data *data)
 {
     t_data  *tmp;
+    (void) data;
+    
     tmp = NULL;
     if (!(*stack) || !stack)
         return ;
@@ -23,14 +25,19 @@ void    ft_swap(t_data **stack, char *s, t_data *data)
     (*stack)->next = tmp->next;
     tmp->next = (*stack);
     *stack = tmp;
-    if (s)
-        ft_ops(s, data);
+    if (*s == 'a')
+        ft_putstr_fd("sa\n", 0);
+    else
+        ft_putstr_fd("sb\n", 0);
 }
 
 // Push the first element from stack _a to stack_b
 void    ft_push_a(t_data **b, t_data **a, char *s, t_data *data)
 {
     t_data  *tmp;
+    (void) data;
+    (void) s;
+
     tmp = NULL;
     if (b)
     {
@@ -39,14 +46,15 @@ void    ft_push_a(t_data **b, t_data **a, char *s, t_data *data)
         tmp->next = (*a);
         (*a) = tmp;
     }
-    if (s)
-        ft_ops(s, data);
+    ft_putstr_fd("pa\n", 0);
 }
 
 // Push the first element from stack _b to stack_a
 void    ft_push_b(t_data **a, t_data **b, char *s, t_data *data)
 {
     t_data  *tmp;
+    (void) data;
+    (void) s;
 
     tmp = NULL;
     if (a)
@@ -56,8 +64,7 @@ void    ft_push_b(t_data **a, t_data **b, char *s, t_data *data)
         tmp->next = (*b);
         (*b) = tmp;
     }
-    if (s)
-        ft_ops(s, data);
+    ft_putstr_fd("pb\n", 0);
 }
 
 // Shift up all element at the top by 1 of stack_a
@@ -65,31 +72,32 @@ void    ft_push_b(t_data **a, t_data **b, char *s, t_data *data)
 void    ft_rotate(t_data **stack, char *s, t_data *data)
 {
     t_data  *tmp;
-    
-    tmp = NULL;
-    if (!(*stack))
-        return ;
-    tmp = (*stack);
-    ft_lstadd_back_value(stack, add_newlst((*stack), tmp->content));
-    ft_del_firstel(stack);
-    if (s)
-        ft_ops(s, data);
+    (void) data;
+
+    tmp = *stack;
+    (*stack) = (*stack)->next;
+    ft_lstadd_back_value(stack, tmp);
+    tmp->next = NULL;
+        if (*s == 'a')
+        ft_putstr_fd("ra\n", 0);
+    else
+        ft_putstr_fd("rb\n", 0);
 }
 
 // Shift up all element at the top by 1 of stack_b
 // The last element begin the first one
-void    ft_rrotate(t_data **stack, char *s, t_data *data)
+void    ft_rrotate(t_data **stack, char *s, t_data *data) // REVOIR
 {
     t_data  *tmp;
+    (void) data;
     
-    tmp = NULL;
-    if (!(*stack))
-        return ;
-    tmp = (*stack);
-    while (tmp->next)
-        tmp = tmp->next;
-    ft_addfront(stack, add_newlst((*stack), tmp->content));
-    ft_del_lastel(stack);
-    if (s)
-        ft_ops(s, data);
+    tmp = *stack;
+    while ((*stack)->next)
+        (*stack) = (*stack)->next; // tmp = 11
+    ft_addfront(&tmp, (*stack));
+    (*stack)->next = NULL;
+    if (*s == 'a')
+        ft_putstr_fd("rra\n", 0);
+    else
+        ft_putstr_fd("rrb\n", 0);
 }

@@ -27,48 +27,44 @@ int main(int ac, char **av)
 {
     t_data  *stack_a;
     t_data  *stack_b;
-    int size;
-    t_obj o = {0};
+    // t_obj o = {0};
 
     stack_a = malloc(sizeof(t_data));
     stack_a = convert_av(&stack_a, av);
-    size = ft_lsize(stack_a);
+    stack_a->size = ft_lsize(stack_a);
     stack_b = malloc(sizeof(t_data));
     stack_b = NULL;
     if (ac > 1)
     {   
-        if (size <= 5)
+        if (stack_a->size <= 5)
         {    // Sort only small value less then 5
             ft_select_sort(&stack_a, &stack_b);
         }
-        else if (size > 5)
+        else if (stack_a->size > 5)
         {
             ft_set_pos(&stack_a);
-            ft_pre_sort(&stack_a, &stack_b);
-
-            while (o.i++ < 3)
-                ft_push_a(&stack_b, &stack_a, "pa", stack_a);
-
-            ft_set_pos(&stack_a);
-            ft_set_pos(&stack_b);
-            ft_set_cost(&stack_b);
-            ft_set_cost(&stack_a);
-
-            t_data  *target = ft_found_target(&stack_a, &stack_b);
-            printf("target = %d\n", target->idx);
-            // Retrieve pos, index and cost
             index_it(&stack_a);
-            if (stack_b)
-            {
-                index_it(&stack_b);
-                ft_set_pos(&stack_b);
-            }       
+            ft_rrotate(&stack_a, "a", stack_a);
+            // ft_pre_sort(&stack_a, &stack_b);
+
+            // ft_set_pos(&stack_a);
+            // ft_set_pos(&stack_b);
+            
+            // t_data  *target = ft_found_target(&stack_a, &stack_b);
+            // printf("target = %d\n", target->idx);
+            // printf("best = %d\n", ft_best_cost(&stack_a, &stack_b));
+
+            // index_it(&stack_a);
+            // // if (stack_b)
+            // // {
+            // //     ft_set_pos(&stack_b);
+            // //     index_it(&stack_b);
+            // // }       
         }
         // Print all stack 
         print_lst(&stack_a);
-        print_lst(&stack_b);
+        // print_lst(&stack_b);
     }
-    // ft_print_op(&stack_a);
     return (0);
 }
 

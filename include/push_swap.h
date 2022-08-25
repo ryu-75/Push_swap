@@ -17,12 +17,6 @@
 
 // ---------------------------- STRUCTURE ----------------------------------- //
 
-typedef struct s_op
-{
-    struct s_op     *next;
-    char    *operation;
-}               t_op;
-
 typedef struct s_data
 {
     int             content;
@@ -34,7 +28,6 @@ typedef struct s_data
     int             max;
     int             count;
     int             size;
-    t_op            *oplst;
     struct s_data   *next;
 }               t_data;
 
@@ -97,11 +90,6 @@ int found_median(t_data **stack_a);
 void    ft_pre_sort(t_data **a, t_data **b);
 int ft_is_chunck(t_data **stack, int med);
 
-// --------------------------- OPERATION ----------------------------------- //
-
-void    ft_ops(char *str, t_data *op);
-void    ft_print_op(t_data **stack);
-
 // ------------------------------ COST ------------------------------------- //
 
 void    set_cost(t_data **stack);
@@ -117,4 +105,7 @@ void    ra_or_rra(t_data **stack, int size, int pos);
 int ft_largest_value(t_data **stack);
 void ft_stack_tab(t_data **stack);
 t_data  *ft_found_target(t_data **a, t_data **b);
+
+t_data  *ft_cheap_cost(t_data **b);
+int ft_best_cost(t_data **a, t_data **b);
 #endif

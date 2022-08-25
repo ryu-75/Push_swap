@@ -24,20 +24,20 @@ static void ft_move_3(t_data **a)
     if (pos == 2)
     {   
         if ((*a)->content > (*a)->next->content)
-            ft_swap(a, "sa", (*a));
-        ft_rrotate(a, "rra", (*a));
+            ft_swap(a, "a", (*a));
+        ft_rrotate(a, "a", (*a));
     }
     else if (pos == 0)
     {
-        ft_swap(a, "sa", (*a));
-        ft_rotate(a, "ra", (*a));
+        ft_swap(a, "a", (*a));
+        ft_rotate(a, "a", (*a));
     }
     else
     {
         if ((*a)->content > (*a)->next->next->content)
-            ft_rotate(a, "ra", (*a));
+            ft_rotate(a, "a", (*a));
         else
-            ft_swap(a, "sa", (*a));
+            ft_swap(a, "a", (*a));
     }
 }
 
@@ -53,14 +53,14 @@ static void ft_small_move(t_data **a, t_data **b)
     if (smallest_id > stack_len / 2)
     {
         while ((*a)->content != small_content)
-            ft_rrotate(a, "rra", (*a));
+            ft_rrotate(a, "a", (*a));
     }
     else if (smallest_id <= stack_len / 2)
     {
         while ((*a)->content != small_content)
-            ft_rotate(a, "ra", (*a));
+            ft_rotate(a, "a", (*a));
     }
-    ft_push_b(a, b, "pb", (*a));
+    ft_push_b(a, b, "b", (*a));
 }
 
 // This function allow to sort four to five numbers
@@ -84,8 +84,8 @@ static void ft_move_4_5(t_data **a, t_data **b)
         ft_small_move(a, b);
         pos = ft_set_pos(a);
         ft_move_3(a);
-        ft_push_a(b, a, "pa", (*a));
-        ft_push_a(b, a, "pa", (*a));
+        ft_push_a(b, a, "a", (*a));
+        ft_push_a(b, a, "a", (*a));
     }
 }
 
@@ -100,7 +100,7 @@ void    ft_select_sort(t_data **a, t_data **b)
     if (pos == 2)
     {
         if (tmp->content > tmp->next->content)
-            ft_swap(a, "sa", (*a));
+            ft_swap(a, "a", (*a));
     }
     else if (pos == 3)
         ft_move_3(a);
