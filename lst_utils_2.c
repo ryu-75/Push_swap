@@ -47,8 +47,7 @@ t_data	*ft_lst_last(t_data **stack)
 	head = *stack;
 	if (!head)
 		return (NULL);
-	head = *stack;
-	while (!head->next)
+	while (head->next)
 		head = head->next;
 	return (head);
 }

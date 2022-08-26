@@ -19,11 +19,11 @@ void    ft_set_cost(t_data **stack)
 
 t_data  *ft_found_target(t_data **a, t_data **b)
 {
-    if ((*a)->idx < (*b)->idx && ft_lst_last(b)->idx > (*a)->idx)
+    if ((*a)->idx > (*b)->idx && ft_lst_last(a)->idx < (*b)->idx)
         return (*a);
-    else if ((*b)->idx < ft_lstmin(a)->content)
+    else if ((*b)->idx < ft_lstmin(a)->idx)
         return (ft_lstmin(a));
-    else if ((*b)->idx > ft_lstmax(a)->content)
+    else if ((*b)->idx > ft_lstmax(a)->idx)
     {
         if (ft_lstmax(a)->next)
             return (ft_lstmax(a)->next);
@@ -31,50 +31,54 @@ t_data  *ft_found_target(t_data **a, t_data **b)
     }
     while (a)
     {
-        if ((a && (*a)->next) && (*a)->idx < (*b)->idx && (*a)->idx > (*b)->idx)
+        if ((a && (*a)->next) && (*a)->idx < (*b)->idx && (*a)->next->idx > (*b)->idx)
             return ((*a)->next);
+        (*a) = (*a)->next;
     }
     return (NULL);
 }
 
-int ft_best_cost(t_data **a, t_data **b)
+int ft_best_cost(int c_a, int c_b)
 {
-    if ((*a)->cost >= 0 && (*b)->cost >= 0)
+    if (c_a >= 0 && c_b >= 0)
     {
-        if ((*a)->cost >= 0)
-            return ((*a)->cost);
+        if (c_a >= 0)
+            return (c_a);
         else
-            return ((*b)->cost);
+            return (c_b);
     }
-    else if ((*a)->cost < 0 && (*b)->cost < 0)
+    else if (c_a < 0 && c_b < 0)
     {
-        if ((*a)->cost < 0)
-            return ((*a)->cost * -1);
+        if (c_a < c_b)
+            return (c_a * -1);
         else
-            return ((*b)->cost * -1);
+            return (c_b * -1);
     }
-    else if (((*a)->cost < 0  && (*b)->cost >= 0) ||
-        ((*a)->cost >= 0 && (*b)->cost < 0))
+    else if ((c_a <= 0 && c_b >= 0) ||
+        (c_a >= 0 && c_b <= 0))
     {
-        if ((*a)->cost < 0)
-            return ((*a)->cost);
-        else if ((*a)->cost >= 0)
-            return ((*a)->next->cost);
+        if (c_a < 0)
+            c_a *= -1;
+        else if (c_b < 0)
+            c_b *= -1;
+        return (c_a + c_b);
     }
     return (0);
 }
 
-// t_data  *ft_set_abs(t_data **a, t_data **b)
-// {
-//     t_data  *target;
+void    ft_set_abs(t_data **a, t_data **b)
+{
+    t_data  *target;
+    t_data  *tmp;
 
-//     ft_set_cost(b);
-//     while (*a)
-//     {
-//         target = ft_found_target(a, b);
-
-//     }
-// }
+    tmp = (*b);
+    while (tmp)
+    {
+        target = ft_found_target(a, b);
+        tmp->abs = ft_best_cost(target->cost, tmp->cost);
+        tmp = tmp->next;
+    }
+}
 
 t_data  *ft_cheap_cost(t_data **b)
 {
@@ -85,9 +89,9 @@ t_data  *ft_cheap_cost(t_data **b)
     while (head)
     {
         cost = head;
-        if (head->abs < cost->abs)
-            cost = head;
+        if (head->abs > cost->abs)
+            head = cost;
         head = head->next;
     }
-    return (cost);
+    return (head);
 }

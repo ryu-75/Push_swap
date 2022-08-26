@@ -107,5 +107,6 @@ void ft_stack_tab(t_data **stack);
 t_data  *ft_found_target(t_data **a, t_data **b);
 
 t_data  *ft_cheap_cost(t_data **b);
-int ft_best_cost(t_data **a, t_data **b);
+int ft_best_cost(int c_a, int c_b);
+void    ft_set_abs(t_data **a, t_data **b);
 #endif

@@ -30,6 +30,7 @@ all				: $(EXEC)
 # ---------------- [ Delete ] ---------------------- #
 
 clean			: 
+	find . -type f | xargs touch
 	rm -rf *.o algo/*.o
 
 fclean			: clean

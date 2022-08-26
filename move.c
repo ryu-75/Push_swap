@@ -89,15 +89,21 @@ void    ft_rotate(t_data **stack, char *s, t_data *data)
 void    ft_rrotate(t_data **stack, char *s, t_data *data) // REVOIR
 {
     t_data  *tmp;
+    t_data  *new;
     (void) data;
-    
-    tmp = *stack;
-    while ((*stack)->next)
-        (*stack) = (*stack)->next; // tmp = 11
-    ft_addfront(&tmp, (*stack));
-    (*stack)->next = NULL;
-    if (*s == 'a')
-        ft_putstr_fd("rra\n", 0);
-    else
-        ft_putstr_fd("rrb\n", 0);
+
+    if ((*stack) && (*stack)->next)
+    {
+        tmp = (*stack);
+        while ((*stack)->next->next)
+            (*stack) = (*stack)->next; // tmp = 11
+        new = (*stack)->next;
+        (*stack)->next = NULL;
+        new->next = tmp;
+        (*stack) = new;
+        if (*s == 'a')
+            ft_putstr_fd("rra\n", 0);
+        else
+            ft_putstr_fd("rrb\n", 0);
+    }
 }
