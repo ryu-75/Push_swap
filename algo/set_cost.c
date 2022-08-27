@@ -23,7 +23,7 @@ t_data  *ft_found_target(t_data **a, t_data **b)
         return (*a);
     else if ((*b)->idx < ft_lstmin(a)->idx)
         return (ft_lstmin(a));
-    else if ((*b)->idx > ft_lstmax(a)->idx)
+    else if (   (*b)->idx > ft_lstmax(a)->idx)
     {
         if (ft_lstmax(a)->next)
             return (ft_lstmax(a)->next);
@@ -42,7 +42,7 @@ int ft_best_cost(int c_a, int c_b)
 {
     if (c_a >= 0 && c_b >= 0)
     {
-        if (c_a >= 0)
+        if (c_a > c_b)
             return (c_a);
         else
             return (c_b);

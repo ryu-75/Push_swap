@@ -26,6 +26,8 @@ void    print_lst(t_data **stack)
 void    push_swap(t_data **stack_a, t_data **stack_b)
 {
     t_data  *head_b;
+    // t_data  *cheap;
+    // t_data  *add;
 
     head_b = *stack_b;
     if (!head_b)
@@ -37,10 +39,10 @@ void    push_swap(t_data **stack_a, t_data **stack_b)
         ft_set_cost(stack_a);
         ft_set_cost(stack_b);
         ft_set_abs(stack_a, stack_b);
-        ft_cheap_cost(stack_b);
-        ft_found_target(stack_a, stack_b);
-        ft_final_move(stack_a, stack_b, (*stack_a)->cost, (*stack_b)->cost);
-        ft_push_a(stack_b, stack_a);
+        // ft_cheap_cost(stack_b);
+        // ft_found_target(stack_a, stack_b);
+        ft_final_move(stack_a, stack_b, ft_cheap_cost(stack_b)->cost, ft_found_target(stack_a, stack_b)->cost);
+        // ft_push_a(stack_b, stack_a);
         head_b = head_b->next;
     }
 }
