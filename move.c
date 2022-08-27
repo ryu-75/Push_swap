@@ -13,10 +13,9 @@
 #include "include/push_swap.h"
 
 // Swap the first element with the second one
-void    ft_swap(t_data **stack, char *s, t_data *data)
+void    ft_swap(t_data **stack, char *s)
 {
     t_data  *tmp;
-    (void) data;
     
     tmp = NULL;
     if (!(*stack) || !stack)
@@ -32,11 +31,9 @@ void    ft_swap(t_data **stack, char *s, t_data *data)
 }
 
 // Push the first element from stack _a to stack_b
-void    ft_push_a(t_data **b, t_data **a, char *s, t_data *data)
+void    ft_push_a(t_data **b, t_data **a)
 {
     t_data  *tmp;
-    (void) data;
-    (void) s;
 
     tmp = NULL;
     if (b)
@@ -50,11 +47,9 @@ void    ft_push_a(t_data **b, t_data **a, char *s, t_data *data)
 }
 
 // Push the first element from stack _b to stack_a
-void    ft_push_b(t_data **a, t_data **b, char *s, t_data *data)
+void    ft_push_b(t_data **a, t_data **b)
 {
     t_data  *tmp;
-    (void) data;
-    (void) s;
 
     tmp = NULL;
     if (a)
@@ -69,16 +64,15 @@ void    ft_push_b(t_data **a, t_data **b, char *s, t_data *data)
 
 // Shift up all element at the top by 1 of stack_a
 // The first element begin the last
-void    ft_rotate(t_data **stack, char *s, t_data *data)
+void    ft_rotate(t_data **stack, char *s)
 {
     t_data  *tmp;
-    (void) data;
 
     tmp = *stack;
     (*stack) = (*stack)->next;
     ft_lstadd_back_value(stack, tmp);
     tmp->next = NULL;
-        if (*s == 'a')
+    if (*s == 'a')
         ft_putstr_fd("ra\n", 0);
     else
         ft_putstr_fd("rb\n", 0);
@@ -86,11 +80,10 @@ void    ft_rotate(t_data **stack, char *s, t_data *data)
 
 // Shift up all element at the top by 1 of stack_b
 // The last element begin the first one
-void    ft_rrotate(t_data **stack, char *s, t_data *data) // REVOIR
+void    ft_rrotate(t_data **stack, char *s)
 {
     t_data  *tmp;
     t_data  *new;
-    (void) data;
 
     if ((*stack) && (*stack)->next)
     {

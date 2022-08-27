@@ -29,9 +29,9 @@ t_data  *ft_found_target(t_data **a, t_data **b)
             return (ft_lstmax(a)->next);
         return (*a);
     }
-    while (a)
+    while ((*a))
     {
-        if ((a && (*a)->next) && (*a)->idx < (*b)->idx && (*a)->next->idx > (*b)->idx)
+        if (((*a) && (*a)->next) && ((*a)->idx < (*b)->idx) && ((*a)->next->idx > (*b)->idx))
             return ((*a)->next);
         (*a) = (*a)->next;
     }

@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 22:27:10 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/25 17:33:41 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/08/27 14:19:19 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void    ft_pre_sort2(t_data **a, t_data **b)
     
     while (ft_lsize(*a) > 2 && o.i <= ft_lsize(*a))
     {
-        ft_push_b(a, b, "b", *a);
+        ft_push_b(a, b);
         o.i++;
     }
 }
@@ -65,13 +65,13 @@ void    ft_pre_sort(t_data **a, t_data **b)
     while (ft_is_chunck(a, hi_median) && o.i <= ft_lsize(*a))
     {
         if ((*a)->idx < mid_median)
-            ft_rotate(a, "a", *a);
+            ft_rotate(a, "a");
         if ((*a)->idx >= mid_median && (*a)->idx <= hi_median)
-            ft_push_b(a, b, "b", *a);
+            ft_push_b(a, b);
         else if ((*a)->idx > hi_median)
         {
-            ft_push_b(a, b, "b", *a);
-            ft_rotate(b, "b", *b);
+            ft_push_b(a, b);
+            ft_rotate(b, "b");
         }
         o.i++;
     }

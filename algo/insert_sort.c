@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:43:08 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/23 16:39:45 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/08/27 14:21:35 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int push_finder(t_data **s_a, t_data **s_b)
 {
     int small;
     
-    ft_push_b(s_a, s_b, "pb", *s_a);
+    ft_push_b(s_a, s_b);
     if (s_a)
         small = ft_lstmin(s_a)->content;
     return (small);
@@ -31,14 +31,14 @@ void    ra_or_rra(t_data **stack, int size, int pos)
     {
         while (pos > 0)
         {
-            ft_rotate(stack, "ra", *stack);
+            ft_rotate(stack, "ra");
             pos--;
         }
     }
     else if (pos > size / 2)
         while (low_pos > 0)
     {
-        ft_rrotate(stack, "rra", *stack);
+        ft_rrotate(stack, "rra");
         low_pos--;
     }
 }
@@ -59,7 +59,7 @@ void    insert_sort(t_data **s_a, t_data **s_b)
         low_val = ft_lstmin(&t_a)->content;
         pos = small_id_finder(s_a, low_val);
         ra_or_rra(s_a, size, pos);
-        ft_push_b(s_a, s_b, "pb", *s_a);
+        ft_push_b(s_a, s_b);
     }
 }
 
@@ -87,7 +87,7 @@ void    insert_sort3(t_data **s_a, t_data **s_b)
     while (size_b > 0)
     {
         if ((*s_b)->content < (*s_a)->content)
-            ft_push_a(s_b, s_a, "pa", *s_a);
+            ft_push_a(s_b, s_a);
         size_b--;
     }
 }

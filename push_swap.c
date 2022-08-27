@@ -23,11 +23,32 @@ void    print_lst(t_data **stack)
     write (1, "\n", 1);
 }
 
+void    push_swap(t_data **stack_a, t_data **stack_b)
+{
+    t_data  *head_b;
+
+    head_b = *stack_b;
+    if (!head_b)
+        return ;
+    while (head_b)
+    {
+        ft_set_pos(stack_a);
+        ft_set_pos(stack_b);
+        ft_set_cost(stack_a);
+        ft_set_cost(stack_b);
+        ft_set_abs(stack_a, stack_b);
+        ft_cheap_cost(stack_b);
+        ft_found_target(stack_a, stack_b);
+        ft_final_move(stack_a, stack_b, (*stack_a)->cost, (*stack_b)->cost);
+        ft_push_a(stack_b, stack_a);
+        head_b = head_b->next;
+    }
+}
+
 int main(int ac, char **av)
 {
     t_data  *stack_a;
     t_data  *stack_b;
-    // t_obj o = {0};
 
     stack_a = malloc(sizeof(t_data));
     stack_a = convert_av(&stack_a, av);
@@ -35,7 +56,7 @@ int main(int ac, char **av)
     stack_b = malloc(sizeof(t_data));
     stack_b = NULL;
     if (ac > 1)
-    {   
+    {
         index_it(&stack_a);
         if (stack_a->size <= 5)
         {    // Sort only small value less then 5
@@ -44,13 +65,7 @@ int main(int ac, char **av)
         else if (stack_a->size > 5)
         {
             ft_pre_sort(&stack_a, &stack_b);
-            ft_set_pos(&stack_a);
-            ft_set_pos(&stack_b);
-            ft_set_cost(&stack_a);
-            ft_set_cost(&stack_b);
-            ft_set_abs(&stack_a, &stack_b);
-            // ft_cheap_cost(&stack_b);
-            // ft_found_target(&stack_a, &stack_b);
+            push_swap(&stack_a, &stack_b);
         }
         // Print all stack 
         print_lst(&stack_a);
@@ -58,21 +73,3 @@ int main(int ac, char **av)
     }
     return (0);
 }
-
-/**
- *  Trouver la plus petite valeur qui est le plus proche de la stack->content dans la 1er et 2eme moitie de la stack
- *  Une fois trouve, comparer ces deux valeurs entre elle, si le coup est plus faible, envoyer la valeur en haut de la stack puis push_b
- *  Repeter l action jusqu a que la stack soit vite
- *  Ensuite trouver la valeur la plus grande dans la stack, meme principe, trouver le coup le plus faible est envoyer tous les chiffres dans la stack A
- *  
- *  Possible contrainte : chunck la stack A 25 ou 25 si 100 ou plus
- * 
- */
-
-/**
- *  Si radix :
- *              - Stocker les valeurs dans un tableau.
- *              - On trie ce tableau
- *              - 
- *  Revoir l affiche des operations. Changer de fonction pour l appel et la comparaison des valeurs appeler entre sa et sb par exemple
- */

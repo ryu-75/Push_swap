@@ -24,20 +24,20 @@ static void ft_move_3(t_data **a)
     if (pos == 2)
     {   
         if ((*a)->content > (*a)->next->content)
-            ft_swap(a, "a", (*a));
-        ft_rrotate(a, "a", (*a));
+            ft_swap(a, "a");
+        ft_rrotate(a, "a");
     }
     else if (pos == 0)
     {
-        ft_swap(a, "a", (*a));
-        ft_rotate(a, "a", (*a));
+        ft_swap(a, "a");
+        ft_rotate(a, "a");
     }
     else
     {
         if ((*a)->content > (*a)->next->next->content)
-            ft_rotate(a, "a", (*a));
+            ft_rotate(a, "a");
         else
-            ft_swap(a, "a", (*a));
+            ft_swap(a, "a");
     }
 }
 
@@ -53,14 +53,14 @@ static void ft_small_move(t_data **a, t_data **b)
     if (smallest_id > stack_len / 2)
     {
         while ((*a)->content != small_content)
-            ft_rrotate(a, "a", (*a));
+            ft_rrotate(a, "a");
     }
     else if (smallest_id <= stack_len / 2)
     {
         while ((*a)->content != small_content)
-            ft_rotate(a, "a", (*a));
+            ft_rotate(a, "a");
     }
-    ft_push_b(a, b, "b", (*a));
+    ft_push_b(a, b);
 }
 
 // This function allow to sort four to five numbers
@@ -76,7 +76,7 @@ static void ft_move_4_5(t_data **a, t_data **b)
         ft_small_move(a, b);
         pos = ft_set_pos(a);
         ft_move_3(a);
-        ft_push_a(b, a, "pa", (*a));
+        ft_push_a(b, a);
     }
     else if (pos == 5)
     {
@@ -84,8 +84,8 @@ static void ft_move_4_5(t_data **a, t_data **b)
         ft_small_move(a, b);
         pos = ft_set_pos(a);
         ft_move_3(a);
-        ft_push_a(b, a, "a", (*a));
-        ft_push_a(b, a, "a", (*a));
+        ft_push_a(b, a);
+        ft_push_a(b, a);
     }
 }
 
@@ -100,34 +100,10 @@ void    ft_select_sort(t_data **a, t_data **b)
     if (pos == 2)
     {
         if (tmp->content > tmp->next->content)
-            ft_swap(a, "a", (*a));
+            ft_swap(a, "a");
     }
     else if (pos == 3)
         ft_move_3(a);
     else if (pos == 4 || pos == 5)
         ft_move_4_5(a, b);
 }
-
-// CORRIGER
-/**
- * L'algo de trie des 3 a 5 valeur
- */
-
-// FAIRE
-/**
- *  Set les id en les indexantx par leurs tailles 
- * 
- *  Bien recuperer la median par la division de la taille de la stack par 3
- * 
- *  Recuperer la low median et la high median puis renvoyer les valeurs correspondantes 
- *  dans la stack B. Finir par les valeurs en dessous des deux medianes
- * 
- *  Le pre tri est fait apres ca
- * 
- *  Faire les fonctions qui vont permettre de recuperer le nombre de coup pour push les valeurs de B dans A
- *  (Check ca avant le pre tri avec 10 ou 20 valeurs)
- * 
- *  Une fois le calcule de coup fonctionnel faire en sorte de push_a en se basant sur le nombre de coup pour
- *  finir le tri
- * 
- */

@@ -70,16 +70,16 @@ t_data  *ft_lst_last(t_data **stack);
 
 // ----------------------------- A & B MOVEMENT -------------------------------- //
 
-void    ft_swap(t_data **stack, char *s, t_data *data);
-void    ft_push_a(t_data **b, t_data **a, char *s, t_data *data);
-void    ft_push_b(t_data **a, t_data **b, char *s, t_data *data);
-void    ft_rotate(t_data **stack, char *s, t_data *data);
-void    ft_rrotate(t_data **stack, char *s, t_data *data);
+void    ft_swap(t_data **stack, char *s);
+void    ft_push_a(t_data **b, t_data **a);
+void    ft_push_b(t_data **a, t_data **b);
+void    ft_rotate(t_data **stack, char *s);
+void    ft_rrotate(t_data **stack, char *s);
 
 // ------------------------- AB MOVEMENT ------------------------------ //
 
-void    rrr_movement(t_data **a, t_data **b, t_data *data);
-void    ss_movement(t_data **a, t_data **b, t_data *data);
+void    rrr_movement(t_data **a, t_data **b);
+void    ss_movement(t_data **a, t_data **b);
 
 // ----------------------------- SORTING ----------------------------------- //
 
@@ -105,7 +105,7 @@ void    ra_or_rra(t_data **stack, int size, int pos);
 int ft_largest_value(t_data **stack);
 void ft_stack_tab(t_data **stack);
 t_data  *ft_found_target(t_data **a, t_data **b);
-
+void    ft_final_move(t_data **stack_a, t_data **stack_b, int cost_a, int cost_b);
 t_data  *ft_cheap_cost(t_data **b);
 int ft_best_cost(int c_a, int c_b);
 void    ft_set_abs(t_data **a, t_data **b);
