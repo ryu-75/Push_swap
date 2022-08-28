@@ -35,10 +35,9 @@ void    ft_push_a(t_data **b, t_data **a)
 {
     t_data  *tmp;
 
-    tmp = NULL;
+    tmp = (*b);
     if (b)
     {
-        tmp = (*b);
         (*b) = tmp->next;
         tmp->next = (*a);
         (*a) = tmp;
@@ -51,10 +50,9 @@ void    ft_push_b(t_data **a, t_data **b)
 {
     t_data  *tmp;
 
-    tmp = NULL;
+    tmp = (*a);
     if (a)
     {
-        tmp = (*a);
         (*a) = tmp->next;
         tmp->next = (*b);
         (*b) = tmp;

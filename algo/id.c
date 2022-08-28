@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   id.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 00:35:27 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/23 18:18:10 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/08/28 14:47:33 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int get_index_max(t_data **stack)
             max->idx = o.i;
         o.i++;
     }
-    printf("%d\n", max->idx);
     return (max->idx);
 }
 

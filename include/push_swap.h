@@ -79,6 +79,7 @@ void    ft_rrotate(t_data **stack, char *s);
 // ------------------------- AB MOVEMENT ------------------------------ //
 
 void    rrr_movement(t_data **a, t_data **b);
+void    rr_movement(t_data **a, t_data **b);
 void    ss_movement(t_data **a, t_data **b);
 
 // ----------------------------- SORTING ----------------------------------- //
@@ -92,7 +93,6 @@ int ft_is_chunck(t_data **stack, int med);
 
 // ------------------------------ COST ------------------------------------- //
 
-void    set_cost(t_data **stack);
 void    ft_set_cost(t_data **stack);
 
 
@@ -109,4 +109,7 @@ void    ft_final_move(t_data **stack_a, t_data **stack_b, int cost_a, int cost_b
 t_data  *ft_cheap_cost(t_data **b);
 int ft_best_cost(int c_a, int c_b);
 void    ft_set_abs(t_data **a, t_data **b);
+void    radix_sort(t_data **stack_a, t_data **stack_b);
+
+void    last_sort(t_data **stack_a);
 #endif

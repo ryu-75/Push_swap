@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   median.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 22:27:10 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/27 14:19:19 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/08/28 17:39:08 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,44 +36,34 @@ int ft_is_chunck(t_data **stack, int med)
     tmp = *stack;
     while (tmp)
     {
-        if (tmp->idx < med)
-            return (1);
+        if (tmp->idx > med)
+            return (0);
         tmp = tmp->next;
     }
-    return (0);
-}
-
-void    ft_pre_sort2(t_data **a, t_data **b)
-{
-    t_obj o = {0};
-    
-    while (ft_lsize(*a) > 2 && o.i <= ft_lsize(*a))
-    {
-        ft_push_b(a, b);
-        o.i++;
-    }
+    return (1);
 }
 
 void    ft_pre_sort(t_data **a, t_data **b)
 {
     int mid_median;
     int hi_median;
-    t_obj o = {0};
-    
+    t_data  *t_a;
+
+    t_a = *a;
     mid_median = found_median(a);   // Ex pour 100 = 33
     hi_median = mid_median * 2;     // 66
-    while (ft_is_chunck(a, hi_median) && o.i <= ft_lsize(*a))
+    while (!ft_is_chunck(a, mid_median))
     {
-        if ((*a)->idx < mid_median)
+        if (t_a->idx < mid_median)
             ft_rotate(a, "a");
-        if ((*a)->idx >= mid_median && (*a)->idx <= hi_median)
+        if (t_a->idx >= mid_median && t_a->idx <= hi_median)
             ft_push_b(a, b);
-        else if ((*a)->idx > hi_median)
+        else if (t_a->idx > hi_median)
         {
             ft_push_b(a, b);
             ft_rotate(b, "b");
-        }
-        o.i++;
-    }
-    ft_pre_sort2(a, b);
+        }    
+    }    
+    while (ft_lsize(*a) > 2)
+        ft_push_b(a, b);
 }

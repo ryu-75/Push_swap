@@ -19,21 +19,26 @@ void    ft_set_cost(t_data **stack)
 
 t_data  *ft_found_target(t_data **a, t_data **b)
 {
-    if ((*a)->idx > (*b)->idx && ft_lst_last(a)->idx < (*b)->idx)
-        return (*a);
-    else if ((*b)->idx < ft_lstmin(a)->idx)
+    t_data  *t_a;
+    t_data  *t_b;
+
+    t_a = *a;
+    t_b = *b;
+    if (t_a->idx > t_b->idx && ft_lst_last(a)->idx < t_b->idx)
+        return (t_a);
+    else if (t_b->idx < ft_lstmin(a)->idx)
         return (ft_lstmin(a));
-    else if (   (*b)->idx > ft_lstmax(a)->idx)
+    else if (t_b->idx > ft_lstmax(a)->idx)
     {
         if (ft_lstmax(a)->next)
             return (ft_lstmax(a)->next);
-        return (*a);
+        return (t_a);
     }
-    while ((*a))
+    while (t_a)
     {
-        if (((*a) && (*a)->next) && ((*a)->idx < (*b)->idx) && ((*a)->next->idx > (*b)->idx))
-            return ((*a)->next);
-        (*a) = (*a)->next;
+        if ((t_a && t_a->next) && (t_a->idx < t_b->idx) && (t_a->next->idx > t_b->idx))
+            return (t_a->next);
+        t_a = t_a->next;
     }
     return (NULL);
 }
@@ -82,16 +87,16 @@ void    ft_set_abs(t_data **a, t_data **b)
 
 t_data  *ft_cheap_cost(t_data **b)
 {
-    t_data  *head;
     t_data  *cost;
+    t_data  *head;
 
-    head = *b;
+    head = (*b);
+    cost = (*b);
     while (head)
     {
-        cost = head;
-        if (head->abs > cost->abs)
-            head = cost;
+        if (cost->abs > head->abs)
+            cost = head;
         head = head->next;
     }
-    return (head);
+    return (cost);
 }

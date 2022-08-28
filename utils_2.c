@@ -35,3 +35,27 @@ int  ft_tablen(char **av)
     o.i--;
     return (o.i);
 }
+
+// static void    ft_last_op(t_data **stack_a, t_data *min)
+// {
+//     while (min->cost > 0)
+//     {
+//         ft_rotate(stack_a, "ra");
+//         min->cost--;
+//     }
+//     while (min->cost < 0)
+//     {
+//         ft_rrotate(stack_a, "rra");
+//         min->cost++;
+//     }
+// }
+
+void    last_sort(t_data **stack_a)
+{
+    // t_data  *min;
+
+    // min = ft_lstmin(stack_a);
+    ft_set_pos(stack_a);
+    ft_set_cost(stack_a);
+    // ft_last_op(stack_a, min);
+}

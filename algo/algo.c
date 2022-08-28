@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 14:52:08 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/28 01:37:33 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/08/28 16:18:57 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ void    use_rrotate(t_data **stack_a, t_data **stack_b, int *cost_a, int *cost_b
 {
     while (*cost_a > 0 || *cost_b > 0)
     {
-        ft_rotate(stack_a, "ra");
-        ft_rotate(stack_b, "rb");
+        rr_movement(stack_a, stack_b);
         (*cost_a)--;
         (*cost_b)--;
     }
@@ -45,8 +44,7 @@ void    use_rrr(t_data **stack_a, t_data **stack_b, int *cost_a, int *cost_b)
 {
     while (*cost_a < 0 || *cost_b < 0)
     {
-        ft_rrotate(stack_a, "rra");
-        ft_rrotate(stack_b, "rrb");
+        rrr_movement(stack_a, stack_b);
         (*cost_a)++;
         (*cost_b)++; 
     }
@@ -54,16 +52,16 @@ void    use_rrr(t_data **stack_a, t_data **stack_b, int *cost_a, int *cost_b)
 
 void    ft_final_move(t_data **stack_a, t_data **stack_b, int cost_a, int cost_b)
 {
-    while (cost_a != 0 || cost_b != 0)
+    while ((cost_a != 0 || cost_b != 0))
     {
         if (cost_a > 0 && cost_b <= 0)
-            use_rotate(stack_a, &cost_a, "ra");
+            use_rotate(stack_a, &cost_a, "a");
         else if (cost_b > 0 && cost_a <= 0)
-            use_rotate(stack_b, &cost_b, "rb");
+            use_rotate(stack_b, &cost_b, "b");
         else if (cost_a < 0 && cost_b >= 0)
-            use_reverse(stack_a, &cost_a, "rra");
+            use_reverse(stack_a, &cost_a, "a");
         else if (cost_b < 0 && cost_a >= 0)
-            use_reverse(stack_b, &cost_b, "rrb");
+            use_reverse(stack_b, &cost_b, "b");
         else if (cost_a > 0 && cost_b > 0)
             use_rrotate(stack_a, stack_b, &cost_a, &cost_b);
         else if (cost_a < 0 && cost_b < 0)
