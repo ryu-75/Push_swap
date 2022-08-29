@@ -8,7 +8,7 @@ EXEC			= $(PREFIXE)
 DEPENDS			= includes/push_swap.h
 LBFLAGS			= Libft/*.c
 
-SRC				= $(wildcard *.c algo/*.c)
+SRC				= $(wildcard src/*.c)
 
 OBJ				= $(SRC:.c=.o)
 
@@ -31,7 +31,7 @@ all				: $(EXEC)
 
 clean			: 
 	find . -type f | xargs touch
-	rm -rf *.o algo/*.o
+	rm -rf src/*.o
 
 fclean			: clean
 	rm -rf $(EXEC)
