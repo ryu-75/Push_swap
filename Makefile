@@ -1,43 +1,54 @@
-# ------------- [ COMPILER FLAGS ] ------------------ #
+PREFIXE 				= push_swap
+EXEC					= $(PREFIXE)
+DEBUG					= yes
 
-PREFIXE			= push_swap
-EXEC			= $(PREFIXE)
+SRCS					= src/push_swap.c						\
+										src/a_b_move.c 			\
+										src/id.c				\
+										src/lst_sort.c			\
+										src/lst_utils.c			\
+										src/min_value.c			\
+										src/move.c				\
+										src/parsing.c			\
+										src/pos.c				\
+										src/radix_sort.c		\
+										src/sorting_small.c		\
+										src/utils_1.c
 
-# ------------- [ IMPORT LIBRARY ] ------------------ #
+OBJ = $(SRCS:.c=.o)
 
-DEPENDS			= includes/push_swap.h
-LBFLAGS			= Libft/*.c
+CC = gcc
 
-SRC				= $(wildcard src/*.c)
+ifneq ($(DEBUG), yes)
+	CFLAGS 				= -Wall -Wextra -Werror -g
+else
+	CFLAGS 				= -Wall -Wextra -Werror
+endif
 
-OBJ				= $(SRC:.c=.o)
+all: $(EXEC)
 
-$(EXEC)			: $(OBJ)
-			$(CC) $(CFLAGS) -o $@ $^ $(LBFLAGS)
+$(EXEC) : libft/libft.a $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -L libft -lft -o $(EXEC)
 
-# --------- [ All files to compile ] ---------------- #
+libft/libft.a:
+	make -C libft
 
-%.o				: %.c $(DEPENDS)
-			$(CC) $(CFLAGS) -o $@ -c $<
+clean:
+	rm -rf $(OBJ)
+	make clean -C libft
 
-# ------------ [ Compiler flags ] ------------------- #
-
-CC				= gcc 
-CFLAGS			= -g -Wall -Werror -Wextra 
-
-all				: $(EXEC)
-
-# ---------------- [ Delete ] ---------------------- #
-
-clean			: 
-	find . -type f | xargs touch
-	rm -rf src/*.o
-
-fclean			: clean
+fclean: clean
 	rm -rf $(EXEC)
+	make fclean -C libft
 
-# ------------ [ Del & Recomp ] -------------------- #
+re: fclean all
 
-re				: fclean all
+norme:
+	@echo "\033[35;32m\n\n === NORMINETTE PUSH SWAP === \n\n"
+	@norminette src/
+	@echo "\033[35;35m\n\n === NORMINETTE CHECKER === \n\n"
+	@norminette src_bonus/
+	@echo "\033[35;33m\n\n === NORMINETTE INCLUDES === \n\n"
+	@norminette includes/
 
-.PHONY			: all clean fclean re
+.PHONY: all clean fclean re norme bonus

@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pos.c                                              :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/22 22:02:39 by nlorion           #+#    #+#             */
-/*   Updated: 2022/09/01 21:27:15 by nlorion          ###   ########.fr       */
+/*   Created: 2022/05/12 11:12:06 by nlorion           #+#    #+#             */
+/*   Updated: 2022/05/12 12:23:09 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-// Retrieve pos of each value in stack 
-int	ft_set_pos(t_data **stack)
+void	ft_putstr_fd(char *s, int fd)
 {
-	t_data	*pos;
-	t_obj	o = {0};
-	
-	pos = (*stack);
-	while (pos && pos->next)
+	int	i;
+
+	i = 0;
+	while (s[i] != 0)
 	{
-		pos->pos = o.i;
-		o.i++;
-		pos = pos->next;
+		ft_putchar_fd(s[i], fd);
+		i++;
 	}
-	return (o.i + 1);
 }

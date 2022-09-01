@@ -55,7 +55,7 @@ int	have_num(char *s)
 }
 
 // Convert char like atoi but long long
-long long	ft_atols(const char *nptr)
+long	ft_atols(const char *nptr)
 {
 	long long	result;
 	int			sign;

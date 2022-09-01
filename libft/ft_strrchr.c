@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_sort.c                                         :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/08 12:28:21 by nlorion           #+#    #+#             */
-/*   Updated: 2022/09/01 21:27:25 by nlorion          ###   ########.fr       */
+/*   Created: 2022/05/06 17:21:38 by nlorion           #+#    #+#             */
+/*   Updated: 2022/09/01 22:18:25 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-// Check if stack is already sort
-int	ft_lst_is_sort(t_data **stack)
+char	*ft_strrchr(const char *s, int c)
 {
-	t_data	*tmp_1;
-	t_data	*tmp_2;
+	char	*tmp;
+	char	*ptr;
 
-	tmp_1 = (*stack);
-	while (tmp_1)
+	tmp = NULL;
+	ptr = strchr(s, c);
+	if (c == '\0')
+		return (strchr(s, '\0'));
+	if (ptr != NULL)
+		tmp = ptr;
+	while (*s)
 	{
-		tmp_2 = tmp_1->next;
-		while (tmp_2)
-		{
-			if (tmp_1->content > tmp_2->content)
-				return (0);
-			tmp_2 = tmp_2->next;
-		}
-		tmp_1 = tmp_1->next;
+		if (*s == c)
+			tmp = (char *)s;
+		if (*s == '\0')
+			return (tmp);
+		s++;
 	}
-	return (1);
+	return (tmp);
 }

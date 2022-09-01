@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pos.c                                              :+:      :+:    :+:   */
+/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/22 22:02:39 by nlorion           #+#    #+#             */
-/*   Updated: 2022/09/01 21:27:15 by nlorion          ###   ########.fr       */
+/*   Created: 2022/05/17 13:50:21 by nlorion           #+#    #+#             */
+/*   Updated: 2022/05/17 13:50:23 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-// Retrieve pos of each value in stack 
-int	ft_set_pos(t_data **stack)
+t_list	*ft_lstlast(t_list *lst)
 {
-	t_data	*pos;
-	t_obj	o = {0};
-	
-	pos = (*stack);
-	while (pos && pos->next)
+	if (!lst)
+		return (NULL);
+	while (lst->next)
 	{
-		pos->pos = o.i;
-		o.i++;
-		pos = pos->next;
+		lst = lst->next;
 	}
-	return (o.i + 1);
+	return (lst);
 }

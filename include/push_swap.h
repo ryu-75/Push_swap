@@ -13,7 +13,7 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../Libft/libft.h"
+# include "../libft/libft.h"
 
 // ---------------------------- STRUCTURE -------------------------------- //
 
@@ -39,7 +39,7 @@ int		ft_error(t_data **stack, int arg);
 
 // ------------------------------ UTILS ---------------------------------- //
 
-long long	ft_atols(const char *nptr);
+long		ft_atols(const char *nptr);
 int		have_num(char *nb);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_isnumber(int nb);
@@ -79,9 +79,5 @@ void	radix_sort(t_data **stack_a, t_data **stack_b);
 void	index_it(t_data **stack);
 void	ft_sorting_tab(int **tab, int size);
 int		get_index_max(t_data **stack);
-
-// ------------------------------ PRINTER ----------------------------------- //
-
-void	print_lst(t_data **stack);
 
 #endif
