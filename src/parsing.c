@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 22:59:46 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/29 17:21:45 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/09/02 16:20:53 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 // Check if av contain no double and have only digit
 // Return an error if none condition is complete
-static int	check_arg(char **av)
+
+static int	check_value(char **av)
 {
-	t_obj	o = {.i = 1, .j = 1};
-	
+	t_obj	o;
+
+	o.i = 1;
 	while (av[o.i])
 	{
 		if (have_num(av[o.i]) == 0
@@ -25,6 +27,13 @@ static int	check_arg(char **av)
 			return (0);
 		o.i++;
 	}
+	return (1);
+}
+
+static int	check_arg(char **av)
+{
+	t_obj	o;	
+
 	o.i = 1;
 	while (av[o.i])
 	{
@@ -52,11 +61,12 @@ static int	ft_check_double(t_data **stack, int num)
 // Convert each av to integer and stack it into an int array
 t_data	*convert_av(t_data **stack, char **av)
 {
-	t_obj	o = {.i = 1};
+	t_obj	o;
 	t_data	**tmp;
 	int		num;
 
-	stack = malloc(sizeof(t_data**));
+	o.i = 1;
+	stack = malloc(sizeof(t_data));
 	tmp = stack;
 	if (!tmp)
 		return (exit(0), NULL);
@@ -66,7 +76,7 @@ t_data	*convert_av(t_data **stack, char **av)
 		{
 			num = ft_atols(av[o.i]);
 			ft_lstadd_back_value(tmp, add_newlst(*tmp, ft_atols(av[o.i++])));
-			if (!ft_check_double(stack, num))
+			if (!ft_check_double(stack, num) && error(av))
 				ft_error(stack, EXIT_FAILURE);
 		}
 	}

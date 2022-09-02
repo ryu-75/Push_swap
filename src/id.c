@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   id.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 00:35:27 by nlorion           #+#    #+#             */
-/*   Updated: 2022/09/01 21:27:23 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/09/02 14:53:01 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ int	get_index_max(t_data **stack)
 {
 	t_data	*max_value;
 	t_data	*max;
-	t_obj	o = {0};
-	
+	t_obj	o;
+
+	o.i = 0;
 	max_value = (*stack);
 	max = (*stack);
 	while (max_value && o.i < ft_lsize(*stack))

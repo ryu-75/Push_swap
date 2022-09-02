@@ -13,7 +13,7 @@ SRCS					= src/push_swap.c						\
 										src/pos.c				\
 										src/radix_sort.c		\
 										src/sorting_small.c		\
-										src/utils_1.c
+										src/utils_1.c			
 
 OBJ = $(SRCS:.c=.o)
 

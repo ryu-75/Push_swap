@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   radix_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 11:35:53 by nlorion           #+#    #+#             */
-/*   Updated: 2022/09/01 21:27:11 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/09/02 14:55:27 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@ void	radix_sort(t_data **stack_a, t_data **stack_b)
 {
 	int		size;
 	int		val;
-	t_obj	o = {0};
+	t_obj	o;
 	t_data	*tmp;
 
+	o.i = 0;
 	size = ft_lsize(*stack_a);
 	while (!ft_lst_is_sort(stack_a))
 	{

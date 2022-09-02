@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:30:52 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/29 18:30:22 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/09/02 14:35:54 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		ft_error(t_data **stack, int arg);
 
 // ------------------------------ UTILS ---------------------------------- //
 
-long		ft_atols(const char *nptr);
+long	ft_atols(const char *nptr);
 int		have_num(char *nb);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_isnumber(int nb);

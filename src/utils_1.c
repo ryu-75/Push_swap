@@ -47,7 +47,7 @@ int	have_num(char *s)
 {
 	while (*s != 0)
 	{
-		if (ft_isdigit(*s))
+		if (ft_isdigit(*s) && *s != 46)
 			return (1);
 		s++;
 	}
