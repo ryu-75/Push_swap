@@ -36,7 +36,7 @@ int	is_num(char *str)
 		str++;
 	while (*str)
 	{
-		if (*str < '0' && *str > '9')
+		if (*str < '0' || *str > '9')
 			return (0);
 		str++;
 	}
@@ -89,5 +89,6 @@ int	ft_error(t_data **stack, int arg)
 	ft_clear_stack(stack, NULL);
 	if (arg)
 		write(1, "Error\n", 6);
+	free(stack);
 	return (exit(1), EXIT_FAILURE);
 }

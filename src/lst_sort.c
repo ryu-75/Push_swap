@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 12:28:21 by nlorion           #+#    #+#             */
-/*   Updated: 2022/09/01 21:27:25 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/09/03 17:36:36 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ int	ft_lst_is_sort(t_data **stack)
 		}
 		tmp_1 = tmp_1->next;
 	}
+	ft_clear_stack(stack, &free);
 	return (1);
 }

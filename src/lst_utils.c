@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 22:37:37 by nlorion           #+#    #+#             */
-/*   Updated: 2022/09/01 21:27:22 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/09/03 19:35:28 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 // Add new node
 t_data	*add_newlst(t_data *new, int el)
 {
-	new = malloc(sizeof(t_data));
 	if (!new)
-		return (NULL);
+		new = malloc(sizeof(t_data));
 	new->content = el;
 	new->idx = -1;
 	new->next = NULL;
@@ -29,12 +28,12 @@ void	ft_lstadd_back_value(t_data **lst, t_data *new)
 {
 	t_data	*last;
 
+	last = *lst;
 	if (!lst || !new)
 		return ;
-	last = *lst;
 	if (!last)
 	{
-		*lst = new;
+		(*lst) = new;
 		return ;
 	}
 	else
@@ -46,19 +45,16 @@ void	ft_lstadd_back_value(t_data **lst, t_data *new)
 }
 
 // Delete one element only
-void	ft_lstdel(t_data *stack, void (*del)(int))
+void	ft_lstdel(t_data *stack, void (*del)(void *))
 {
 	if (!del)
 		return ;
 	if (stack)
-	{
-		(*del)(stack->content);
-		free(stack);
-	}
+		(*del)(stack);
 }
 
 // Clear list completely
-void	ft_clear_stack(t_data **stack, void (*del)(int))
+void	ft_clear_stack(t_data **stack, void (*del)(void *))
 {
 	t_data	*tmp;
 

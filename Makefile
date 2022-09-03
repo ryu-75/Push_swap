@@ -41,14 +41,7 @@ fclean: clean
 	rm -rf $(EXEC)
 	make fclean -C libft
 
-re: fclean all
+re: fclean
+	@make all
 
-norme:
-	@echo "\033[35;32m\n\n === NORMINETTE PUSH SWAP === \n\n"
-	@norminette src/
-	@echo "\033[35;35m\n\n === NORMINETTE CHECKER === \n\n"
-	@norminette src_bonus/
-	@echo "\033[35;33m\n\n === NORMINETTE INCLUDES === \n\n"
-	@norminette includes/
-
-.PHONY: all clean fclean re norme bonus
+.PHONY: all clean fclean re

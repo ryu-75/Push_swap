@@ -50,8 +50,8 @@ int		is_num(char *str);
 t_data	*add_newlst(t_data *new, int el);
 t_data	*ft_lstmin(t_data **stack);
 void	ft_lstadd_back_value(t_data **lst, t_data *new);
-void	ft_lstdel(t_data *stack, void (*del)(int));
-void	ft_clear_stack(t_data **stack, void (*del)(int));
+void	ft_lstdel(t_data *stack, void (*del)(void *));
+void	ft_clear_stack(t_data **stack, void (*del)(void *));
 int		ft_lst_is_sort(t_data **stack);
 int		ft_lsize(t_data *lst);
 

@@ -62,25 +62,25 @@ static int	ft_check_double(t_data **stack, int num)
 t_data	*convert_av(t_data **stack, char **av)
 {
 	t_obj	o;
-	t_data	**tmp;
+	t_data	*tmp;
 	int		num;
 
-	o.i = 1;
-	stack = malloc(sizeof(t_data));
-	tmp = stack;
-	if (!tmp)
-		return (exit(0), NULL);
+	if (!stack && !*stack)
+		stack = malloc(sizeof(t_data));
+	tmp = *stack;
 	if (check_arg(av) == 1)
 	{
+		o.i = 1;
 		while (av[o.i])
 		{
 			num = ft_atols(av[o.i]);
-			ft_lstadd_back_value(tmp, add_newlst(*tmp, ft_atols(av[o.i++])));
-			if (!ft_check_double(stack, num) && error(av))
+			ft_lstadd_back_value(stack, add_newlst(tmp, ft_atols(av[o.i++])));
+			if (!ft_check_double(stack, num) && check_value(av))
 				ft_error(stack, EXIT_FAILURE);
 		}
 	}
 	else
 		ft_error(stack, EXIT_FAILURE);
+	free(tmp);
 	return (*stack);
 }

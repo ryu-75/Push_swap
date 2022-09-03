@@ -17,8 +17,10 @@ static void	ft_move_3(t_data **a)
 {
 	int	pos;
 
-	index_it(a);
+	if (!a)
+		return ;
 	pos = ft_smallest_value(a);
+	index_it(a);
 	if (ft_lst_is_sort(a) == 1)
 		return (exit(0));
 	if (pos == 2)
@@ -69,6 +71,8 @@ static void	ft_move_4_5(t_data **a, t_data **b)
 {
 	int	pos;
 
+	if (!a && !*a)
+		return ;
 	pos = ft_set_pos(a);
 	if (ft_lst_is_sort(a) == 1)
 		return (exit(0));
@@ -95,8 +99,10 @@ void	ft_select_sort(t_data **a, t_data **b)
 	t_data	*tmp;
 	int		pos;
 
-	pos = ft_set_pos(a);
+	if (!*a && !a)
+		return ; 
 	tmp = (*a);
+	pos = ft_set_pos(a);
 	if (pos == 2)
 	{
 		if (tmp->content > tmp->next->content)

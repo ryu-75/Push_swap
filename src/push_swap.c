@@ -27,12 +27,15 @@ int	main(int ac, char **av)
 	if (stack_a->size <= 5)
 	{
 		ft_select_sort(&stack_a, &stack_b);
-		ft_clear_stack(&stack_a, 0);
+		ft_clear_stack(&stack_a, &free);
 	}
-	ft_set_pos(&stack_a);
-	ft_set_pos(&stack_b);
-	radix_sort(&stack_a, &stack_b);
-	ft_clear_stack(&stack_a, 0);
-	ft_clear_stack(&stack_b, 0);
+	else
+	{
+		ft_set_pos(&stack_a);
+		ft_set_pos(&stack_b);
+		radix_sort(&stack_a, &stack_b);
+	}
+	ft_clear_stack(&stack_a, &free);
+	ft_clear_stack(&stack_b, &free);
 	return (0);
 }
