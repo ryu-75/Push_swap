@@ -1,2 +1,2 @@
-src/*.o
-./push_swap
+*.o
+push_swap
