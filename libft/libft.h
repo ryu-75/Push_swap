@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlorion <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: nlorion <nlorion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/05 13:17:17 by nlorion           #+#    #+#             */
-/*   Updated: 2022/05/17 14:44:57 by nlorion          ###   ########.fr       */
+/*   Created: 2022/09/04 00:07:41 by nlorion           #+#    #+#             */
+/*   Updated: 2022/09/04 00:07:42 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #ifndef LIBFT_H
 # define LIBFT_H
 
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <bsd/string.h>
+// # include <bsd/string.h>
 # include <string.h>
 # include <stddef.h>
 # include <stdint.h>

@@ -22,9 +22,32 @@ static int	check_value(char **av)
 	o.i = 1;
 	while (av[o.i])
 	{
-		if (have_num(av[o.i]) == 0
-			|| is_num(av[o.i]) == 0)
+		if ((have_num(av[o.i]) == 0
+			|| is_num(av[o.i]) == 0))
 			return (0);
+		o.i++;
+	}
+	return (1);
+}
+
+static int	check_no_int(char **av)
+{
+	t_obj o;
+
+	o.i = 1;
+	while (av[o.i])
+	{
+		o.j = 0;
+		while (av[o.i][o.j])
+		{
+			if ((av[o.i][o.j] < '0' || av[o.i][o.j] > '9')
+				&& av[o.i][o.j] != '-')
+				return (0);
+			if (av[o.i][o.j] == '-'
+				&& (av[o.i][o.j + 1] < '0' || av[o.i][o.j + 1] > '9'))
+				return (0);
+			o.j++;
+		}
 		o.i++;
 	}
 	return (1);
@@ -75,12 +98,11 @@ t_data	*convert_av(t_data **stack, char **av)
 		{
 			num = ft_atols(av[o.i]);
 			ft_lstadd_back_value(stack, add_newlst(tmp, ft_atols(av[o.i++])));
-			if (!ft_check_double(stack, num) && check_value(av))
+			if ((!ft_check_double(stack, num) && check_value(av)) || !check_no_int(av))
 				ft_error(stack, EXIT_FAILURE);
 		}
 	}
 	else
 		ft_error(stack, EXIT_FAILURE);
-	free(tmp);
 	return (*stack);
 }

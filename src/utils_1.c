@@ -32,11 +32,11 @@ int	ft_strcmp(const char *nb1, const char *nb2)
 
 int	is_num(char *str)
 {
-	if ((*str == '-' || *str == '+') && ft_strlen(str) > 1)
-		str++;
+	// if ((*str == '-' || *str == '+') && ft_strlen(str) > 1)
+	// 	str++;
 	while (*str)
 	{
-		if (*str < '0' || *str > '9')
+		if ((*str < '0' || *str > '9'))
 			return (0);
 		str++;
 	}
@@ -69,8 +69,8 @@ long	ft_atols(const char *nptr)
 		sign = -1;
 		nptr++;
 	}
-	else if (*nptr == '+')
-		nptr++;
+	else if (*nptr == '+' || *nptr == '-')
+		return (write(1, "Error\n", 6), exit(1), 0);
 	while (*nptr >= '0' && *nptr <= '9')
 	{
 		result = result * 10 + *nptr - '0';
@@ -86,9 +86,8 @@ long	ft_atols(const char *nptr)
 int	ft_error(t_data **stack, int arg)
 {
 	arg = EXIT_FAILURE;
-	ft_clear_stack(stack, NULL);
 	if (arg)
 		write(1, "Error\n", 6);
-	free(stack);
+	ft_clear_stack(stack, &free);
 	return (exit(1), EXIT_FAILURE);
 }
