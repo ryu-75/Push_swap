@@ -71,7 +71,8 @@ long	ft_atols(const char *nptr)
 		return (write(1, "Error\n", 6), exit(1), 0);
 	while (*nptr >= '0' && *nptr <= '9')
 	{
-		result = result * 10 + *nptr - '0';
+		if (result > INT_MIN || result < INT_MAX)
+			result = result * 10 + *nptr - '0';
 		nptr++;
 	}
 	result *= sign;
