@@ -1,2 +1,3 @@
 *.o
+*.d
 push_swap

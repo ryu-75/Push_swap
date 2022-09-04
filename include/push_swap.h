@@ -65,12 +65,6 @@ void	ft_rrotate(t_data **stack, char *s);
 void	rrr_movement(t_data **a, t_data **b);
 void	rr_movement(t_data **a, t_data **b);
 
-// ----------------------------- SORTING ----------------------------------- //
-
-void	ft_select_sort(t_data **a, t_data **b);
-int		ft_set_pos(t_data **stack);
-int		ft_smallest_value(t_data **stack);
-
 // ------------------------------ ALGO ------------------------------------- //
 
 t_data	*ft_found_target(t_data **a, t_data **b);
@@ -79,5 +73,8 @@ void	radix_sort(t_data **stack_a, t_data **stack_b);
 void	index_it(t_data **stack);
 void	ft_sorting_tab(int **tab, int size);
 int		get_index_max(t_data **stack);
+void	ft_select_sort(t_data **a, t_data **b);
+int		ft_set_pos(t_data **stack);
+int		ft_smallest_value(t_data **stack);
 
 #endif

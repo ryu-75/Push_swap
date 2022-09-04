@@ -15,7 +15,9 @@ SRCS					= src/push_swap.c						\
 										src/sorting_small.c		\
 										src/utils_1.c			
 
-OBJ = $(SRCS:.c=.o)
+%.o						: %.c
+						$(CC) -c $(CFLAGS) $*.c -o $*.o
+						$(CC) -MM $(CFLAGS) $*.c > $*.d
 
 CC = gcc
 
@@ -25,23 +27,28 @@ else
 	CFLAGS 				= -Wall -Wextra -Werror
 endif
 
-all: $(EXEC)
+OBJ = $(SRCS:.c=.o)
+DEP = $(SRCS:.c=.d)
 
-$(EXEC) : libft/libft.a $(OBJ)
+$(EXEC) : libft/libft.a $(OBJ) 
 	$(CC) $(CFLAGS) $(OBJ) -L libft -lft -o $(EXEC)
+
+all						: $(EXEC)
+
+directories				: $(OUT_DIR)
 
 libft/libft.a:
 	make -C libft
 
-clean:
-	rm -rf $(OBJ)
-	make clean -C libft
+clean					:
+						rm -rf $(OBJ) $(DEP) 
+						make clean -C libft
 
-fclean: clean
-	rm -rf $(EXEC)
-	make fclean -C libft
+fclean					: clean
+						rm -rf $(EXEC)
+						make fclean -C libft
 
-re: fclean
-	@make all
+re						: fclean
+						@make all
 
 .PHONY: all clean fclean re

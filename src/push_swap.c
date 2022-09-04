@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 21:36:46 by nlorion           #+#    #+#             */
-/*   Updated: 2022/09/02 14:36:48 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/09/04 14:38:52 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ int	main(int ac, char **av)
 	stack_a->size = ft_lsize(stack_a);
 	index_it(&stack_a);
 	if (stack_a->size <= 5)
-	{
 		ft_select_sort(&stack_a, &stack_b);
-		ft_clear_stack(&stack_a, &free);
-	}
 	else
 	{
 		ft_set_pos(&stack_a);

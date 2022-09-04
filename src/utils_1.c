@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:30:56 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/29 17:03:04 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/09/04 14:38:18 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ int	ft_strcmp(const char *nb1, const char *nb2)
 
 int	is_num(char *str)
 {
-	// if ((*str == '-' || *str == '+') && ft_strlen(str) > 1)
-	// 	str++;
 	while (*str)
 	{
 		if ((*str < '0' || *str > '9'))

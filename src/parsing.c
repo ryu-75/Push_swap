@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 22:59:46 by nlorion           #+#    #+#             */
-/*   Updated: 2022/09/02 16:20:53 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/09/04 14:44:04 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	check_value(char **av)
 	while (av[o.i])
 	{
 		if ((have_num(av[o.i]) == 0
-			|| is_num(av[o.i]) == 0))
+				|| is_num(av[o.i]) == 0))
 			return (0);
 		o.i++;
 	}
@@ -32,7 +32,7 @@ static int	check_value(char **av)
 
 static int	check_no_int(char **av)
 {
-	t_obj o;
+	t_obj	o;
 
 	o.i = 1;
 	while (av[o.i])
@@ -98,7 +98,8 @@ t_data	*convert_av(t_data **stack, char **av)
 		{
 			num = ft_atols(av[o.i]);
 			ft_lstadd_back_value(stack, add_newlst(tmp, ft_atols(av[o.i++])));
-			if ((!ft_check_double(stack, num) && check_value(av)) || !check_no_int(av))
+			if ((!ft_check_double(stack, num) && check_value(av))
+				|| !check_no_int(av))
 				ft_error(stack, EXIT_FAILURE);
 		}
 	}

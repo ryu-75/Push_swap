@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 22:02:39 by nlorion           #+#    #+#             */
-/*   Updated: 2022/09/02 14:53:28 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/09/04 14:13:48 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	ft_set_pos(t_data **stack)
 	t_obj	o;
 
 	o.i = 0;
+	if (!stack && !*stack)
+		return (0);
 	pos = (*stack);
 	while (pos && pos->next)
 	{

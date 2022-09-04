@@ -6,7 +6,7 @@
 /*   By: nlorion <nlorion@42.student.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 23:22:42 by nlorion           #+#    #+#             */
-/*   Updated: 2022/08/29 17:31:43 by nlorion          ###   ########.fr       */
+/*   Updated: 2022/09/04 14:39:14 by nlorion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@
 static void	ft_move_3(t_data **a)
 {
 	int	pos;
-	pos = ft_smallest_value(a);
 
-	if (!*a)
-		return ;
+	pos = ft_smallest_value(a);
 	index_it(a);
 	if (ft_lst_is_sort(a) == 1)
 		return (exit(0));
@@ -50,8 +48,6 @@ static void	ft_small_move(t_data **a, t_data **b)
 	int	smallest_id;
 	int	stack_len;
 
-	if (!*a && !a)
-		return ;
 	stack_len = ft_set_pos(a);
 	smallest_id = ft_smallest_value(a);
 	small_content = ft_lstmin(a)->content;
@@ -73,11 +69,9 @@ static void	ft_move_4_5(t_data **a, t_data **b)
 {
 	int	pos;
 
-	if (!a && !*a)
-		return ;
-	pos = ft_set_pos(a);
 	if (ft_lst_is_sort(a) == 1)
 		return (exit(0));
+	pos = ft_set_pos(a);
 	if (pos == 4)
 	{
 		ft_small_move(a, b);
@@ -98,16 +92,12 @@ static void	ft_move_4_5(t_data **a, t_data **b)
 
 void	ft_select_sort(t_data **a, t_data **b)
 {
-	t_data	*tmp;
 	int		pos;
 
-	if (!a && !*a)
-		return ;
-	tmp = (*a);
 	pos = ft_set_pos(a);
 	if (pos == 2)
 	{
-		if (tmp->content > tmp->next->content)
+		if ((*a)->content > (*a)->next->content)
 			ft_swap(a, "a");
 	}
 	else if (pos == 3)
