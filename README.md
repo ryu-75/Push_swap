@@ -160,7 +160,7 @@ To use the ``push_swap`` program, follow these steps:
 >  [!TIP]
 > You can use this command to generate a certain number of unique numbers ranging from 0 to 500.<br>
 ```
-./push_swap shuf -i 0-500 -n 300
+./push_swap $(seq 0 500 | shuf | head -n 300)
 ```
 
 ## 💡 Example Usage ##
