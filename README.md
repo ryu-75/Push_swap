@@ -177,6 +177,18 @@ pa
 pa
 ```
 
+## 💻 Testing the program ##
+You can test the program using a provided visualizer included in the repository. Follow these steps:
+1. Ensure that you have the necessary dependencies installed on your computer:
+   - If Python 3 is not installed, you can install it by running the following commands:<br>
+     ```sudo apt-get install python3-pip```<br>
+     ```sudo apt-get install python3-tk```
+   - If Ruby is not installed, you can install it by running:
+     ```sudo apt-get install ruby```
+2. Once you have the dependencies installed, navigate to the root of the project directory.
+3. Run the following command to execute the provided visualizer script with a shuffled list of integers generated using Ruby:<br>
+```python3 pyviz.py `ruby -e "puts (-200..200).to_a.shuffle.join(' ')"` ```
+This command will visualize the sorting process using the generated list of integers.
 ## ✔️ Validation ##
 The project is validated based on the correctness of the sorting algorithm and the efficiency in terms of the number of operations required to sort the stack.
 
